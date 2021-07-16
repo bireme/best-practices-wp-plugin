@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This plugin creates a search interface for the [Virtual Health Library](http://modelo.bvsalud.org/en/) best practices record information source.
+This plugin creates a search interface for the Best Practices record information source.
 
 ## Requirements
 
