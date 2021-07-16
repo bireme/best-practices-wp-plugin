@@ -1,0 +1,219 @@
+# Copyright (C) 2021 Bibliographic
+# This file is distributed under the same license as the Bibliographic package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Bibliographic 1.4\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
+"POT-Creation-Date: 2021-07-05 20:48:33+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: bibliographic.php:98 settings.php:30
+msgid "Bibliographic record settings"
+msgstr ""
+
+#: bibliographic.php:98 template/rss.php:52
+msgid "Bibliographic records"
+msgstr ""
+
+#: bibliographic.php:146
+msgid "Bibliographic sidebar"
+msgstr ""
+
+#: bibliographic.php:156
+msgid "Bibliographic header"
+msgstr ""
+
+#: lib/Paginator.php:35 lib/Paginator.php:36 lib/Paginator.php:47
+#: lib/Paginator.php:53 lib/Paginator.php:62 lib/Paginator.php:63
+#: lib/Paginator.php:69 lib/Paginator.php:70
+msgid "go to page"
+msgstr ""
+
+#: settings.php:11
+msgid "Main subject"
+msgstr ""
+
+#: settings.php:12
+msgid "Document type"
+msgstr ""
+
+#: settings.php:13
+msgid "Database"
+msgstr ""
+
+#: settings.php:14
+msgid "Publication country"
+msgstr ""
+
+#: settings.php:15
+msgid "Language"
+msgstr ""
+
+#: settings.php:16
+msgid "Year"
+msgstr ""
+
+#: settings.php:17
+msgid "Journal"
+msgstr ""
+
+#: settings.php:38
+msgid "Plugin page"
+msgstr ""
+
+#: settings.php:42
+msgid "Filter query"
+msgstr ""
+
+#: settings.php:46
+msgid "AddThis profile ID"
+msgstr ""
+
+#: settings.php:50
+msgid "Google Analytics code"
+msgstr ""
+
+#: settings.php:54 template/home.php:205 template/resource.php:237
+msgid "Fulltext"
+msgstr ""
+
+#: settings.php:58
+msgid "Present alternative fulltext links"
+msgstr ""
+
+#: settings.php:73
+msgid "Home URL"
+msgstr ""
+
+#: settings.php:78 settings.php:85
+msgid "Page title"
+msgstr ""
+
+#: settings.php:91
+msgid "Related Documents filter"
+msgstr ""
+
+#: settings.php:94 settings.php:101
+msgid "The filters must be separated by commas."
+msgstr ""
+
+#: settings.php:98
+msgid "More Related filter"
+msgstr ""
+
+#: settings.php:105
+msgid "Search filters"
+msgstr ""
+
+#: settings.php:110
+msgid "Available"
+msgstr ""
+
+#: settings.php:123
+msgid "Selected"
+msgstr ""
+
+#: settings.php:144
+msgid "Save changes"
+msgstr ""
+
+#: template/home.php:98 template/resource.php:85
+msgid "Home"
+msgstr ""
+
+#: template/home.php:103
+msgid "Search result"
+msgstr ""
+
+#: template/home.php:122 template/resource.php:97
+msgid "Enter one or more words"
+msgstr ""
+
+#: template/home.php:123 template/resource.php:98
+msgid "Search"
+msgstr ""
+
+#: template/home.php:124 template/resource.php:99
+msgid "Tip! You can do your search using boolean operators."
+msgstr ""
+
+#: template/home.php:133
+msgid "No results found"
+msgstr ""
+
+#: template/home.php:137
+msgid "Results"
+msgstr ""
+
+#: template/home.php:139
+msgid "Total"
+msgstr ""
+
+#: template/home.php:198 template/resource.php:230
+msgid "Fulltext (primary link)"
+msgstr ""
+
+#: template/home.php:198 template/resource.php:230
+msgid "Fulltext (alternative link)"
+msgstr ""
+
+#: template/home.php:234
+msgid "Filters"
+msgstr ""
+
+#: template/home.php:244
+msgid "Selected filters"
+msgstr ""
+
+#: template/related.php:56 template/similar.php:41
+msgid "No related documents"
+msgstr ""
+
+#: template/resource.php:144
+msgid "Publication year"
+msgstr ""
+
+#: template/resource.php:151
+msgid ""
+"Theses and dissertations in %pub_lang% presented to the %institution% to "
+"obtain the academic title of %academic_title%. Leader: %leader%"
+msgstr ""
+
+#: template/resource.php:154
+msgid ""
+"Theses and dissertations presented to the %institution% to obtain the "
+"academic title of %academic_title%. Leader: %leader%"
+msgstr ""
+
+#: template/resource.php:247
+msgid "More related"
+msgstr ""
+
+#: template/resource.php:267
+msgid "Related"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Bibliographic"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://reddes.bvsalud.org/projects/fi-admin/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Search bibliographic records from FI-ADMIN."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "BIREME/OPAS/OMS"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://reddes.bvsalud.org/"
+msgstr ""
