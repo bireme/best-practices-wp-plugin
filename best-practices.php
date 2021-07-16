@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Best Practices
-Plugin URI: http://reddes.bvsalud.org/projects/fi-admin/
-Description: Search best practices records from Symfony framework.
+Plugin URI: https://github.com/bireme/best-practices-wp-plugin
+Description: Search best practices records.
 Author: BIREME/OPAS/OMS
-Version: 1.4
+Version: 1.0
 Author URI: http://reddes.bvsalud.org/
 */
 
@@ -12,6 +12,7 @@ define('BP_PLUGIN_VERSION', '1.4' );
 
 define('BP_SYMBOLIC_LINK', false );
 define('BP_PLUGIN_DIRNAME', 'best-practices' );
+define('BP_PLUGIN_BASENAME', plugin_basename( __FILE__ ));
 
 if(BP_SYMBOLIC_LINK == true) {
     define('BP_PLUGIN_PATH',  ABSPATH . 'wp-content/plugins/' . BP_PLUGIN_DIRNAME );
@@ -21,7 +22,6 @@ if(BP_SYMBOLIC_LINK == true) {
 
 define('BP_PLUGIN_DIR', plugin_basename( BP_PLUGIN_PATH ) );
 define('BP_PLUGIN_URL', plugin_dir_url(__FILE__) );
-
 
 require_once(BP_PLUGIN_PATH . '/settings.php');
 require_once(BP_PLUGIN_PATH . '/template-functions.php');
@@ -39,17 +39,18 @@ if(!class_exists('Best_Practices_Plugin')) {
         public function __construct() {
             // register actions
 
-            add_action( 'init', array(&$this, 'load_translation'));
-            add_action( 'admin_menu', array(&$this, 'admin_menu'));
-            add_action( 'plugins_loaded', array(&$this, 'plugin_init'));
-            add_action( 'wp_head', array(&$this, 'google_analytics_code'));
-            add_action( 'template_redirect', array(&$this, 'template_redirect'));
-            add_action( 'widgets_init', array(&$this, 'register_sidebars'));
-            add_action( 'after_setup_theme', array(&$this, 'title_tag_setup'));
-            add_filter( 'get_search_form', array(&$this, 'search_form'));
-            add_filter( 'document_title_separator', array(&$this, 'title_tag_sep') );
-            add_filter( 'document_title_parts', array(&$this, 'theme_slug_render_title'));
-            add_filter( 'wp_title', array(&$this, 'theme_slug_render_wp_title'));
+            add_action('init', array(&$this, 'load_translation'));
+            add_action('admin_menu', array(&$this, 'admin_menu'));
+            add_action('plugins_loaded', array(&$this, 'plugin_init'));
+            add_action('wp_head', array(&$this, 'google_analytics_code'));
+            add_action('template_redirect', array(&$this, 'template_redirect'));
+            add_action('widgets_init', array(&$this, 'register_sidebars'));
+            add_action('after_setup_theme', array(&$this, 'title_tag_setup'));
+            add_filter('get_search_form', array(&$this, 'search_form'));
+            add_filter('document_title_separator', array(&$this, 'title_tag_sep'));
+            add_filter('document_title_parts', array(&$this, 'theme_slug_render_title'));
+            add_filter('wp_title', array(&$this, 'theme_slug_render_wp_title'));
+            add_filter('plugin_action_links_'.BP_PLUGIN_BASENAME, array(&$this, 'settings_link'));
 
         } // END public function __construct
 
@@ -94,11 +95,31 @@ if(!class_exists('Best_Practices_Plugin')) {
         }
 
         function admin_menu() {
-            add_options_page(__('Best Practices record settings', 'bp'), __('Best Practices records', 'bp'),
-                'manage_options', 'bp', 'bp_page_admin');
+            add_options_page(__('Best Practices settings', 'bp'), __('Best Practices', 'bp'),
+                'manage_options', 'bp-settings', 'bp_page_admin');
             //call register settings function
             add_action( 'admin_init', array(&$this, 'register_settings'));
         }
+
+        function settings_link( $links ) {
+    		// Build and escape the URL.
+    		$url = esc_url( add_query_arg(
+    			'page',
+    			'bp-settings',
+    			get_admin_url() . 'admin.php'
+    		) );
+
+    		// Create the link.
+    		$settings_link = "<a href='$url'>" . __( 'Settings' ) . '</a>';
+
+    		// Adds the link to the end of the array.
+    		array_push(
+    			$links,
+    			$settings_link
+    		);
+
+    		return $links;
+    	}
 
         function template_redirect() {
             global $wp, $bp_service_url, $bp_plugin_slug, $similar_docs_url;
@@ -116,8 +137,9 @@ if(!class_exists('Best_Practices_Plugin')) {
                 $bp_plugin_slug = $this->plugin_slug;
                 $similar_docs_url = $this->similar_docs_url;
 
-                if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
-                    || $pagename == $this->plugin_slug . '/best-practices-feed') {
+                if ($pagename == $this->plugin_slug ||
+                    $pagename == $this->plugin_slug . '/resource' ||
+                    $pagename == $this->plugin_slug . '/best-practices-feed') {
 
                     add_action( 'wp_enqueue_scripts', array(&$this, 'page_template_styles_scripts'));
 
@@ -249,7 +271,7 @@ if(!class_exists('Best_Practices_Plugin')) {
 
         function register_settings(){
             register_setting('bp-settings-group', 'bp_config');
-            wp_enqueue_style('bp' ,  BP_PLUGIN_URL . 'template/css/admin.css');
+            wp_enqueue_style('bp',  BP_PLUGIN_URL . 'template/css/admin.css');
             wp_enqueue_script('jquery-ui-sortable');
         }
 

@@ -36,7 +36,7 @@ function bp_page_admin() {
                 <tbody>
                     <tr valign="top">
                         <th scope="row"><?php _e('Plugin page', 'bp'); ?>:</th>
-                        <td><input type="text" name="bp_config[plugin_slug]" value="<?php echo ($config['plugin_slug'] != '' ? $config['plugin_slug'] : 'bp'); ?>" class="regular-text code"></td>
+                        <td><input type="text" name="bp_config[plugin_slug]" value="<?php echo ($config['plugin_slug'] != '' ? $config['plugin_slug'] : 'best-practices'); ?>" class="regular-text code"></td>
                     </tr>
                     <tr valign="top">
                         <th scope="row"><?php _e('Filter query', 'bp'); ?>:</th>
