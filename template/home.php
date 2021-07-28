@@ -15,7 +15,7 @@ $order = array(
 $bp_config         = get_option('bp_config');
 $bp_initial_filter = $bp_config['initial_filter'];
 $bp_addthis_id     = $bp_config['addthis_profile_id'];
-$alternative_links     = (bool)$bp_config['alternative_links'];
+$alternative_links = (bool)$bp_config['alternative_links'];
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang = substr($site_language,0,2);
@@ -41,9 +41,12 @@ if ($bp_initial_filter != ''){
 }else{
     $filter = $user_filter;
 }
+
 $start = ($page * $count) - $count;
 
-$bp_service_request = $bp_service_url . 'api/bibliographic/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&count=' . $count . '&lang=' . $lang;
+// $bp_service_request = $bp_service_url . 'api/bibliographic/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&count=' . $count . '&lang=' . $lang;
+
+$bp_service_request = $bp_service_url . '/api/bp?offset=' . $start . '&limit=' . $count;
 
 $filter_list = explode(";", $bp_config['available_filter']);
 
@@ -63,16 +66,15 @@ if ( $user_filter != '' ) {
     }
 }
 
-//echo $bp_service_request;
+// echo "<pre>"; print_r($bp_service_request); echo "</pre>"; die();
 
 $response = @file_get_contents($bp_service_request);
 if ($response){
     $response_json = json_decode($response);
-    //echo "<pre>"; print_r($response_json); echo "</pre>";
-    $total = $response_json->diaServerResponse[0]->response->numFound;
-    $start = $response_json->diaServerResponse[0]->response->start;
-    $docs_list = $response_json->diaServerResponse[0]->response->docs;
-    $facet_list = (array) $response_json->diaServerResponse[0]->facet_counts->facet_fields;
+    // echo "<pre>"; print_r($response_json); echo "</pre>"; die();
+    $total = $response_json->total;
+    $items = $response_json->items;
+    // $facet_list = (array) $response_json->diaServerResponse[0]->facet_counts->facet_fields;
 }
 
 $params  = !empty($format) ? '&format=' . $format : '';
@@ -97,13 +99,12 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
             <div class="row-fluid breadcrumb">
                 <a href="<?php echo $home_url ?>"><?php _e('Home','bp'); ?></a> >
                 <?php if ($query == '' && $filter == ''): ?>
-                    <?php echo $plugin_breadcrumb ?>
+                    <?php echo $plugin_breadcrumb; ?>
                 <?php else: ?>
-                    <a href="<?php echo real_site_url($bp_plugin_slug); ?>"><?php echo $plugin_breadcrumb ?> </a> >
-                    <?php _e('Search result', 'bp') ?>
+                    <a href="<?php echo real_site_url($bp_plugin_slug); ?>"><?php echo $plugin_breadcrumb; ?></a> >
+                    <?php _e('Search result', 'bp'); ?>
                 <?php endif; ?>
             </div>
-
 
             <!-- Start sidebar best-practices-header -->
             <div class="row-fluid">
@@ -124,7 +125,7 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                     <a href="#" title="<?php _e('Tip! You can do your search using boolean operators.', 'bp'); ?>" class="help ketchup tooltip"><i class="fa fa-question-circle fa-2x"></i></a>
                 </form>
                 <div class="pull-right rss">
-                    <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo bpGRAPHIC_PLUGIN_URL; ?>template/images/icon_rss.png" ></a>
+                    <!-- <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo BP_PLUGIN_URL; ?>template/images/icon_rss.png" ></a> -->
                 </div>
             </section>
             <div class="content-area result-list">
@@ -141,75 +142,19 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                         </header>
                         <div class="row-fluid">
 
-                                <?php foreach ( $docs_list as $position => $docs) { $position++; ?>
-                                    <article class="conteudo-loop">
-                                        <h2 class="h2-loop-tit">
-                                            <a href="<?php echo real_site_url($bp_plugin_slug); ?>resource/?id=<?php echo $docs->id; ?>"><?php echo $docs->reference_title[0]; ?></a>
-                                        </h2>
+                            <?php foreach ( $items as $item ) { $data = $item->main_submission; ?>
+                                <article class="conteudo-loop">
+                                    <h2 class="h2-loop-tit">
+                                        <a href="<?php echo real_site_url($bp_plugin_slug); ?>resource/?id=<?php echo $item->id; ?>"><?php echo $data->title; ?></a>
+                                    </h2>
 
-                                        <?php if ( $docs->author ): ?>
-                                            <div class="row-fluid authors">
-                                                <?php foreach ( $docs->author as $index => $author ):
-                                                    echo "<a href='" . real_site_url($bp_plugin_slug) . "?filter=author:\"" . $author . "\"'>" . $author . "</a>";
-                                                    echo count($docs->author)-1 != $index ? '; ' : '.';
-                                                endforeach; ?>
-                                            </div>
-                                        <?php endif; ?>
-
-                                        <?php if ( $docs->journal ): ?>
-                                            <div class="row-fluid">
-                                                <?php
-                                                    echo "<a href='" . real_site_url($bp_plugin_slug) . "?filter=journal:\"" . $docs->journal[0] . "\"'>" . $docs->journal[0] . "</a>";
-                                                    if ( $docs->reference_source ):
-                                                        echo substr($docs->reference_source, strpos($docs->reference_source, ';'), 100);
-                                                    endif;
-                                                ?>
-                                            </div>
-                                        <?php endif; ?>
-
-                                        <?php if ( $docs->reference_abstract ): ?>
-                                            <div class="row-fluid">
-                                                <?php
-                                                    $ab_clean = str_replace(array("\\r\\n", "\\t", "\\r", "\\n"), '' ,$docs->reference_abstract[0]);
-                                                    echo substr($ab_clean, 0, 305) . '...';
-                                                ?>
-                                            </div>
-                                        <?php endif; ?>
-
-                                        <?php if ($docs->mh ) : ?>
-                                            <div class="row-fluid subjects">
-                                                <strong><i class="fa fa-tags" aria-hidden="true"></i></strong>
-                                                <?php
-                                                    $subjects = array();
-                                                    foreach ( $docs->mh as $index => $subject ):
-                                                        echo "<a href='" . real_site_url($bp_plugin_slug) . "?q=mh:\"" . $subject . "\"'>" . $subject . "</a>";
-                                                        echo $index != count($docs->mh)-1 ? ', ' : '';
-                                                    endforeach; ?>
-                                            </div>
-                                        <?php endif; ?>
-
-                                        <?php if ( $docs->link ) : ?>
-                                            <div class="row-fluid">
-                                                <?php if ( $alternative_links && count($docs->link) > 1): ?>
-                                                    <?php foreach ($docs->link as $index => $link): ?>
-                                                        <span class="more">
-                                                            <a href="<?php echo $link ?>" target="_blank">
-                                                                <i class="fa fa-file" aria-hidden="true"> </i>
-                                                                <?php ( ($index == 0) ? _e('Fulltext (primary link)','bp') : _e('Fulltext (alternative link)','bp')); ?>
-                                                            </a>
-                                                        </span>&nbsp;&nbsp;&nbsp;
-                                                    <?php endforeach; ?>
-                                                <?php else: ?>
-                                                    <span class="more">
-                                                        <a href="<?php echo $docs->link[0] ?>" target="_blank">
-                                                            <i class="fa fa-file" aria-hidden="true"> </i> <?php _e('Fulltext','bp'); ?>
-                                                        </a>
-                                                    </span>
-                                                <?php endif; ?>
-                                            </div>
-                                        <?php endif; ?>
-                                    </article>
-                                <?php } ?>
+                                    <?php if ( $data->introduction ): ?>
+                                        <div class="row-fluid">
+                                            <?php echo wp_trim_words( $data->introduction, 40, '...' ); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </article>
+                            <?php } ?>
 
                         </div>
                         <div class="row-fluid">

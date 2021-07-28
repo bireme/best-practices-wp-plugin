@@ -30,7 +30,7 @@ if(!class_exists('Best_Practices_Plugin')) {
     class Best_Practices_Plugin {
 
         private $plugin_slug = 'best-practices';
-        private $service_url = 'https://bestpractices.teste.bvsalud.org/api';
+        private $service_url = 'https://bestpractices.teste.bvsalud.org';
         private $similar_docs_url = 'http://similardocs.bireme.org/SDService';
 
         /**
