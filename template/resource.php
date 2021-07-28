@@ -114,6 +114,7 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
             </section>
             <div class="content-area detail">
                 <section id="conteudo">
+                    <?php if ( $resource ) : ?>
                     <div class="row-fluid">
                         <!-- AddThis Button BEGIN -->
                         <div class="addthis_toolbox addthis_default_style">
@@ -274,8 +275,9 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
 
                             <?php if ( $resource->target ): ?>
                                 <div class="row-fluid">
-                                    <h2 class="field-label"><?php echo __('Target', 'bp') . ': '; ?></h2>
-                                    <?php echo $resource->target->name; ?>
+                                    <h2 class="field-label"><?php echo __('Targets', 'bp') . ': '; ?></h2>
+                                    <?php $targets = wp_list_pluck( $resource->target, 'name' ); ?>
+                                    <?php echo implode('; ', $targets); ?>
                                 </div>
                             <?php endif; ?>
 
@@ -470,6 +472,13 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                             <?php endif; ?>
                         </article>
                     </div>
+                    <?php else : ?>
+                    <div class="row-fluid">
+                        <article class="conteudo-loop" style="text-align: center;">
+                            <?php echo strtoupper(__('Document not found','bp')); ?>
+                        </article>
+                    </div>
+                    <?php endif; ?>
                     <div class="row-fluid">
                         <header class="row-fluid border-bottom marginbottom15">
                             <h1 class="h1-header"><?php _e('More related','bp'); ?></h1>
