@@ -1,5 +1,6 @@
 <?php
-    include "../../../../wp-load.php";
+    // include "../../../../wp-load.php";
+    include dirname($_SERVER['SCRIPT_FILENAME'], 5)."/wp-load.php";
 
     $lang = $_GET['lang'];
     $similar_docs_url = $_GET['query'];

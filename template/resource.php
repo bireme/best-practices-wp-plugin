@@ -10,7 +10,7 @@ $bp_initial_filter = $bp_config['initial_filter'];
 $bp_addthis_id     = $bp_config['addthis_profile_id'];
 $bp_about          = $bp_config['about'];
 $bp_tutorials      = $bp_config['tutorials'];
-$alternative_links     = (bool)$bp_config['alternative_links'];
+$alternative_links = (bool)$bp_config['alternative_links'];
 
 $referer = wp_get_referer();
 $path = parse_url($referer);
@@ -43,18 +43,31 @@ $resource_id   = $_GET['id'];
 $site_language = strtolower(get_bloginfo('language'));
 $lang = substr($site_language,0,2);
 
-$bp_service_request = $bp_service_url . 'api/bibliographic/search/?id=' . $resource_id . '&op=related&lang=' . $lang;
+// likert options
+$likert = array(
+    "A" => __("I fully agree",'bp'),
+    "B" => __("I agree",'bp'),
+    "C" => __("I can't say",'bp'),
+    "D" => __("I disagree",'bp'),
+    "E" => __("I totally disagree",'bp')
+);
 
-//print $bp_service_request;
+// $bp_service_request = $bp_service_url . 'api/bibliographic/search/?id=' . $resource_id . '&op=related&lang=' . $lang;
+
+$bp_service_request = $bp_service_url . '/api/bp/' . $resource_id;
+
+// echo "<pre>"; print_r($bp_service_request); echo "</pre>"; die();
 
 $response = @file_get_contents($bp_service_request);
 
 if ($response){
     $response_json = json_decode($response);
-    $resource = $response_json->diaServerResponse[0]->match->docs[0];
+    $resource = $response_json[0]->main_submission;
+
+    // echo "<pre>"; print_r($response_json); echo "</pre>"; die();
 
     // create param to find similars
-    $similar_text = $resource->reference_title[0];
+    $similar_text = $resource->title;
     if (isset($resource->mj)){
         $similar_text .= ' ' . implode(' ', $resource->mj);
     }
@@ -83,8 +96,8 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
         <div class="ajusta2">
             <div class="row-fluid breadcrumb">
                 <a href="<?php echo $home_url ?>"><?php _e('Home','bp'); ?></a> >
-                <a href="<?php echo real_site_url($bp_plugin_slug); ?>"><?php echo $plugin_breadcrumb ?> </a> >
-                <?php echo ( strlen($resource->reference_title[0]) > 90 ) ? substr($resource->reference_title[0],0,90) . '...' : $resource->reference_title[0]; ?>
+                <a href="<?php echo real_site_url($bp_plugin_slug); ?>"><?php echo $plugin_breadcrumb; ?> </a> >
+                <?php echo ( strlen($resource->title) > 90 ) ? substr($resource->title,0,90) . '...' : $resource->title; ?>
             </div>
 
             <section class="header-search">
@@ -117,128 +130,343 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                     <div class="row-fluid">
                         <article class="conteudo-loop">
                             <h2 class="h2-loop-tit">
-                                <a href="#"><?php echo $resource->reference_title[0]; ?></a>
-                                <?php foreach ( $resource->reference_title as $index => $title ): ?>
-                                    <?php if ( $index != 0 ): ?>
-                                        <div class="altLang"><?php echo $title; ?></div>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
+                                <a href="#"><?php echo $resource->title; ?></a>
+                                <div class="altLang"><?php echo $resource->$title; ?></div>
                             </h2>
 
-                            <?php if ( $resource->author ): ?>
-                                <div class="row-fluid authors">
-                                    <?php foreach ( $resource->author as $index => $author ):
-                                        echo "<a href='" . real_site_url($bp_plugin_slug) . "?filter=author:\"" . $author . "\"'>" . $author . "</a>";
-                                        echo count($resource->author)-1 != $index ? '; ' : '.';
-                                    endforeach; ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if ( $resource->reference_source ): ?>
+                            <?php if ( $resource->type ): ?>
                                 <div class="row-fluid">
-                                    <?php echo $resource->reference_source; ?>
+                                    <h2 class="field-label"><?php echo __('Type', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->type->name; ?>
                                 </div>
                             <?php endif; ?>
 
-                            <div class="row-fluid">
-                                <?php echo __('Publication year', 'bp') . ': ' . $resource->publication_year; ?>
-                            </div>
-
-                            <?php if ( 'T' == $resource->publication_type[0] ) : ?>
-                                <div class="row-fluid pub-type">
-                                    <?php
-                                        if ( $publication_language ) {
-                                            $text = __('Theses and dissertations in %pub_lang% presented to the %institution% to obtain the academic title of %academic_title%. Leader: %leader%', 'bp');
-                                            $text = str_replace('%pub_lang%', $publication_language, $text);
-                                        } else {
-                                            $text = __('Theses and dissertations presented to the %institution% to obtain the academic title of %academic_title%. Leader: %leader%', 'bp');
-                                        }
-
-                                        $text = str_replace('%institution%', $resource->thesis_dissertation_institution[0], $text);
-                                        $text = str_replace('%academic_title%', $resource->thesis_dissertation_academic_title[0], $text);
-                                        $text = str_replace('%leader%', $resource->thesis_dissertation_leader[0], $text);
-
-                                        echo $text;
-                                    ?>
+                            <?php if ( $resource->introduction ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Introduction', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->introduction; ?>
                                 </div>
                             <?php endif; ?>
 
-                            <?php if ( $resource->abstract_language ): ?>
-                                <div class="row-fluid abstract" id="tabs">
+                            <?php if ( $resource->objectives ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Objectives', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->objectives; ?>
+                                </div>
+                            <?php endif; ?>
 
-                                    <ul>
-                                      <?php foreach ( $resource->abstract_language as $index => $ab ):
-                                              $language = explode('|', $ab);
-                                              switch ($language[0]) {
-                                                case 'pt':
-                                                  $abstract = 'Resumo';
-                                                  break;
-                                                case 'en':
-                                                  $abstract = 'Abstract';
-                                                  break;
-                                                case 'es':
-                                                  $abstract = 'Resumen';
-                                                  break;
-                                                case 'fr':
-                                                  $abstract = 'Résumé';
-                                                  break;
+                            <?php if ( $resource->activities ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Activities', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->activities; ?>
+                                </div>
+                            <?php endif; ?>
 
-                                                default:
-                                                  $abstract = 'Abstract';
-                                                  break;
-                                              }
-                                              $class = $index == 0 ? 'active' : ''; ?>
-                                        <li class="<?php echo $class; ?>"><button  onclick="tabs(<?php echo $index; ?>);"><?php echo $abstract; ?></button></li>
-                                      <?php endforeach; ?>
-                                    </ul>
-                                    <hr>
+                            <?php if ( $resource->main_results ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Main Results', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->main_results; ?>
+                                </div>
+                            <?php endif; ?>
 
-                                    <?php foreach ( $resource->abstract_language as $index => $ab ): ?>
-                                        <?php $class = $index != 0 ? 'altLang' : ''; ?>
-                                        <div class="abstract-version <?php echo $class; ?>" id="tab-<?php echo $index; ?>">
-                                            <?php
-                                                $ab_clean = str_replace(array("\\r\\n", "\\t", "\\r", "\\n", "pt|", "en|", "es|", "fr|"), '' , $ab);
-                                                // mark abstract sections
-                                                $ab_mark = preg_replace("/(\A|\.)([\w{Lu}\s]+:)/u", "$1<h2>$2</h2>", $ab_clean);
-                                                echo $ab_mark;
+                            <?php if ( $resource->factors ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Factors', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->factors; ?>
+                                </div>
+                            <?php endif; ?>
 
-                                            ?>
-                                        </div>
+                            <?php if ( $resource->other_role ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Role', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->other_role; ?>
+                                </div>
+                            <?php elseif ( $resource->role ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Role', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->role->name; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->other_institution ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Institution', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->other_institution; ?>
+                                </div>
+                            <?php elseif ( $resource->institution ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Institution', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->institution->name; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->other_stakeholder ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Stakeholder', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->other_stakeholder; ?>
+                                </div>
+                            <?php elseif ( $resource->stakeholder ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Stakeholder', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->stakeholder->name; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( 'paho-who-technical-cooperation' == $resource->type->slug ): ?>
+                                <?php if ( $resource->entity ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Entity', 'bp') . ': '; ?></h2>
+                                        <?php echo $resource->entity->name; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->reference_number ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Reference Number', 'bp') . ': '; ?></h2>
+                                        <?php echo $resource->reference_number; ?>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->technical_matter ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Technical Matters', 'bp') . ': '; ?></h2>
+                                    <?php $technical_matters = wp_list_pluck( $resource->technical_matter, 'name' ); ?>
+                                    <?php echo implode('; ', $technical_matters); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->intervention ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Interventions', 'bp') . ': '; ?></h2>
+                                    <?php $interventions = wp_list_pluck( $resource->intervention, 'name' ); ?>
+                                    <?php echo implode('; ', $interventions); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->start_date ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Start Date', 'bp') . ': '; ?></h2>
+                                    <?php echo date('Y-m-d', strtotime($resource->start_date)); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->end_date ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('End Date', 'bp') . ': '; ?></h2>
+                                    <?php echo date('Y-m-d', strtotime($resource->end_date)); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->country ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Country', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->country->name; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->subregion ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Sub Region', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->subregion->name; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->target ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Target', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->target->name; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->other_population_group ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Population Group', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->other_population_group; ?>
+                                </div>
+                            <?php elseif ( $resource->population_group ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Population Group', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->population_group->name; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->resources_assigned ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Resources Assigned', 'bp') . ': '; ?></h2>
+                                    <?php echo $likert[$resource->resources_assigned]; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->outcome_information ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Outcome Information', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->outcome_information; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->scalability ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Scalability', 'bp') . ': '; ?></h2>
+                                    <?php echo $likert[$resource->scalability]; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->adaptability_replicability ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Adaptability/Replicability', 'bp') . ': '; ?></h2>
+                                    <?php echo $likert[$resource->adaptability_replicability]; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->other_contexts_demo ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Other Contexts', 'bp') . ': '; ?></h2>
+                                    <?php echo $likert[$resource->other_contexts_demo]; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->describe_how ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Describe How', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->describe_how; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( 'paho-who-technical-cooperation' == $resource->type->slug ): ?>
+                                <?php if ( $resource->health_system_contribution ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Health System Contribution', 'bp') . ': '; ?></h2>
+                                        <?php echo $likert[$resource->health_system_contribution]; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->value_chain_organization ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __("Organization's Value Chain", 'bp') . ': '; ?></h2>
+                                        <?php echo $likert[$resource->value_chain_organization]; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->public_health_issue ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Public Health Issue', 'bp') . ': '; ?></h2>
+                                        <?php echo $resource->public_health_issue; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->planning_information ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Planning Information', 'bp') . ': '; ?></h2>
+                                        <?php echo $resource->planning_information; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->relevance_information ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Relevance Information', 'bp') . ': '; ?></h2>
+                                        <?php echo $resource->relevance_information; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->counterpart_recognized ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Counterpart Recognized', 'bp') . ': '; ?></h2>
+                                        <?php echo $likert[$resource->counterpart_recognized]; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->catalytic_role ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Catalytic Role', 'bp') . ': '; ?></h2>
+                                        <?php echo $likert[$resource->catalytic_role]; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->neutral_role ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Neutral Role', 'bp') . ': '; ?></h2>
+                                        <?php echo $likert[$resource->neutral_role]; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->recognition_information ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Recognition Information', 'bp') . ': '; ?></h2>
+                                        <?php echo $resource->recognition_information; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->cross_cutting_approach ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Cross Cutting Approach', 'bp') . ': '; ?></h2>
+                                        <?php echo $likert[$resource->cross_cutting_approach]; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ( $resource->engagement_information ): ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Engagement Information', 'bp') . ': '; ?></h2>
+                                        <?php echo $resource->engagement_information; ?>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->products_information ) : $products_information = explode("\r\n", $resource->products_information); ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Products Information', 'bp') . ': '; ?></h2>
+                                    <?php foreach ($products_information as $link): ?>
+                                        <a href="<?php echo $link; ?>" target="_blank">
+                                            <i class="fa fa-external-link-square-alt" aria-hidden="true"> </i>
+                                            <?php echo $link; ?>
+                                            <br />
+                                        </a>
                                     <?php endforeach; ?>
                                 </div>
                             <?php endif; ?>
 
-                            <?php if ($resource->mh ) : ?>
-                                <div class="row-fluid subjects">
-                                    <strong><i class="fa fa-tags" aria-hidden="true"></i></strong>
-                                    <?php
-                                        $subjects = array();
-                                        foreach ( $resource->mh as $index => $subject ):
-                                            echo "<a href='" . real_site_url($bp_plugin_slug) . "?q=mh:\"" . $subject . "\"'>" . $subject . "</a>";
-                                            echo $index != count($resource->mh)-1 ? ', ' : '';
-                                        endforeach; ?>
+                            <?php if ( $resource->other_sources_information ) : $other_sources_information = explode("\r\n", $resource->other_sources_information); ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Other Sources Information', 'bp') . ': '; ?></h2>
+                                    <?php foreach ($other_sources_information as $link): ?>
+                                        <a href="<?php echo $link; ?>" target="_blank">
+                                            <i class="fa fa-external-link-square-alt" aria-hidden="true"> </i>
+                                            <?php echo $link; ?>
+                                            <br />
+                                        </a>
+                                    <?php endforeach; ?>
                                 </div>
                             <?php endif; ?>
 
-                            <?php if ( $resource->link ) : ?>
+                            <?php if ( $resource->challenges_information ): ?>
                                 <div class="row-fluid">
-                                    <?php if ($alternative_links && count($resource->link) > 10): ?>
-                                        <?php foreach ($resource->link as $index => $link): ?>
-                                            <span class="more">
-                                                <a href="<?php echo $link ?>" target="_blank">
-                                                    <i class="fa fa-file" aria-hidden="true"> </i>
-                                                    <?php ( ($index == 0) ? _e('Fulltext (primary link)','bp') : _e('Fulltext (alternative link)','bp')); ?>
-                                                </a>
-                                            </span>&nbsp;&nbsp;&nbsp;
-                                        <?php endforeach; ?>
-                                    <?php else: ?>
-                                        <span class="more">
-                                            <a href="<?php echo $resource->link[0] ?>" target="_blank">
-                                                <i class="fa fa-file" aria-hidden="true"> </i> <?php _e('Fulltext','bp'); ?>
-                                            </a>
-                                        </span>
-                                    <?php endif; ?>
+                                    <h2 class="field-label"><?php echo __('Challenges Information', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->challenges_information; ?>
                                 </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->lessons_information ): ?>
+                                <div class="row-fluid">
+                                    <h2 class="field-label"><?php echo __('Lessons Information', 'bp') . ': '; ?></h2>
+                                    <?php echo $resource->lessons_information; ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ( $resource->attachments ) : ?>
+                                <?php $bp_images = get_bp_images($response_json[0]); ?>
+                                <?php if ( $bp_images ) : ?>
+                                    <div class="row-fluid">
+                                        <h2 class="field-label"><?php echo __('Pictures', 'bp') . ': '; ?></h2>
+                                        <?php foreach ($bp_images as $img): ?>
+                                            <a href="<?php echo $img; ?>" target="_blank">
+                                                <i class="fa fa-external-link-square-alt" aria-hidden="true"> </i>
+                                                <?php $img_name = explode('_', basename($img)); ?>
+                                                <?php echo $img_name[1]; ?>
+                                                <br />
+                                            </a>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endif; ?>
                             <?php endif; ?>
                         </article>
                     </div>

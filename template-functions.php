@@ -120,4 +120,40 @@ if ( !function_exists('get_publication_language') ) {
     }
 }
 
+if ( !function_exists('get_bp_images') ) {
+    function get_bp_images($resource){
+        global $bp_service_url;
+
+        $bp_images = array();
+        $submission_id = $resource->main_submission->id;
+        $submissions = wp_list_pluck( $resource->submission, 'id' );
+        $attachments = $resource->main_submission->attachments;
+
+        foreach ($attachments as $file) {
+            $upload_type = $file->upload_type->slug;
+
+            if ( 'image' == $upload_type ) {
+                $img_src = $bp_service_url . '/uploads/' . str_pad($submission_id, 5, '0', STR_PAD_LEFT) . '/' . $file->filename;
+                $img_type_check = @exif_imagetype($img_src);
+
+                if (strpos($http_response_header[0], "200")) {
+                    $bp_images[] = $img_src;
+                } else {
+                    foreach ($submissions as $submission) {
+                        $img_src = $bp_service_url . '/uploads/' . str_pad($submission, 5, '0', STR_PAD_LEFT) . '/' . $file->filename;
+                        $img_type_check = @exif_imagetype($img_src);
+
+                        if (strpos($http_response_header[0], "200")) {
+                            $bp_images[] = $img_src;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return $bp_images;
+    }
+}
+
 ?>

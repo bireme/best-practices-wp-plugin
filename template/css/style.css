@@ -62,7 +62,7 @@ a:visited{color:rgb(0,153,255);}
 .header-logo{width:314px; height:79px; float:left; background-position:0px 0px; text-indent:-999px; font-size:11px; margin:15px 0 0 15px;}
 .breadcrumb{padding:10px 10px 10px 0px !important;}
 .header-search{padding: 30px 0;border-bottom: 1px solid #EAEAEA;}
-.header-search form {margin:0 auto;}
+.header-search form {margin: 0 auto; display: inline-block;}
 .header-search .input-search{width:330px; min-height:19px; float: left; padding:8px 10px; border:1px solid rgb(132,132,132);margin-right:.4rem;}
 .header-colabore:hover{text-decoration:none;}
 .topMenu .widget{margin-bottom: 0px;}
@@ -102,6 +102,14 @@ ol.doc-loop li p {font-size: .9rem; font-weight: normal; color:rgb(102,102,102);
 .breadcrumb-home {font-size: 60%;}
 .count-docs {margin-top: 12px;}
 .doc-view li  {list-style: none !important;}
+
+h2.field-label {
+    color: #3A8EBE !important;
+    font-weight: normal;
+    margin: 5px 0 5px;
+	font-size: 100%;
+	text-transform: uppercase;
+}
 
 /* FORMS */
 textarea, input{font:12px "Open Sans", Helvetica, Arial, Sans-Serif; color:rgb(102,102,102); line-height:18px;}
