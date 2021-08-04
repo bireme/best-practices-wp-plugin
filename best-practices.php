@@ -25,7 +25,7 @@ define('BP_PLUGIN_URL', plugin_dir_url(__FILE__) );
 
 require_once(BP_PLUGIN_PATH . '/settings.php');
 require_once(BP_PLUGIN_PATH . '/template-functions.php');
-require_once(BP_PLUGIN_PATH . '/widget.php');
+require_once(BP_PLUGIN_PATH . '/widgets.php');
 
 if(!class_exists('Best_Practices_Plugin')) {
     class Best_Practices_Plugin {

@@ -3,7 +3,7 @@
 Template Name: Best Practices Detail
 */
 
-global $bp_service_url, $bp_plugin_slug, $similar_docs_url;
+global $bp_service_url, $bp_plugin_slug, $similar_docs_url, $solr_service_url;
 
 $bp_config         = get_option('bp_config');
 $bp_initial_filter = $bp_config['initial_filter'];
@@ -42,6 +42,12 @@ $resource_id   = $_GET['id'];
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang = substr($site_language,0,2);
+$locale = array(
+    'pt' => 'pt_BR',
+    'es' => 'es_ES',
+    'fr' => 'fr_FR',
+    'en' => 'en'
+);
 
 // likert options
 $likert = array(
@@ -52,9 +58,9 @@ $likert = array(
     "E" => __("I totally disagree",'bp')
 );
 
-// $bp_service_request = $bp_service_url . 'api/bibliographic/search/?id=' . $resource_id . '&op=related&lang=' . $lang;
+// $bp_service_request = $solr_service_url . '/solr/best-practices/select/?q=id:' . $resource_id . '&wt=json';
 
-$bp_service_request = $bp_service_url . '/api/bp/' . $resource_id;
+$bp_service_request = $bp_service_url . '/api/bp/' . $resource_id . '?lang=' . $locale[$lang];
 
 // echo "<pre>"; print_r($bp_service_request); echo "</pre>"; die();
 
@@ -63,6 +69,7 @@ $response = @file_get_contents($bp_service_request);
 if ($response){
     $response_json = json_decode($response);
     $resource = $response_json[0]->main_submission;
+    // $resource = $response_json->response->docs[0];
 
     // echo "<pre>"; print_r($response_json); echo "</pre>"; die();
 

@@ -13,7 +13,14 @@
     $similar_docs = json_decode($json, TRUE);
 
     if ( $similar_docs && array_key_exists('document', $similar_docs) ) {
-        foreach ( $similar_docs['document'] as $similar) {
+        $similars = $similar_docs['document'];
+
+        if ( $similar_docs['@attributes']['total'] == 1 ) {
+            $similars = array();
+            $similars[] = $similar_docs['document'];
+        }
+
+        foreach ( $similars as $similar ) {
             ?>
             <li class="cat-item">
                 <a href="http://pesquisa.bvsalud.org/portal/resource/<?php echo $lang . '/' . $similar['id']; ?>" target="_blank">

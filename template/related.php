@@ -28,7 +28,14 @@
                 <ul>
                 <?php
                     if ( array_key_exists('document', $docs) ) {
-                        foreach ( $docs['document'] as $similar ) {
+                        $similars = $docs['document'];
+
+                        if ( $docs['@attributes']['total'] == 1 ) {
+                            $similars = array();
+                            $similars[] = $docs['document'];
+                        }
+
+                        foreach ( $similars as $similar ) {
                             ?>
                             <li class="cat-item">
                                 <a href="http://pesquisa.bvsalud.org/portal/resource/<?php echo $lang . '/' . $similar['id']; ?>" target="_blank">
