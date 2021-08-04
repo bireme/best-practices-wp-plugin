@@ -33,6 +33,7 @@ if(!class_exists('Best_Practices_Plugin')) {
         private $plugin_slug = 'best-practices';
         private $service_url = 'https://bestpractices.teste.bvsalud.org';
         private $similar_docs_url = 'http://similardocs.bireme.org/SDService';
+        private $solr_service_url = 'http://plugins-idx.bvsalud.org:8983';
 
         /**
          * Construct the plugin object
@@ -123,7 +124,7 @@ if(!class_exists('Best_Practices_Plugin')) {
     	}
 
         function template_redirect() {
-            global $wp, $bp_service_url, $bp_plugin_slug, $similar_docs_url;
+            global $wp, $bp_service_url, $bp_plugin_slug, $similar_docs_url, $solr_service_url;
             $pagename = '';
 
             // check if request contains plugin slug string
@@ -133,10 +134,10 @@ if(!class_exists('Best_Practices_Plugin')) {
             }
 
             if ( is_404() && $pos_slug !== false ){
-
                 $bp_service_url = $this->service_url;
                 $bp_plugin_slug = $this->plugin_slug;
                 $similar_docs_url = $this->similar_docs_url;
+                $solr_service_url = $this->solr_service_url;
 
                 if ($pagename == $this->plugin_slug ||
                     $pagename == $this->plugin_slug . '/resource' ||

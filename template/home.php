@@ -2,7 +2,7 @@
 /*
 Template Name: Best Practices Home
 */
-global $bp_service_url, $bp_plugin_slug, $bp_texts;
+global $bp_service_url, $bp_plugin_slug, $bp_texts, $solr_service_url;
 
 require_once(BP_PLUGIN_PATH . '/lib/Paginator.php');
 
@@ -19,10 +19,17 @@ $alternative_links = (bool)$bp_config['alternative_links'];
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang = substr($site_language,0,2);
+$locale = array(
+    'pt' => 'pt_BR',
+    'es' => 'es_ES',
+    'fr' => 'fr_FR',
+    'en' => 'en'
+);
 
 // set query using default param q (query) or s (wordpress search) or newexpr (metaiah)
 $query = $_GET['s'] . $_GET['q'];
 $query = stripslashes( trim($query) );
+$query = ( $query ) ? $query : '*:*';
 
 $user_filter = stripslashes($_GET['filter']);
 $page   = ( !empty($_GET['page']) ? $_GET['page'] : 1 );
@@ -44,9 +51,9 @@ if ($bp_initial_filter != ''){
 
 $start = ($page * $count) - $count;
 
-// $bp_service_request = $bp_service_url . 'api/bibliographic/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&count=' . $count . '&lang=' . $lang;
+$bp_service_request = $solr_service_url . '/solr/best-practices/select/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&count=' . $count . '&wt=json';
 
-$bp_service_request = $bp_service_url . '/api/bp?offset=' . $start . '&limit=' . $count;
+// $bp_service_request = $bp_service_url . '/api/bp?offset=' . $start . '&limit=' . $count . '&lang=' . $locale[$lang];;
 
 $filter_list = explode(";", $bp_config['available_filter']);
 
@@ -71,11 +78,22 @@ if ( $user_filter != '' ) {
 $response = @file_get_contents($bp_service_request);
 if ($response){
     $response_json = json_decode($response);
+    //echo "<pre>"; print_r($response_json); echo "</pre>";
+    $total = $response_json->response->numFound;
+    $start = $response_json->response->start;
+    $docs_list = $response_json->response->docs;
+    $facet_list = (array) $response_json->facet_counts->facet_fields;
+}
+
+/*
+$response = @file_get_contents($bp_service_request);
+if ($response){
+    $response_json = json_decode($response);
     // echo "<pre>"; print_r($response_json); echo "</pre>"; die();
     $total = $response_json->total;
     $items = $response_json->items;
-    // $facet_list = (array) $response_json->diaServerResponse[0]->facet_counts->facet_fields;
 }
+*/
 
 $params  = !empty($format) ? '&format=' . $format : '';
 $params .= $count != 2 ? '&count=' . $count : '';
@@ -120,7 +138,7 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                     <input type="hidden" name="format" id="format" value="<?php echo $format ? $format : 'summary'; ?>">
                     <input type="hidden" name="count" id="count" value="<?php echo $count; ?>">
                     <input type="hidden" name="page" id="page" value="1">
-                    <input value='<?php echo $query; ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Enter one or more words', 'bp'); ?>">
+                    <input value='<?php echo ( '*:*' == $query ) ? '' : $query; ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Enter one or more words', 'bp'); ?>">
                     <input id="searchsubmit" value="<?php _e('Search', 'bp'); ?>" type="submit">
                     <a href="#" title="<?php _e('Tip! You can do your search using boolean operators.', 'bp'); ?>" class="help ketchup tooltip"><i class="fa fa-question-circle fa-2x"></i></a>
                 </form>
@@ -131,7 +149,9 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
             <div class="content-area result-list">
                 <section id="conteudo">
                     <?php if ( isset($total) && strval($total) == 0 ) :?>
-                        <h1 class="h1-header"><?php _e('No results found','bp'); ?></h1>
+                        <header class="row-fluid border-bottom">
+                            <h1 class="h1-header"><?php _e('No results found','bp'); ?></h1>
+                        </header>
                     <?php else :?>
                         <header class="row-fluid border-bottom">
                             <?php if ( ( $query != '' || $user_filter != '' ) && strval($total) > 0) :?>
@@ -142,19 +162,19 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                         </header>
                         <div class="row-fluid">
 
-                            <?php foreach ( $items as $item ) { $data = $item->main_submission; ?>
+                            <?php foreach ( $docs_list as $doc ) : ?>
                                 <article class="conteudo-loop">
                                     <h2 class="h2-loop-tit">
-                                        <a href="<?php echo real_site_url($bp_plugin_slug); ?>resource/?id=<?php echo $item->id; ?>"><?php echo $data->title; ?></a>
+                                        <a href="<?php echo real_site_url($bp_plugin_slug); ?>resource/?id=<?php echo $doc->id; ?>"><?php echo $doc->title; ?></a>
                                     </h2>
 
-                                    <?php if ( $data->introduction ): ?>
+                                    <?php if ( $doc->introduction ): ?>
                                         <div class="row-fluid">
-                                            <?php echo wp_trim_words( $data->introduction, 40, '...' ); ?>
+                                            <?php echo wp_trim_words( $doc->introduction, 40, '...' ); ?>
                                         </div>
                                     <?php endif; ?>
                                 </article>
-                            <?php } ?>
+                            <?php endforeach; ?>
 
                         </div>
                         <div class="row-fluid">
@@ -274,7 +294,6 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                                     </section>
                                 <?php endif; ?>
                             <?php } ?>
-
 
                         </div> <!-- close DIV.filters -->
                     <?php endif; ?>
