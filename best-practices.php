@@ -31,7 +31,7 @@ if(!class_exists('Best_Practices_Plugin')) {
     class Best_Practices_Plugin {
 
         private $plugin_slug = 'best-practices';
-        private $service_url = 'https://bestpractices.teste.bvsalud.org';
+        private $service_url = 'https://admin.bestpractices.teste.bvsalud.org';
         private $similar_docs_url = 'http://similardocs.bireme.org/SDService';
         private $solr_service_url = 'http://plugins-idx.bvsalud.org:8983';
 
