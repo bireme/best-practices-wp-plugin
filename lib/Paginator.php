@@ -20,13 +20,12 @@ class Paginator{
         $pag['total'] = $this->total;
         $pag['total_formatted'] = number_format($pag['total'], 0, ',', '.');
         $pag['start'] = $this->start;
-        $pag['total_pages'] = (($this->count == 1) || ($pag['total']/$this->count) % 10 == 0) ? (int)($pag['total']/$this->count) : (int)($pag['total']/$this->count+1);
+        $pag['total_pages'] = (($this->count == 1) || ($pag['total']/$this->count) % $this->count == 0) ? (int)($pag['total']/$this->count) : (int)($pag['total']/$this->count+1);
         $pag['count'] = $this->count;
 
         $range_min = (($this->current_page-5) > 0) ? $this->current_page-5 : 1;
         $range_max = (($range_min+7) > $pag['total_pages']) ? $pag['total_pages'] : $range_min+7;
         $pag['pages'] = range($range_min, $range_max);
-
 
         $this->output  = '<div class="pagination pagination-centered">';
         $this->output .= '<ul>';
@@ -76,7 +75,6 @@ class Paginator{
         $this->output .= '</div>';
 
     }
-
 
     function display_pages(){
         return $this->output;

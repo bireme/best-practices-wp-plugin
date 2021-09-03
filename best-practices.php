@@ -31,7 +31,7 @@ if(!class_exists('Best_Practices_Plugin')) {
     class Best_Practices_Plugin {
 
         private $plugin_slug = 'best-practices';
-        private $service_url = 'https://admin.bestpractices.teste.bvsalud.org';
+        private $service_url = 'https://admin.bestpractices.bvsalud.org';
         private $similar_docs_url = 'http://similardocs.bireme.org/SDService';
         private $solr_service_url = 'http://plugins-idx.bvsalud.org:8983';
 
@@ -143,7 +143,7 @@ if(!class_exists('Best_Practices_Plugin')) {
                     $pagename == $this->plugin_slug . '/resource' ||
                     $pagename == $this->plugin_slug . '/best-practices-feed') {
 
-                    add_action( 'wp_enqueue_scripts', array(&$this, 'page_template_styles_scripts'));
+                    add_action( 'wp_enqueue_scripts', array(&$this, 'page_template_styles_scripts'), 999);
 
                     if ($pagename == $this->plugin_slug) {
                         $template = BP_PLUGIN_PATH . '/template/home.php';
@@ -264,11 +264,11 @@ if(!class_exists('Best_Practices_Plugin')) {
             wp_enqueue_script ('bp-tooltipster', BP_PLUGIN_URL . 'template/js/jquery.tooltipster.min.js');
             wp_enqueue_script ('slick-js', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js');
             wp_enqueue_script ('bp', BP_PLUGIN_URL . 'template/js/functions.js', array(), BP_PLUGIN_VERSION);
-            wp_enqueue_style ('font-awesome', BP_PLUGIN_URL . 'template/css/font-awesome/css/font-awesome.min.css');
+            wp_enqueue_style ('fontawesome', BP_PLUGIN_URL . 'template/css/font-awesome/css/font-awesome.min.css');
             wp_enqueue_style ('bp-tooltipster', BP_PLUGIN_URL . 'template/css/tooltipster.css');
             wp_enqueue_style ('slick-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css');
             wp_enqueue_style ('slick-theme-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css');
-            wp_enqueue_style ('bp',  BP_PLUGIN_URL . 'template/css/style.css', array(), BP_PLUGIN_VERSION);
+            wp_enqueue_style ('bp-styles',  BP_PLUGIN_URL . 'template/css/style.css', array(), BP_PLUGIN_VERSION);
         }
 
         function register_settings(){

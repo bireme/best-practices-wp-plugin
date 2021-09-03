@@ -6,7 +6,7 @@ class Best_Practices_Widget extends WP_Widget {
     private $service_url;
 
 	function __construct() {
-        $this->service_url = 'https://bestpractices.teste.bvsalud.org';
+        $this->service_url = 'https://admin.bestpractices.teste.bvsalud.org';
 
 		parent::__construct(
 			'best_practices_widget',
@@ -43,20 +43,27 @@ class Best_Practices_Widget extends WP_Widget {
 
 		// Output widget
         if ( $total ) {
-            echo '<nav role="navigation" aria-label="' . apply_filters( 'widget_title', $instance['title'] ) . '">';
-            echo '<ul>';
             foreach ( $items as $item ) {
                 $data = $item->main_submission;
-                echo '<li>';
-                echo '<a href="' . real_site_url($bp_config['plugin_slug']) . 'resource/?id=' . $item->id . '">' . $data->title . '</a>';
+                echo '<article>';
+    			echo '<div class="destaqueBP">';
+                echo '<a href="' . real_site_url($bp_config['plugin_slug']) . 'resource/?id=' . $item->id . '"><b>' . $data->title . '</b></a>';
                 if ( $data->introduction ) {
-                    echo '<br />';
-                    echo '<small>'. wp_trim_words( $data->introduction, 20, '...' ) . '</small>';
+                    echo '<p>'. wp_trim_words( $data->introduction, 60, '...' ) . '</p>';
                 }
-                echo '</li>';
+                if ( $data->target ) {
+                    echo '<div class="bp-target">';
+                    echo '<b>' . esc_html__( 'Goals', 'bp' ) . ':</b>';
+                    foreach ( $data->target as $target ) {
+                        echo '<a href="#" class="aSpan" data-toggle="tooltip" data-placement="top" title="' . $target->subtext . '">' . $target->name . '</a>';
+                    }
+                    echo '</div>';
+                }
+                echo '</div>';
+                echo '</article>';
             }
-            echo '</ul>';
-            echo '</nav>';
+            echo '<br />';
+            echo '<div class="bp-link"><a href="' . real_site_url($bp_config['plugin_slug']) . '" class="btn btn-outline-primary" title="' . esc_html__( 'See more best practices', 'bp' ) . '">' . esc_html__( 'See more Best Practices', 'bp' ) . '</a></div>';
         } else {
             echo esc_html__( 'No best practices found', 'bp' );
         }

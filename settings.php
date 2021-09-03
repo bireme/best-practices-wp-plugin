@@ -8,13 +8,9 @@ function bp_page_admin() {
         $available_filter_list = $bp_texts['filter'];
     }else{
         $available_filter_list = array(
-                                    'descriptor_filter' => __('Main subject','bp') ,
-                                    'publication_type' =>  __('Document type', 'bp'),
-                                    'database' =>  __('Database','bp'),
-                                    'publication_country' =>  __('Publication country', 'bp'),
-                                    'publication_language' =>  __('Language','bp'),
-                                    'publication_year' =>  __('Year','bp'),
-                                    'journal' =>  __('Journal','bp')
+                                    'subregion' => __('Sub Region','bp') ,
+                                    'country' =>  __('Country', 'bp'),
+                                    'target' =>  __('Target','bp'),
         );
         $bp_texts['filter'] = $available_filter_list;
     }

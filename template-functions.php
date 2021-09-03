@@ -156,4 +156,34 @@ if ( !function_exists('get_bp_images') ) {
     }
 }
 
+if ( !function_exists('get_bp_targets') ) {
+    function get_bp_targets($targets, $lang){
+        $bp_targets = array();
+
+        $texts = array_map(function($val) {
+            return explode('|', $val);
+        }, $targets);
+
+        foreach ($texts as $text) {
+            $keys = array_map(function($val) {
+                return explode('^', $val){0};
+            }, $text);
+
+            $values = array_map(function($val) {
+                return explode('^', $val){1};
+            }, $text);
+
+            $t = array_combine($keys, $values);
+
+            if ( array_key_exists($lang, $t) ) {
+                $bp_targets[] = $t[$lang];
+            } else {
+                $bp_targets[] = $t['en'];
+            }
+        }
+
+        return $bp_targets;
+    }
+}
+
 ?>
