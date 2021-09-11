@@ -108,6 +108,17 @@
 .title1{
 	font-family: 'Roboto', sans-serif;
 }
+.viewBt h3 i{
+	padding-right: 5px;
+	color: #05548b;
+	font-size: 30px;
+}
+.viewBt h5 i{
+	padding-right: 2px;
+	color: #0093d6;
+	font-size: 25px;
+	vertical-align: text-top;
+}
 /******************** Cores **************/
 .aSpan{
 	padding: 3px 5px;
@@ -116,7 +127,7 @@
 	text-align: center;
 	color: #fff;
 	font-size: 12px;
-	margin-left: 5px;
+	margin-left: 0;
 	margin-bottom: 5px;
 	display: inline-block;
 	background:#4c9e38;
@@ -230,6 +241,33 @@
 .bp-filters {
 	background-color: #f8f9fa;
 	padding: 20px 10px;
+}
+.bp-filters .badge {
+	font-size: 13px;
+}
+.bp-filters .aSpan {
+	margin-top: 5px;
+}
+.bp-filters table {
+	margin-bottom: 0;
+}
+.bp-filters table tr td {
+	vertical-align: middle;
+}
+.filter-item-active {
+	display: block;
+	text-align: center;
+	text-transform: uppercase;
+}
+.filter-item-del {
+	display: block;
+    text-align: center;
+}
+.filter-item-del i {
+	color: #808080;
+}
+.filter-item-del i:hover {
+	color: #000;
 }
 .filter-item {
 	border-top: 1px solid rgba(0,0,0,.1);

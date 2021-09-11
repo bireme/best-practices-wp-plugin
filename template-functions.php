@@ -1,17 +1,24 @@
 <?php
 
 if ( !function_exists('print_lang_value') ) {
-    function print_lang_value($value, $lang_code){
-        $lang_code = substr($lang_code,0,2);
+    function print_lang_value($value, $lang_code="en", $echo=true){
         if ( is_array($value) ){
             foreach($value as $current_value){
                 $print_values[] = get_lang_value($current_value, $lang_code);
             }
-            echo implode(', ', $print_values);
+
+            if ( $echo ) {
+                echo implode(', ', $print_values);
+            } else {
+                return implode(', ', $print_values);
+            }
         }else{
-            echo get_lang_value($value, $lang_code);
+            if ( $echo ) {
+                echo get_lang_value($value, $lang_code);
+            } else {
+                return get_lang_value($value, $lang_code);
+            }
         }
-        return;
     }
 }
 
@@ -183,6 +190,34 @@ if ( !function_exists('get_bp_targets') ) {
         }
 
         return $bp_targets;
+    }
+}
+
+if ( !function_exists('slugify') ) {
+    function slugify($text) {
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // remove duplicate -
+        $text = preg_replace('~-+~', '-', $text);
+
+        // lowercase
+        $text = strtolower($text);
+
+        if (empty($text)) {
+            return 'n-a';
+        }
+
+        return $text;
     }
 }
 

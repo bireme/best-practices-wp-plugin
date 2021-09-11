@@ -125,7 +125,7 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
 </section>
 
 <section class="padding1">
-	<div class="container">
+	<div class="container viewBt">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo $home_url ?>"><?php _e('Home','bp'); ?></a></li>
@@ -162,134 +162,97 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                         <!-- AddThis Button END -->
     				</div>
     				<div class="bp-data">
-    					<h3><b><?php echo __('Basic Information', 'bp'); ?></b></h3><br />
+    					<h3><i class="fas fa-caret-right"></i><b><?php echo __('Basic Information', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->introduction ): ?>
-        					<h5><b><?php echo __('Brief Introduction', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Brief Introduction', 'bp') . ':'; ?></b></h5>
         					<p><?php echo $resource->introduction; ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->objectives ): ?>
-        					<h5><b><?php echo __('Main Objectives', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Main Objectives', 'bp') . ':'; ?></b></h5>
         					<p><?php echo $resource->objectives; ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->activities ): ?>
-        					<h5><b><?php echo __('Implementation', 'bp') . '/' . __('Activities', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Implementation', 'bp') . '/' . __('Activities', 'bp') . ':'; ?></b></h5>
         					<p><?php echo $resource->activities; ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->main_results ): ?>
-        					<h5><b><?php echo __('Main Results', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Main Results', 'bp') . ':'; ?></b></h5>
         					<p><?php echo $resource->main_results; ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->factors ): ?>
-        					<h5><b><?php echo __('Limitations and Hindrances', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Limitations and Hindrances', 'bp') . ':'; ?></b></h5>
         					<p><?php echo $resource->factors; ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->technical_matter ): ?>
-        					<h5><b><?php echo __('Main Topics', 'bp') . '/' . __('Themes', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Main Topics', 'bp') . '/' . __('Themes', 'bp') . ':'; ?></b></h5>
                             <?php $technical_matters = wp_list_pluck( $resource->technical_matter, 'name' ); ?>
         					<p><?php echo implode('; ', $technical_matters); ?></p>
         					<hr />
                         <?php endif; ?>
 
-                        <?php if ( $resource->$intervention ): ?>
-        					<h5><b><?php echo __('Interventions', 'bp') . ':'; ?></b></h5>
-                            <?php $interventions = wp_list_pluck( $resource->$intervention, 'name' ); ?>
-        					<p><?php echo implode('; ', $interventions); ?></p>
-        					<hr />
-                        <?php endif; ?>
-<!--
-                        <?php if ( $resource->country ): ?>
-        					<h5><b><?php echo __('Country', 'bp') . ':'; ?></b></h5>
-        					<p><?php echo $resource->country->name; ?></p>
-        					<hr />
-                        <?php endif; ?>
-
-                        <?php if ( $resource->subregion ): ?>
-        					<h5><b><?php echo __('Sub Region', 'bp') . ':'; ?></b></h5>
-        					<p><?php echo $resource->subregion->name; ?></p>
-        					<hr />
-                        <?php endif; ?>
-
-                        <?php if ( $resource->target ): ?>
-        					<h5><b><?php echo __('Sustainable Developing Goals (SDG)', 'bp') . ':'; ?></b></h5>
-                            <?php foreach ($resource->target as $target) : ?>
-                                <a href="#" class="aSpan" data-toggle="tooltip" data-placement="top" title="<?php echo $target->subtext; ?>"><?php echo $target->name; ?></a>
-                            <?php endforeach; ?>
-        					<hr />
-                        <?php endif; ?>
--->
-                        <?php if ( $resource->other_population_group ): ?>
-                            <h5><b><?php echo __('Population Group', 'bp') . ':'; ?></b></h5>
-                            <p><?php echo $resource->other_population_group; ?></p>
-                            <hr />
-                        <?php elseif ( $resource->population_group ): ?>
-                            <h5><b><?php echo __('Population Group', 'bp') . ':'; ?></b></h5>
-                            <p><?php echo $resource->population_group; ?></p>
-                            <hr />
-                        <?php endif; ?>
-
                         <?php if ( $resource->outcome_information ): ?>
-                            <h5><b><?php echo __('Effectiveness & Efficiency', 'bp') . ':'; ?></b></h5>
+                            <h5><i class="fas fa-caret-right"></i><b><?php echo __('Effectiveness & Efficiency', 'bp') . ':'; ?></b></h5>
                             <p><?php echo $resource->outcome_information; ?></p>
                             <hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->describe_how ): ?>
-                            <h5><b><?php echo __('Adaptability & Replicability', 'bp') . ':'; ?></b></h5>
+                            <h5><i class="fas fa-caret-right"></i><b><?php echo __('Adaptability & Replicability', 'bp') . ':'; ?></b></h5>
                             <p><?php echo $resource->describe_how; ?></p>
                             <hr />
                         <?php endif; ?>
 
                         <?php if ( 'paho-who-technical-cooperation' == $resource->type->slug ): ?>
-                            <h3><b><?php echo __('Technical Cooperation', 'bp'); ?></b></h3><br />
+                            <h3><i class="fas fa-caret-right"></i><b><?php echo __('Technical Cooperation', 'bp'); ?></b></h3><br />
                             <?php if ( $resource->public_health_issue ): ?>
-                                <h5><b><?php echo __('What public health issue (or opportunity) led PAHO to participate on this Technical Cooperation project/initiative', 'bp') . '?'; ?></b></h5>
+                                <h5><i class="fas fa-caret-right"></i><b><?php echo __('What public health issue (or opportunity) led PAHO to participate on this Technical Cooperation project/initiative', 'bp') . '?'; ?></b></h5>
                                 <p><?php echo $resource->public_health_issue; ?></p>
                                 <hr />
                             <?php endif; ?>
 
                             <?php if ( $resource->planning_information ): ?>
-                                <h5><b><?php echo __('Was the TC planned considering the health situation of the target population', 'bp') . '?'; ?></b></h5>
+                                <h5><i class="fas fa-caret-right"></i><b><?php echo __('Was the TC planned considering the health situation of the target population', 'bp') . '?'; ?></b></h5>
                                 <p><?php echo $resource->planning_information; ?></p>
                                 <hr />
                             <?php endif; ?>
 
                             <?php if ( $resource->recognition_information ): ?>
-                                <h5><b><?php echo __("Recognition of PAHO's Technical Cooperation Importance by the Counterpart", 'bp') . ':'; ?></b></h5>
+                                <h5><i class="fas fa-caret-right"></i><b><?php echo __("Recognition of PAHO's Technical Cooperation Importance by the Counterpart", 'bp') . ':'; ?></b></h5>
                                 <p><?php echo $resource->recognition_information; ?></p>
                                 <hr />
                             <?php endif; ?>
 
                             <?php if ( $resource->engagement_information ): ?>
-                                <h5><b><?php echo __("Engagement with the Priorities Organization's Cross-Cutting Themes", 'bp') . ':'; ?></b></h5>
+                                <h5><i class="fas fa-caret-right"></i><b><?php echo __("Engagement with the Priorities Organization's Cross-Cutting Themes", 'bp') . ':'; ?></b></h5>
                                 <p><?php echo $resource->engagement_information; ?></p>
                                 <hr />
                             <?php endif; ?>
                         <?php endif; ?>
 
-                        <h3><b><?php echo __('Conclusion', 'bp'); ?></b></h3><br />
+                        <h3><i class="fas fa-caret-right"></i><b><?php echo __('Conclusion', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->challenges_information ): ?>
-                            <h5><b><?php echo __('What were the obstacles or challenges faced during the implementation of this best practice/initiative', 'bp') . '?'; ?></b></h5>
+                            <h5><i class="fas fa-caret-right"></i><b><?php echo __('What were the obstacles or challenges faced during the implementation of this best practice/initiative', 'bp') . '?'; ?></b></h5>
                             <p><?php echo $resource->challenges_information; ?></p>
                             <hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->lessons_information ): ?>
-                            <h5><b><?php echo __('What were the lessons learned for that will improve our expertise and add value to the Organization', 'bp') . '?'; ?></b></h5>
+                            <h5><i class="fas fa-caret-right"></i><b><?php echo __('What were the lessons learned for that will improve our expertise and add value to the Organization', 'bp') . '?'; ?></b></h5>
                             <p><?php echo $resource->lessons_information; ?></p>
                             <hr />
                         <?php endif; ?>
 
-                        <h3><b><?php echo __('Multimedia', 'bp'); ?></b></h3><br />
+                        <h3><i class="fas fa-caret-right"></i><b><?php echo __('Multimedia', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->attachments ) : ?>
                             <?php $bp_images = get_bp_images($response_json[0]); ?>
                             <?php if ( $bp_images ) : ?>
@@ -306,7 +269,7 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                         <?php endif; ?>
                         <hr />
 
-                        <h3><b><?php echo __('Sources', 'bp'); ?></b></h3><br />
+                        <h3><i class="fas fa-caret-right"></i><b><?php echo __('Sources', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->products_information ) : $products_information = explode("\r\n", $resource->products_information); ?>
                             <?php foreach ($products_information as $link): ?>
                                 <a href="<?php echo $link; ?>" target="_blank">
@@ -340,6 +303,12 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                             <i class="fas fa-calendar-alt"></i> <?php echo __('End', 'bp') . ': ' . date('Y-m-d', strtotime($resource->end_date)); ?><br />
                         <?php endif; ?>
     				</div>
+                    <?php if ( $resource->type ): ?>
+                        <div class="box1 title1">
+                            <h4><?php echo strtoupper(__('Type', 'bp')); ?></h4>
+        					<?php echo $resource->type->name; ?>
+        				</div>
+                    <?php endif; ?>
                     <?php if ( $resource->subregion ): ?>
                         <div class="box1 title1">
                             <h4><?php echo strtoupper(__('Sub Region', 'bp')); ?></h4>
@@ -349,12 +318,53 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                     <?php if ( $resource->country ): ?>
                         <div class="box1 title1">
                             <h4><?php echo strtoupper(__('Country', 'bp')); ?></h4>
-        					<img src="<?php bloginfo('template_directory'); ?>/img/brasil.svg" alt="" style="width: 30px;">
+        					<img src="https://www.countryflags.io/<?php echo $resource->country->code; ?>/shiny/32.png" alt="" style="width: 30px;">
                             <?php echo $resource->country->name; ?>
         				</div>
                     <?php endif; ?>
-                    <?php if ( $resource->target ): ?>
+                    <?php if ( $resource->other_institution ): ?>
                         <div class="box1 title1">
+                            <h4><?php echo strtoupper(__('Institution', 'bp')); ?></h4>
+        					<?php echo $resource->other_institution; ?>
+        				</div>
+                    <?php elseif ( $resource->institution ): ?>
+                        <div class="box1 title1">
+                            <h4><?php echo strtoupper(__('Institution', 'bp')); ?></h4>
+        					<?php echo $resource->institution->name; ?>
+        				</div>
+                    <?php endif; ?>
+                    <?php if ( $resource->other_stakeholder ): ?>
+                        <div class="box1 title1">
+                            <h4><?php echo strtoupper(__('Stakeholder', 'bp')); ?></h4>
+        					<?php echo $resource->other_stakeholder; ?>
+        				</div>
+                    <?php elseif ( $resource->stakeholder ): ?>
+                        <div class="box1 title1">
+                            <h4><?php echo strtoupper(__('Stakeholder', 'bp')); ?></h4>
+        					<?php echo $resource->stakeholder->name; ?>
+        				</div>
+                    <?php endif; ?>
+                    <?php if ( $resource->other_population_group ): ?>
+                        <div class="box1 title1">
+                            <h4><?php echo strtoupper(__('Population Group', 'bp')); ?></h4>
+        					<?php echo $resource->other_population_group; ?>
+        				</div>
+                    <?php elseif ( $resource->population_group ): ?>
+                        <div class="box1 title1">
+                            <h4><?php echo strtoupper(__('Population Group', 'bp')); ?></h4>
+        					<?php echo $resource->population_group->name; ?>
+        				</div>
+                    <?php endif; ?>
+                    <?php if ( $resource->intervention ): ?>
+                        <div class="box1 title1 text-center">
+                            <h4><?php echo strtoupper(__('Intervention', 'bp')); ?></h4>
+                            <?php foreach ($resource->intervention as $intervention) : ?>
+                                <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top"><?php echo $intervention->name; ?></a>
+                            <?php endforeach; ?>
+        				</div>
+                    <?php endif; ?>
+                    <?php if ( $resource->target ): ?>
+                        <div class="box1 title1 text-center">
                             <h4><?php echo strtoupper(__('SDG', 'bp')); ?></h4>
                             <?php foreach ($resource->target as $target) : ?>
                                 <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top" title="<?php echo $target->subtext; ?>"><?php echo $target->name; ?></a>
@@ -362,69 +372,6 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
         				</div>
                     <?php endif; ?>
     			</div>
-
-                <div class="row-fluid" style="display: none;">
-                    <article class="conteudo-loop">
-                        <?php if ( $resource->type ): ?>
-                            <div class="row-fluid">
-                                <h2 class="field-label"><?php echo __('Type', 'bp') . ': '; ?></h2>
-                                <?php echo $resource->type->name; ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if ( $resource->other_role ): ?>
-                            <div class="row-fluid">
-                                <h2 class="field-label"><?php echo __('Role', 'bp') . ': '; ?></h2>
-                                <?php echo $resource->other_role; ?>
-                            </div>
-                        <?php elseif ( $resource->role ): ?>
-                            <div class="row-fluid">
-                                <h2 class="field-label"><?php echo __('Role', 'bp') . ': '; ?></h2>
-                                <?php echo $resource->role->name; ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if ( $resource->other_institution ): ?>
-                            <div class="row-fluid">
-                                <h2 class="field-label"><?php echo __('Institution', 'bp') . ': '; ?></h2>
-                                <?php echo $resource->other_institution; ?>
-                            </div>
-                        <?php elseif ( $resource->institution ): ?>
-                            <div class="row-fluid">
-                                <h2 class="field-label"><?php echo __('Institution', 'bp') . ': '; ?></h2>
-                                <?php echo $resource->institution->name; ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if ( $resource->other_stakeholder ): ?>
-                            <div class="row-fluid">
-                                <h2 class="field-label"><?php echo __('Stakeholder', 'bp') . ': '; ?></h2>
-                                <?php echo $resource->other_stakeholder; ?>
-                            </div>
-                        <?php elseif ( $resource->stakeholder ): ?>
-                            <div class="row-fluid">
-                                <h2 class="field-label"><?php echo __('Stakeholder', 'bp') . ': '; ?></h2>
-                                <?php echo $resource->stakeholder->name; ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if ( 'paho-who-technical-cooperation' == $resource->type->slug ): ?>
-                            <?php if ( $resource->entity ): ?>
-                                <div class="row-fluid">
-                                    <h2 class="field-label"><?php echo __('Entity', 'bp') . ': '; ?></h2>
-                                    <?php echo $resource->entity->name; ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if ( $resource->reference_number ): ?>
-                                <div class="row-fluid">
-                                    <h2 class="field-label"><?php echo __('Reference Number', 'bp') . ': '; ?></h2>
-                                    <?php echo $resource->reference_number; ?>
-                                </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    </article>
-                </div>
             <?php endif; ?>
         </div>
     </div>

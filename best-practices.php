@@ -92,6 +92,9 @@ if(!class_exists('Best_Practices_Plugin')) {
                 $lang = substr($site_language,0,2);
 
                 $bp_texts = @parse_ini_file(BP_PLUGIN_PATH . "/languages/texts_" . $lang . ".ini", true);
+                if ( !$bp_texts ) {
+                    $bp_texts = @parse_ini_file(BP_PLUGIN_PATH . "/languages/texts_en.ini", true);
+                }
             }
 
         }

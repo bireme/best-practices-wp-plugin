@@ -55,7 +55,7 @@ class Best_Practices_Widget extends WP_Widget {
                     echo '<div class="bp-target">';
                     echo '<b>' . esc_html__( 'Goals', 'bp' ) . ':</b>';
                     foreach ( $data->target as $target ) {
-                        echo '<a href="#" class="aSpan" data-toggle="tooltip" data-placement="top" title="' . $target->subtext . '">' . $target->name . '</a>';
+                        echo '<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top" title="' . $target->subtext . '">' . $target->name . '</a>';
                     }
                     echo '</div>';
                 }

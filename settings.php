@@ -8,8 +8,13 @@ function bp_page_admin() {
         $available_filter_list = $bp_texts['filter'];
     }else{
         $available_filter_list = array(
+                                    'type' =>  __('Type','bp'),
                                     'subregion' => __('Sub Region','bp') ,
                                     'country' =>  __('Country', 'bp'),
+                                    'institution' =>  __('Institution','bp'),
+                                    'stakeholder' =>  __('Stakeholder','bp'),
+                                    'population_group' =>  __('Population Group','bp'),
+                                    'intervention' =>  __('Intervention','bp'),
                                     'target' =>  __('Target','bp'),
         );
         $bp_texts['filter'] = $available_filter_list;
