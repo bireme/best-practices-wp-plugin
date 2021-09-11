@@ -186,7 +186,7 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                                     <b><?php _e('Goals','bp'); ?>:</b>
                                     <?php $targets = get_bp_targets($doc->target, $lang); ?>
                                     <?php foreach ( $targets as $target ) : ?>
-                                        <a href="#" class="aSpan" data-toggle="tooltip" data-placement="top"><?php echo $target; ?></a>
+                                        <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top"><?php echo $target; ?></a>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </div>
@@ -205,208 +205,105 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                     <?php dynamic_sidebar('best-practices-home');?>
 
                     <?php if ($applied_filter_list) :?>
-                        <section class="row-fluid widget_categories">
-                            <header class="row-fluid marginbottom15">
-                                <h1 class="h1-header"><?php echo _e('Selected filters', 'bp') ?></h1>
-                            </header>
-                            <form method="get" name="searchFilter" id="formFilters" action="<?php echo real_site_url($bp_plugin_slug); ?>">
-                                <input type="hidden" name="lang" id="lang" value="<?php echo $lang; ?>">
-                                <input type="hidden" name="sort" id="sort" value="<?php echo $sort; ?>">
-                                <input type="hidden" name="format" id="format" value="<?php echo $format; ?>">
-                                <input type="hidden" name="count" id="count" value="<?php echo $count; ?>">
-                                <input type="hidden" name="q" id="query" value="<?php echo ( '*:*' == $query ) ? '' : $query; ?>" >
-                                <input type="hidden" name="filter" id="filter" value="" >
+                        <h4><?php echo __('Selected Filters', 'bp'); ?></h4>
 
-                                <?php foreach ( $applied_filter_list as $filter => $filter_values ) :?>
-                                    <ul>
-                                        <strong>
-                                            <?php
-                                                $filter_field = ($filter == 'mj' ? 'descriptor_filter' : $filter);
-                                                echo translate_label($bp_texts, $filter_field, 'filter')
-                                            ?>
-                                        </strong>
+                        <form method="get" name="searchFilter" id="formFilters" action="<?php echo real_site_url($bp_plugin_slug); ?>">
+                            <input type="hidden" name="lang" id="lang" value="<?php echo $lang; ?>">
+                            <input type="hidden" name="sort" id="sort" value="<?php echo $sort; ?>">
+                            <input type="hidden" name="format" id="format" value="<?php echo $format; ?>">
+                            <input type="hidden" name="count" id="count" value="<?php echo $count; ?>">
+                            <input type="hidden" name="q" id="query" value="<?php echo ( '*:*' == $query ) ? '' : $query; ?>" >
+                            <input type="hidden" name="filter" id="filter" value="">
 
+                            <div class="box1 title1 mb-4">
+                                <table class="table table-sm">
+                                    <?php foreach ( $applied_filter_list as $filter => $filter_values ) :?>
+                                        <tr>
+                                            <td colspan="2"><strong class="filter-item-active"><?php echo translate_label($bp_texts, $filter, 'filter'); ?></strong></td>
+                                        </tr>
                                         <?php foreach ( $filter_values as $value ) :?>
-                                            <input type="hidden" name="apply_filter" class="apply_filter"
-                                                    id="<?php echo md5($value) ?>" value='<?php echo $filter . ':"' . $value . '"'; ?>' >
-                                            <li>
-                                                <span class="filter-item">
-                                                    <?php
-                                                        if (strpos($value, '^') !== false){
-                                                            echo print_lang_value($value, $site_language);
-                                                        }elseif (array_key_exists($filter, $bp_texts)){
-                                                            echo translate_label($bp_texts, $value, $filter);
-                                                        }else{
-                                                            echo $value;
-                                                        }
-                                                    ?>
-                                                </span>
-                                                <span class="filter-item-del">
-                                                    <a href="javascript:remove_filter('<?php echo md5($value) ?>')">
-                                                        <img src="<?php echo BP_PLUGIN_URL; ?>template/images/del.png">
-                                                    </a>
-                                                </span>
-                                            </li>
+                                            <tr>
+                                                <td>
+                                                    <input type="hidden" name="apply_filter" class="apply_filter" id="<?php echo md5($value) ?>" value='<?php echo $filter . ':"' . $value . '"'; ?>' >
+                                                    <span>
+                                                        <?php
+                                                            if (strpos($value, '^') !== false){
+                                                                echo print_lang_value($value, $site_language);
+                                                            }elseif (array_key_exists($filter, $bp_texts)){
+                                                                echo translate_label($bp_texts, $value, $filter);
+                                                            }else{
+                                                                echo $value;
+                                                            }
+                                                        ?>
+                                                    </span>
+                                                </td>
+                                                <td width="35">
+                                                    <span class="filter-item-del">
+                                                        <a href="javascript:remove_filter('<?php echo md5($value) ?>')">
+                                                            <i class="fas fa-times fa-lg"></i>
+                                                        </a>
+                                                    </span>
+                                                </td>
+                                            </tr>
                                         <?php endforeach; ?>
-                                    </ul>
-                                <?php endforeach; ?>
-                            </form>
-                        </section>
+                                    <?php endforeach; ?>
+                                </table>
+                            </div>
+                        </form>
                     <?php endif; ?>
 
                     <h4><?php echo __('Filters', 'bp'); ?></h4>
 
                     <?php foreach($filter_list as $filter_field) : ?>
-                        <?php if ($facet_list[$filter_field] ) : ?>
+                        <?php if ($facet_list[$filter_field] ) : $count = 0; ?>
                             <div class="box1 title1">
                                 <h4><?php echo strtoupper($bp_texts['filter'][$filter_field]); ?></h4>
+                                <table class="table table-sm">
+                                    <?php
+                                        $odd = array();
+                                        $even = array();
+                                        $both = array(&$even, &$odd);
+                                        array_walk($facet_list[$filter_field], function($v, $k) use ($both) { $both[$k % 2][] = $v; });
+                                        $filters = array_map(function($a, $b) { return $a . '@' . $b; }, $both[0], $both[1]);
+                                    ?>
+                                    <?php foreach ( $filters as $filter_item ) { $count++; ?>
+                                        <?php
+                                            $filter_data = explode('@', $filter_item);
+                                            $filter_value = $filter_data[0];
+                                            $filter_count = $filter_data[1];
 
-                                <?php
-                                    $filter_value = $filter_item[0];
-                                    $filter_count = $filter_item[1];
-
-                                    $filter_link = '?';
-                                    if ($query != ''){
-                                        $filter_link .= 'q=' . $query . '&';
-                                    }
-                                    $filter_link .= 'filter=' . $filter_field . ':"' . $filter_value . '"';
-                                    if ($user_filter != ''){
-                                        $filter_link .= ' AND ' . $user_filter ;
-                                    }
-                                ?>
-
-                                <?php if ($filter_field == 'country') : ?>
-                                    <table class="table table-sm">
+                                            $filter_link = '?';
+                                            if ($query != ''){
+                                                $filter_link .= 'q=' . $query . '&';
+                                            }
+                                            $filter_link .= 'filter=' . $filter_field . ':"' . $filter_value . '"';
+                                            if ($user_filter != ''){
+                                                $filter_link .= ' AND ' . $user_filter ;
+                                            }
+                                        ?>
                                         <?php if ( strpos($filter_value, '^') !== false ): ?>
                                             <tr>
-                                                <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/brasil.svg" alt="" style="width: 30px;"></td>
-                                                <td><a href="<?php echo $filter_link; ?>" title="<?php print_lang_value($filter_value, $site_language); ?>"><?php print_lang_value($filter_value, $site_language); ?></a></td>
+                                                <td><a href='<?php echo $filter_link; ?>'><?php print_lang_value($filter_value, $site_language); ?></a></td>
+                                                <td width="35"><span class="badge badge-primary"><?php echo $filter_count; ?></span></td>
                                             </tr>
                                         <?php elseif ( array_key_exists($filter_field, $bp_texts) ): ?>
                                             <tr>
-                                                <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/brasil.svg" alt="" style="width: 30px;"></td>
-                                                <td><a href="<?php echo $filter_link; ?>" title="<?php echo translate_label($bp_texts, $filter_value, $filter_field); ?>"><?php echo translate_label($bp_texts, $filter_value, $filter_field); ?></a></td>
+                                                <td><a href='<?php echo $filter_link; ?>'><?php echo translate_label($bp_texts, $filter_value, $filter_field); ?></a></td>
+                                                <td width="35"><span class="badge badge-primary"><?php echo $filter_count; ?></span></td>
                                             </tr>
                                         <?php else: ?>
                                             <tr>
-                                                <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/brasil.svg" alt="" style="width: 30px;"></td>
-                                                <td><a href="<?php echo $filter_link; ?>" title="<?php echo $filter_value; ?>"><?php echo $filter_value; ?></a></td>
+                                                <td><a href='<?php echo $filter_link; ?>'><?php echo $filter_value; ?></a></td>
+                                                <td width="35"><span class="badge badge-primary"><?php echo $filter_count; ?></span></td>
                                             </tr>
                                         <?php endif; ?>
-                                        <span class="cat-item-count"><?php echo $filter_count; ?></span>
-                                    </table>
-                                <?php elseif ($filter_field == 'target') : ?>
-                                    <?php if ( strpos($filter_value, '^') !== false ): ?>
-                                        <a href='<?php echo $filter_link; ?>' class="aSpan" data-toggle="tooltip" data-placement="top"><?php print_lang_value($filter_value, $site_language); ?></a>
-                                    <?php elseif ( array_key_exists($filter_field, $bp_texts) ): ?>
-                                        <a href='<?php echo $filter_link; ?>' class="aSpan" data-toggle="tooltip" data-placement="top"><?php echo translate_label($bp_texts, $filter_value, $filter_field); ?></a>
-                                    <?php else: ?>
-                                        <a href='<?php echo $filter_link; ?>' class="aSpan" data-toggle="tooltip" data-placement="top"><?php echo $filter_value; ?></a>
-                                    <?php endif; ?>
-                                    <span class="cat-item-count"><?php echo $filter_count; ?></span>
-                                <?php else : ?>
-                                    <?php if ( strpos($filter_value, '^') !== false ): ?>
-                                        <a class="filter-item" href='<?php echo $filter_link; ?>'><?php print_lang_value($filter_value, $site_language); ?></a>
-                                    <?php elseif ( array_key_exists($filter_field, $bp_texts) ): ?>
-                                        <a class="filter-item" href='<?php echo $filter_link; ?>'><?php echo translate_label($bp_texts, $filter_value, $filter_field); ?></a>
-                                    <?php else: ?>
-                                        <a class="filter-item" href='<?php echo $filter_link; ?>'><?php echo $filter_value; ?></a>
-                                    <?php endif; ?>
-                                    <span class="cat-item-count"><?php echo $filter_count; ?></span>
-                                <?php endif; ?>
+                                    <?php } ?>
+                                </table>
                             </div>
                         <?php endif; ?>
                     <?php endforeach; ?>
 
                 <?php endif; ?>
-
-                <div class="box1 title1">
-                    <h4><?php echo strtoupper(__('Sub Regions', 'bp')); ?></h4>
-                    <a class="filter-item" href="#">North America</a>
-                    <a class="filter-item" href="#">Latin America</a>
-                    <a class="filter-item" href="#">Andine Area</a>
-                    <a class="filter-item" href="#">Southern Cone</a>
-                </div>
-                <div class="box1 title1">
-                    <h4><?php echo strtoupper(__('Countries', 'bp')); ?></h4>
-                    <table class="table table-sm">
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/argentina.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Argentina">Argentina</a></td>
-                        </tr>
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/bolivia.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Bolivia">Bolivia</a></td>
-                        </tr>
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/brasil.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Brasil">Brasil</a></td>
-                        </tr>
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/canada.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Canada">Canada</a></td>
-                        </tr>
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/chile.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Chile">Chile</a></td>
-                        </tr>
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/colombia.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Colombia">Colombia</a></td>
-                        </tr>
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/cuba.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Cuba">Cuba</a></td>
-                        </tr>
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/mexico.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Mexico">Mexico</a></td>
-                        </tr>
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/panama.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Panama">Panama</a></td>
-                        </tr>
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/paraguai.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Paraguai">Paraguai</a></td>
-                        </tr>
-                        <tr>
-                            <td width="35"><img src="<?php bloginfo('template_directory'); ?>/img/uruguai.svg" alt="" style="width: 30px;"></td>
-                            <td><a href="" title="Uruguai">Uruguai</a></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="box1 title1">
-                    <h4><?php echo strtoupper(__('Goals', 'bp')); ?></h4>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 3 - Target 3.1</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 3 - Target 3.2</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 3 - Target 3.3</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 3 - Target 3.4</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 3 - Target 3.5</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 3 - Target 3.6</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 3 - Target 3.7</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 3 - Target 3.8</a>
-                    <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 3 - Target 3.9</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 1</a>
-                    <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 2</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 3</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 4</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 5</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 6</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 7</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 8</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 9</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 10</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 11</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 12</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 13</a>
-					<a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top">Goal 14</a>
-				</div>
-                <div class="box1 title1" style="display: none;">
-                    <h4><?php echo strtoupper(__('Dates', 'bp')); ?></h4>
-                    <?php echo __('from', 'bp'); ?>: <input type="date" class="form-control form-control-sm">
-                    <?php echo __('to', 'bp'); ?>: <input type="date" class="form-control form-control-sm">
-                </div>
 			</div>
         </div>
     </div>
