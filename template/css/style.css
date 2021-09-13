@@ -119,6 +119,15 @@
 	font-size: 25px;
 	vertical-align: text-top;
 }
+.slick-prev:before {
+	color: #0093d6;
+}
+.slick-next {
+	right: 0;
+}
+.slick-next:before {
+	color: #0093d6;
+}
 /******************** Cores **************/
 .aSpan{
 	padding: 3px 5px;

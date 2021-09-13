@@ -1,8 +1,53 @@
 var $j = jQuery.noConflict();
 
 $j(window).load(function(){
-	showTips();
-	show_more_list();
+    showTips();
+    show_more_list();
+});
+
+$j(document).ready(function(){
+    $j('.bpImg').slick({
+        dots: true,
+        arrows: true,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            // arrows: false,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            // arrows: false,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            // arrows: false,
+            infinite: true,
+            dots: true
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
+    });
 });
 
 function change_count(elem) {
@@ -25,13 +70,13 @@ function change_sort(obj){
 }
 
 function showTips(){
-	$j('.tooltip').tooltipster({
-		animation: 'fade',
-	});
+    $j('.tooltip').tooltipster({
+        animation: 'fade',
+    });
 }
 
 function showHideFilters(){
-	$j('#filters').toggle();
+    $j('#filters').toggle();
 }
 
 function animateMenu(obj) {
@@ -39,24 +84,24 @@ function animateMenu(obj) {
 }
 
 function show_more_list(){
-	$j('.more-items a').click(function() {
-		var element = $j(this).parent().prev().children('.hide');
-		if ( element.length ) {
-			element.each(function( index ) {
-				if ( index < 5 ) {
-  				    $j(this).removeClass('hide');
+    $j('.more-items a').click(function() {
+        var element = $j(this).parent().prev().children('.hide');
+        if ( element.length ) {
+            element.each(function( index ) {
+                if ( index < 5 ) {
+                      $j(this).removeClass('hide');
                 } else {
                     return false;
                 }
-			});
+            });
 
             var el = $j(this).parent().prev().children('.hide');
 
             if ( !el.length ) {
                 $j(this).parent().hide();
             }
-		}
-	});
+        }
+    });
 }
 
 function remove_filter(id) {

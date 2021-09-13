@@ -258,11 +258,13 @@ $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['pl
                             <?php if ( $bp_images ) : ?>
                                 <div class="bpImg clearfix">
                                     <?php foreach ($bp_images as $img): ?>
-                                        <a href="<?php echo $img; ?>" target="_blank">
-                                            <img src="<?php echo $img; ?>" alt="" class="img-fluid" />
-                                            <?php $img_name = explode('_', basename($img)); ?>
-                                            <?php // echo $img_name[1]; ?>
-                                        </a>
+                                        <div class="bp-slide">
+                                            <a href="<?php echo $img; ?>" target="_blank">
+                                                <img src="<?php echo $img; ?>" alt="" class="img-fluid" />
+                                                <?php $img_name = explode('_', basename($img)); ?>
+                                                <?php // echo $img_name[1]; ?>
+                                            </a>
+                                        </div>
                                     <?php endforeach; ?>
                                 </div>
                             <?php endif; ?>
