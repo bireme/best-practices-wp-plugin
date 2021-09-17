@@ -95,6 +95,8 @@ $feed_url = real_site_url($bp_plugin_slug) . 'best-practices-feed?q=' . urlencod
 
 $home_url = isset($bp_config['home_url_' . $lang]) ? $bp_config['home_url_' . $lang] : real_site_url();
 $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['plugin_title_' . $lang] : $bp_config['plugin_title'];
+if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
+
 ?>
 
 <?php get_header('best-practices');?>
