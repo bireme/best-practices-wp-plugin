@@ -155,6 +155,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             <a class="addthis_button_facebook"></a>
                             <a class="addthis_button_whatsapp"></a>
                             <a class="addthis_button_twitter"></a>
+                            <a class="addthis_button_linkedin"></a>
                             <a class="addthis_button_email"></a>
                             <a class="addthis_button_print"></a>
                             <a class="addthis_button_compact"></a>
@@ -166,50 +167,50 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
     				<div class="bp-data">
     					<h3><i class="fas fa-caret-right"></i><b><?php echo __('Basic Information', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->introduction ): ?>
-        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Brief Introduction', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Brief Introduction', 'bp') . ':'; ?></b></h5>
         					<p><?php echo $resource->introduction; ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->objectives ): ?>
-        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Main Objectives', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Objectives', 'bp') . ':'; ?></b></h5>
         					<p><?php echo $resource->objectives; ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->activities ): ?>
-        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Implementation', 'bp') . '/' . __('Activities', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Implementation', 'bp') . '/' . __('Activities', 'bp') . ':'; ?></b></h5>
         					<p><?php echo $resource->activities; ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->main_results ): ?>
-        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Main Results', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Results', 'bp') . ':'; ?></b></h5>
         					<p><?php echo $resource->main_results; ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->factors ): ?>
-        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Limitations and Hindrances', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Limitations and Hindrances', 'bp') . ':'; ?></b></h5>
         					<p><?php echo $resource->factors; ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->technical_matter ): ?>
-        					<h5><i class="fas fa-caret-right"></i><b><?php echo __('Main Topics', 'bp') . '/' . __('Themes', 'bp') . ':'; ?></b></h5>
+        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Topics', 'bp') . '/' . __('Themes', 'bp') . ':'; ?></b></h5>
                             <?php $technical_matters = wp_list_pluck( $resource->technical_matter, 'name' ); ?>
         					<p><?php echo implode('; ', $technical_matters); ?></p>
         					<hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->outcome_information ): ?>
-                            <h5><i class="fas fa-caret-right"></i><b><?php echo __('Effectiveness & Efficiency', 'bp') . ':'; ?></b></h5>
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Effectiveness & Efficiency', 'bp') . ':'; ?></b></h5>
                             <p><?php echo $resource->outcome_information; ?></p>
                             <hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->describe_how ): ?>
-                            <h5><i class="fas fa-caret-right"></i><b><?php echo __('Adaptability & Replicability', 'bp') . ':'; ?></b></h5>
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Adaptability & Replicability', 'bp') . ':'; ?></b></h5>
                             <p><?php echo $resource->describe_how; ?></p>
                             <hr />
                         <?php endif; ?>
@@ -217,25 +218,25 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                         <?php if ( 'paho-who-technical-cooperation' == $resource->type->slug ): ?>
                             <h3><i class="fas fa-caret-right"></i><b><?php echo __('Technical Cooperation', 'bp'); ?></b></h3><br />
                             <?php if ( $resource->public_health_issue ): ?>
-                                <h5><i class="fas fa-caret-right"></i><b><?php echo __('What public health issue (or opportunity) led PAHO to participate on this Technical Cooperation project/initiative', 'bp') . '?'; ?></b></h5>
+                                <h5><i class="fas fa-chevron-right"></i><b><?php echo __('What public health issue (or opportunity) led PAHO to participate on this Technical Cooperation project/initiative', 'bp') . '?'; ?></b></h5>
                                 <p><?php echo $resource->public_health_issue; ?></p>
                                 <hr />
                             <?php endif; ?>
 
                             <?php if ( $resource->planning_information ): ?>
-                                <h5><i class="fas fa-caret-right"></i><b><?php echo __('Was the TC planned considering the health situation of the target population', 'bp') . '?'; ?></b></h5>
+                                <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Was the TC planned considering the health situation of the target population', 'bp') . '?'; ?></b></h5>
                                 <p><?php echo $resource->planning_information; ?></p>
                                 <hr />
                             <?php endif; ?>
 
                             <?php if ( $resource->recognition_information ): ?>
-                                <h5><i class="fas fa-caret-right"></i><b><?php echo __("Recognition of PAHO's Technical Cooperation Importance by the Counterpart", 'bp') . ':'; ?></b></h5>
+                                <h5><i class="fas fa-chevron-right"></i><b><?php echo __("Recognition of PAHO's Technical Cooperation Importance by the Counterpart", 'bp') . ':'; ?></b></h5>
                                 <p><?php echo $resource->recognition_information; ?></p>
                                 <hr />
                             <?php endif; ?>
 
                             <?php if ( $resource->engagement_information ): ?>
-                                <h5><i class="fas fa-caret-right"></i><b><?php echo __("Engagement with the Priorities Organization's Cross-Cutting Themes", 'bp') . ':'; ?></b></h5>
+                                <h5><i class="fas fa-chevron-right"></i><b><?php echo __("Engagement with the Priorities Organization's Cross-Cutting Themes", 'bp') . ':'; ?></b></h5>
                                 <p><?php echo $resource->engagement_information; ?></p>
                                 <hr />
                             <?php endif; ?>
@@ -243,13 +244,13 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
 
                         <h3><i class="fas fa-caret-right"></i><b><?php echo __('Conclusion', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->challenges_information ): ?>
-                            <h5><i class="fas fa-caret-right"></i><b><?php echo __('What were the obstacles or challenges faced during the implementation of this best practice/initiative', 'bp') . '?'; ?></b></h5>
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('What were the obstacles or challenges faced during the implementation of this best practice/initiative', 'bp') . '?'; ?></b></h5>
                             <p><?php echo $resource->challenges_information; ?></p>
                             <hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->lessons_information ): ?>
-                            <h5><i class="fas fa-caret-right"></i><b><?php echo __('What were the lessons learned for that will improve our expertise and add value to the Organization', 'bp') . '?'; ?></b></h5>
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('What were the lessons learned for that will improve our expertise and add value to the Organization', 'bp') . '?'; ?></b></h5>
                             <p><?php echo $resource->lessons_information; ?></p>
                             <hr />
                         <?php endif; ?>
