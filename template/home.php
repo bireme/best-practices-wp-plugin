@@ -273,13 +273,18 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                                             $filter_value = $filter_data[0];
                                             $filter_count = $filter_data[1];
 
-                                            $filter_link = '?';
-                                            if ($query != ''){
-                                                $filter_link .= 'q=' . $query . '&';
-                                            }
-                                            $filter_link .= 'filter=' . $filter_field . ':"' . $filter_value . '"';
-                                            if ($user_filter != ''){
-                                                $filter_link .= ' AND ' . $user_filter ;
+                                            $applied_filter = $applied_filter_list[$filter_field];
+                                            if ( $applied_filter && in_array($filter_value, $applied_filter) ) {
+                                                $filter_link = 'javascript:void(0)';
+                                            } else {
+                                                $filter_link = '?';
+                                                if ($query != ''){
+                                                    $filter_link .= 'q=' . $query . '&';
+                                                }
+                                                $filter_link .= 'filter=' . $filter_field . ':"' . $filter_value . '"';
+                                                if ($user_filter != ''){
+                                                    $filter_link .= ' AND ' . $user_filter ;
+                                                }
                                             }
                                         ?>
                                         <?php if ( strpos($filter_value, '^') !== false ): ?>

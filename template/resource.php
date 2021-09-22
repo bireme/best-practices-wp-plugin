@@ -261,7 +261,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             <?php if ( $bp_images ) : ?>
                                 <div class="bpImg clearfix">
                                     <?php foreach ($bp_images as $img): ?>
-                                        <div class="bp-slide">
+                                        <div class="bp-thumb">
                                             <a href="<?php echo $img; ?>" target="_blank">
                                                 <img src="<?php echo $img; ?>" alt="" class="img-fluid" />
                                                 <?php $img_name = explode('_', basename($img)); ?>

@@ -6,7 +6,7 @@ $j(window).load(function(){
 });
 
 $j(document).ready(function(){
-    $j('.bpImg').slick({
+    $j('#bpImg').slick({
         dots: true,
         arrows: true,
         infinite: true,
