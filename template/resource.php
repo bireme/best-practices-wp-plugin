@@ -349,15 +349,12 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
         					<?php echo $resource->stakeholder->name; ?>
         				</div>
                     <?php endif; ?>
-                    <?php if ( $resource->other_population_group ): ?>
-                        <div class="box1 title1">
+                    <?php if ( $resource->population_group ): ?>
+                        <div class="box1 title1 text-center">
                             <h4><?php echo strtoupper(__('Population Group', 'bp')); ?></h4>
-        					<?php echo $resource->other_population_group; ?>
-        				</div>
-                    <?php elseif ( $resource->population_group ): ?>
-                        <div class="box1 title1">
-                            <h4><?php echo strtoupper(__('Population Group', 'bp')); ?></h4>
-        					<?php echo $resource->population_group->name; ?>
+                            <?php foreach ($resource->population_group as $population_group) : ?>
+                                <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top"><?php echo $population_group->name; ?></a>
+                            <?php endforeach; ?>
         				</div>
                     <?php endif; ?>
                     <?php if ( $resource->intervention ): ?>
