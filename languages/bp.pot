@@ -1,0 +1,318 @@
+# Copyright (C) 2021 Bibliographic
+# This file is distributed under the same license as the Bibliographic package.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Best Practices WP Plugin\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
+"POT-Creation-Date: 2022-02-11 17:26-0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: languages\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: best-practices.php:103
+msgid "Best Practices settings"
+msgstr ""
+
+#: best-practices.php:103
+msgid "Best Practices"
+msgstr ""
+
+#: best-practices.php:118
+msgid "Settings"
+msgstr ""
+
+#: best-practices.php:172
+msgid "Best Practices sidebar"
+msgstr ""
+
+#: best-practices.php:182
+msgid "Best Practices header"
+msgstr ""
+
+#: lib/Paginator.php:34 lib/Paginator.php:35 lib/Paginator.php:46
+#: lib/Paginator.php:52 lib/Paginator.php:61 lib/Paginator.php:62
+#: lib/Paginator.php:68 lib/Paginator.php:69
+msgid "go to page"
+msgstr ""
+
+#: settings.php:11 template/resource.php:313
+msgid "Type"
+msgstr ""
+
+#: settings.php:12 template/resource.php:319
+msgid "Sub Region"
+msgstr ""
+
+#: settings.php:13 template/resource.php:325
+msgid "Country"
+msgstr ""
+
+#: settings.php:14 template/resource.php:332 template/resource.php:337
+msgid "Institution"
+msgstr ""
+
+#: settings.php:15 template/resource.php:343 template/resource.php:348
+msgid "Stakeholder"
+msgstr ""
+
+#: settings.php:16 template/resource.php:354
+msgid "Population Group"
+msgstr ""
+
+#: settings.php:17 template/resource.php:362
+msgid "Intervention"
+msgstr ""
+
+#: settings.php:18
+msgid "Target"
+msgstr ""
+
+#: settings.php:31
+msgid "Best Practices record settings"
+msgstr ""
+
+#: settings.php:39
+msgid "Plugin page"
+msgstr ""
+
+#: settings.php:43
+msgid "Filter query"
+msgstr ""
+
+#: settings.php:47
+msgid "AddThis profile ID"
+msgstr ""
+
+#: settings.php:51
+msgid "Google Analytics code"
+msgstr ""
+
+#: settings.php:55
+msgid "Fulltext"
+msgstr ""
+
+#: settings.php:59
+msgid "Present alternative fulltext links"
+msgstr ""
+
+#: settings.php:74
+msgid "Home URL"
+msgstr ""
+
+#: settings.php:79 settings.php:86
+msgid "Page title"
+msgstr ""
+
+#: settings.php:92
+msgid "Related Documents filter"
+msgstr ""
+
+#: settings.php:95 settings.php:102
+msgid "The filters must be separated by commas."
+msgstr ""
+
+#: settings.php:99
+msgid "More Related filter"
+msgstr ""
+
+#: settings.php:106
+msgid "Search filters"
+msgstr ""
+
+#: settings.php:111
+msgid "Available"
+msgstr ""
+
+#: settings.php:124
+msgid "Selected"
+msgstr ""
+
+#: settings.php:145
+msgid "Save changes"
+msgstr ""
+
+#: template/home.php:127 template/resource.php:115
+msgid "Enter one or more words"
+msgstr ""
+
+#: template/home.php:152 template/resource.php:133
+msgid "Home"
+msgstr ""
+
+#: template/home.php:157
+msgid "Search result"
+msgstr ""
+
+#: template/home.php:164
+msgid "Results"
+msgstr ""
+
+#: template/home.php:166
+msgid "Total"
+msgstr ""
+
+#: template/home.php:174
+msgid "No results found"
+msgstr ""
+
+#: template/home.php:187
+msgid "Goals"
+msgstr ""
+
+#: template/home.php:209
+msgid "Selected Filters"
+msgstr ""
+
+#: template/home.php:256
+msgid "Filters"
+msgstr ""
+
+#: template/related.php:64 template/similar.php:49
+msgid "No related documents"
+msgstr ""
+
+#: template/resource.php:54
+msgid "I fully agree"
+msgstr ""
+
+#: template/resource.php:55
+msgid "I agree"
+msgstr ""
+
+#: template/resource.php:56
+msgid "I can't say"
+msgstr ""
+
+#: template/resource.php:57
+msgid "I disagree"
+msgstr ""
+
+#: template/resource.php:58
+msgid "I totally disagree"
+msgstr ""
+
+#: template/resource.php:147
+msgid "Document not found"
+msgstr ""
+
+#: template/resource.php:168
+msgid "Basic Information"
+msgstr ""
+
+#: template/resource.php:170
+msgid "Brief Introduction"
+msgstr ""
+
+#: template/resource.php:176
+msgid "Main Objectives"
+msgstr ""
+
+#: template/resource.php:182
+msgid "Implementation"
+msgstr ""
+
+#: template/resource.php:182
+msgid "Activities"
+msgstr ""
+
+#: template/resource.php:188
+msgid "Main Results"
+msgstr ""
+
+#: template/resource.php:194
+msgid "Limitations and Hindrances"
+msgstr ""
+
+#: template/resource.php:200
+msgid "Main Topics"
+msgstr ""
+
+#: template/resource.php:200
+msgid "Themes"
+msgstr ""
+
+#: template/resource.php:207
+msgid "Effectiveness & Efficiency"
+msgstr ""
+
+#: template/resource.php:213
+msgid "Adaptability & Replicability"
+msgstr ""
+
+#: template/resource.php:219
+msgid "Technical Cooperation"
+msgstr ""
+
+#: template/resource.php:221
+msgid ""
+"What public health issue (or opportunity) led PAHO to participate on "
+"this Technical Cooperation project/initiative"
+msgstr ""
+
+#: template/resource.php:227
+msgid ""
+"Was the TC planned considering the health situation of the target "
+"population"
+msgstr ""
+
+#: template/resource.php:233
+msgid ""
+"Recognition of PAHO's Technical Cooperation Importance by the Counterpart"
+msgstr ""
+
+#: template/resource.php:239
+msgid "Engagement with the Priorities Organization's Cross-Cutting Themes"
+msgstr ""
+
+#: template/resource.php:245
+msgid "Conclusion"
+msgstr ""
+
+#: template/resource.php:247
+msgid ""
+"What were the obstacles or challenges faced during the implementation of "
+"this best practice/initiative"
+msgstr ""
+
+#: template/resource.php:253
+msgid ""
+"What were the lessons learned for that will improve our expertise and "
+"add value to the Organization"
+msgstr ""
+
+#: template/resource.php:258
+msgid "Multimedia"
+msgstr ""
+
+#: template/resource.php:277
+msgid "Sources"
+msgstr ""
+
+#: template/resource.php:303
+msgid "Dates"
+msgstr ""
+
+#: template/resource.php:305
+msgid "Start"
+msgstr ""
+
+#: template/resource.php:308
+msgid "End"
+msgstr ""
+
+#: template/resource.php:370
+msgid "SDG"
+msgstr ""
+
+#: template/rss.php:52
+msgid "Best Practices records"
+msgstr ""
