@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Best Practices WP Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
 "POT-Creation-Date: 2022-02-11 20:24-0300\n"
-"PO-Revision-Date: 2022-02-11 20:24-0300\n"
+"PO-Revision-Date: 2022-02-17 02:41-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -19,71 +19,65 @@ msgstr ""
 
 #: best-practices.php:103
 msgid "Best Practices settings"
-msgstr ""
+msgstr "Boas Práticas - Configurações"
 
 #: best-practices.php:103
 msgid "Best Practices"
-msgstr ""
+msgstr "Boas Práticas"
 
 #: best-practices.php:118
 msgid "Settings"
-msgstr ""
+msgstr "Configurações"
 
 #: best-practices.php:172
-#, fuzzy
-#| msgid "Bibliographic sidebar"
 msgid "Best Practices sidebar"
-msgstr "Registros bibliográficos barra lateral"
+msgstr "Boas Práticas - Barra lateral"
 
 #: best-practices.php:182
 msgid "Best Practices header"
-msgstr ""
+msgstr "Boas Práticas - Cabeçalho"
 
 #: lib/Paginator.php:34 lib/Paginator.php:35 lib/Paginator.php:46
 #: lib/Paginator.php:52 lib/Paginator.php:61 lib/Paginator.php:62
 #: lib/Paginator.php:68 lib/Paginator.php:69
 msgid "go to page"
-msgstr "ir para página"
+msgstr "ir para a página"
 
 #: settings.php:11 template/resource.php:313
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: settings.php:12 template/resource.php:319
 msgid "Sub Region"
-msgstr ""
+msgstr "Sub-região"
 
 #: settings.php:13 template/resource.php:325
 msgid "Country"
-msgstr ""
+msgstr "País"
 
 #: settings.php:14 template/resource.php:332 template/resource.php:337
 msgid "Institution"
-msgstr ""
+msgstr "Instituição"
 
 #: settings.php:15 template/resource.php:343 template/resource.php:348
 msgid "Stakeholder"
-msgstr ""
+msgstr "Parte Interessada"
 
 #: settings.php:16 template/resource.php:354
-#, fuzzy
-#| msgid "Publication country"
 msgid "Population Group"
-msgstr "País de publicação"
+msgstr "Grupo Populacional"
 
 #: settings.php:17 template/resource.php:362
 msgid "Intervention"
-msgstr ""
+msgstr "Intervenção"
 
 #: settings.php:18
 msgid "Target"
-msgstr ""
+msgstr "Objetivo"
 
 #: settings.php:31
-#, fuzzy
-#| msgid "Bibliographic record settings"
 msgid "Best Practices record settings"
-msgstr "Ajustes registro bibliográfico"
+msgstr "Boas Práticas - Configurações"
 
 #: settings.php:39
 msgid "Plugin page"
@@ -171,13 +165,11 @@ msgstr "Nenhum resultado encontrado"
 
 #: template/home.php:187
 msgid "Goals"
-msgstr ""
+msgstr "Objetivos"
 
 #: template/home.php:209
-#, fuzzy
-#| msgid "Selected filters"
 msgid "Selected Filters"
-msgstr "Filtros selecionados"
+msgstr "Filtros Selecionados"
 
 #: template/home.php:256
 msgid "Filters"
@@ -189,147 +181,146 @@ msgstr "Nenhum relacionado encontrado"
 
 #: template/resource.php:54
 msgid "I fully agree"
-msgstr ""
+msgstr "Eu concordo totalmente"
 
 #: template/resource.php:55
 msgid "I agree"
-msgstr ""
+msgstr "Eu concordo"
 
 #: template/resource.php:56
 msgid "I can't say"
-msgstr ""
+msgstr "Eu não sei dizer"
 
 #: template/resource.php:57
 msgid "I disagree"
-msgstr ""
+msgstr "Eu discordo"
 
 #: template/resource.php:58
 msgid "I totally disagree"
-msgstr ""
+msgstr "Eu discordo totalmente"
 
 #: template/resource.php:147
-#, fuzzy
-#| msgid "Document type"
 msgid "Document not found"
-msgstr "Tipo de documento"
+msgstr "Informação básica"
 
 #: template/resource.php:168
 msgid "Basic Information"
-msgstr ""
+msgstr "Informação básica"
 
 #: template/resource.php:170
 msgid "Brief Introduction"
-msgstr ""
+msgstr "Breve introdução"
 
 #: template/resource.php:176
-#, fuzzy
-#| msgid "Main subject"
 msgid "Main Objectives"
-msgstr "Assunto principal"
+msgstr "Principais Objetivos"
 
 #: template/resource.php:182
 msgid "Implementation"
-msgstr ""
+msgstr "Implementação"
 
 #: template/resource.php:182
 msgid "Activities"
-msgstr ""
+msgstr "Atividades"
 
 #: template/resource.php:188
-#, fuzzy
-#| msgid "Results"
 msgid "Main Results"
-msgstr "Resultados"
+msgstr "Resultados Principais"
 
 #: template/resource.php:194
 msgid "Limitations and Hindrances"
-msgstr ""
+msgstr "Limitações e Impedimentos"
 
 #: template/resource.php:200
 msgid "Main Topics"
-msgstr ""
+msgstr "Tópicos Principais"
 
 #: template/resource.php:200
 msgid "Themes"
-msgstr ""
+msgstr "Temas"
 
 #: template/resource.php:207
 msgid "Effectiveness & Efficiency"
-msgstr ""
+msgstr "Eficiência & Eficácia"
 
 #: template/resource.php:213
 msgid "Adaptability & Replicability"
-msgstr ""
+msgstr "Adaptabilidade & Replicabilidade"
 
 #: template/resource.php:219
 msgid "Technical Cooperation"
-msgstr ""
+msgstr "Cooperação Técnica"
 
 #: template/resource.php:221
 msgid ""
 "What public health issue (or opportunity) led PAHO to participate on this "
 "Technical Cooperation project/initiative"
 msgstr ""
+"Que problema (ou oportunidade) de saúde pública levou a OPAS a participar "
+"deste projeto/iniciativa de Cooperação Técnica"
 
 #: template/resource.php:227
 msgid ""
 "Was the TC planned considering the health situation of the target population"
-msgstr ""
+msgstr "A CT foi planejada considerando a situação de saúde da população-alvo"
 
 #: template/resource.php:233
 msgid ""
 "Recognition of PAHO's Technical Cooperation Importance by the Counterpart"
 msgstr ""
+"Reconhecimento da importância da Cooperação Técnica da OPAS pela contraparte"
 
 #: template/resource.php:239
 msgid "Engagement with the Priorities Organization's Cross-Cutting Themes"
-msgstr ""
+msgstr "Envolvimento com os temas transversais prioritários  da Organização"
 
 #: template/resource.php:245
 msgid "Conclusion"
-msgstr ""
+msgstr "Conclusão"
 
 #: template/resource.php:247
 msgid ""
 "What were the obstacles or challenges faced during the implementation of "
 "this best practice/initiative"
 msgstr ""
+"Quais foram os obstáculos ou desafios enfrentados durante a implementação "
+"desta boa prática/iniciativa"
 
 #: template/resource.php:253
 msgid ""
 "What were the lessons learned for that will improve our expertise and add "
 "value to the Organization"
 msgstr ""
+"Quais foram as lições aprendidas que irão aprimorar nossa expertise e "
+"agregar valor à Organização"
 
 #: template/resource.php:258
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimídia"
 
 #: template/resource.php:277
 msgid "Sources"
-msgstr ""
+msgstr "Fontes"
 
 #: template/resource.php:303
 msgid "Dates"
-msgstr ""
+msgstr "Datas"
 
 #: template/resource.php:305
 msgid "Start"
-msgstr ""
+msgstr "Início"
 
 #: template/resource.php:308
 msgid "End"
-msgstr ""
+msgstr "Fim"
 
 #: template/resource.php:370
 msgid "SDG"
-msgstr ""
+msgstr "ODS"
 
 #: template/rss.php:52
-#, fuzzy
-#| msgid "Bibliographic records"
 msgid "Best Practices records"
-msgstr "Registros bibliográficos"
+msgstr "Boas Práticas - Registros"
 
 #~ msgid "Bibliographic header"
 #~ msgstr "Registros bibliográficos cabeçalho"
