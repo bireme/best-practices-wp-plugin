@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Best Practices WP Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
 "POT-Creation-Date: 2022-02-11 20:23-0300\n"
-"PO-Revision-Date: 2022-02-17 02:41-0300\n"
+"PO-Revision-Date: 2022-02-23 20:23-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: best-practices.php:103
 msgid "Best Practices settings"
-msgstr " Buenas Prácticas - Configuración "
+msgstr "Buenas Prácticas - Configuración"
 
 #: best-practices.php:103
 msgid "Best Practices"
@@ -257,14 +257,14 @@ msgid ""
 "Technical Cooperation project/initiative"
 msgstr ""
 "¿Qué problema (u oportunidad) de salud pública llevó a la OPS a participar "
-"en este proyecto/iniciativa de cooperación técnica?"
+"en este proyecto/iniciativa de cooperación técnica"
 
 #: template/resource.php:227
 msgid ""
 "Was the TC planned considering the health situation of the target population"
 msgstr ""
 "¿Se planificó la CT considerando la situación de salud de la población "
-"objetivo?"
+"objetivo"
 
 #: template/resource.php:233
 msgid ""
@@ -287,8 +287,8 @@ msgid ""
 "What were the obstacles or challenges faced during the implementation of "
 "this best practice/initiative"
 msgstr ""
-"Cuáles fueron los obstáculos o desafíos que se enfrentaron durante la "
-"implementación de esta buena práctica/iniciativa?"
+"¿Cuáles fueron los obstáculos o desafíos que se enfrentaron durante la "
+"implementación de esta buena práctica/iniciativa"
 
 #: template/resource.php:253
 msgid ""
@@ -296,7 +296,7 @@ msgid ""
 "value to the Organization"
 msgstr ""
 "¿Cuáles fueron las lecciones aprendidas que mejorarán nuestra experiencia y "
-"agregarán valor a la Organización?"
+"agregarán valor a la Organización"
 
 #: template/resource.php:258
 msgid "Multimedia"
