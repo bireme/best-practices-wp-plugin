@@ -171,7 +171,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
             <?php if ( isset($total) && strval($total) == 0 ) :?>
                 <div class="col-md-9 text-center">
                     <div class="alert alert-secondary" role="alert">
-                        <?php echo strtoupper(__('No results found','bp')); ?>
+                        <?php echo mb_strtoupper(__('No results found','bp')); ?>
                     </div>
                 </div>
             <?php else :?>
@@ -258,7 +258,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                     <?php foreach($filter_list as $filter_field) : ?>
                         <?php if ($facet_list[$filter_field] ) : $count = 0; ?>
                             <div class="box1 title1">
-                                <h4><?php echo strtoupper($bp_texts['filter'][$filter_field]); ?></h4>
+                                <h4><?php echo mb_strtoupper($bp_texts['filter'][$filter_field]); ?></h4>
                                 <table class="table table-sm">
                                     <?php
                                         $odd = array();

@@ -144,7 +144,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
             <?php if ( !$resource ) : ?>
                 <div class="col-md-12 text-center">
                     <div class="alert alert-secondary" role="alert">
-                        <?php echo strtoupper(__('Document not found','bp')); ?>
+                        <?php echo mb_strtoupper(__('Document not found','bp')); ?>
                     </div>
                 </div>
             <?php else : ?>
@@ -300,7 +300,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
 
                 <div class="col-md-3 bp-filters">
     				<div class="box1 title1">
-    					<h4><?php echo strtoupper(__('Dates', 'bp')); ?></h4>
+    					<h4><?php echo mb_strtoupper(__('Dates', 'bp')); ?></h4>
                         <?php if ( $resource->start_date ): ?>
                             <i class="fas fa-calendar-alt"></i> <?php echo __('Start', 'bp') . ': ' . date('Y-m-d', strtotime($resource->start_date)); ?><br />
                         <?php endif; ?>
@@ -310,48 +310,48 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
     				</div>
                     <?php if ( $resource->type ): ?>
                         <div class="box1 title1">
-                            <h4><?php echo strtoupper(__('Type', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('Type', 'bp')); ?></h4>
         					<?php echo $resource->type->name; ?>
         				</div>
                     <?php endif; ?>
                     <?php if ( $resource->subregion ): ?>
                         <div class="box1 title1">
-                            <h4><?php echo strtoupper(__('Sub Region', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('Sub Region', 'bp')); ?></h4>
         					<?php echo $resource->subregion->name; ?>
         				</div>
                     <?php endif; ?>
                     <?php if ( $resource->country ): ?>
                         <div class="box1 title1">
-                            <h4><?php echo strtoupper(__('Country', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('Country', 'bp')); ?></h4>
         					<img src="https://www.countryflags.io/<?php echo $resource->country->code; ?>/shiny/32.png" alt="" style="width: 30px;">
                             <?php echo $resource->country->name; ?>
         				</div>
                     <?php endif; ?>
                     <?php if ( $resource->other_institution ): ?>
                         <div class="box1 title1">
-                            <h4><?php echo strtoupper(__('Institution', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('Institution', 'bp')); ?></h4>
         					<?php echo $resource->other_institution; ?>
         				</div>
                     <?php elseif ( $resource->institution ): ?>
                         <div class="box1 title1">
-                            <h4><?php echo strtoupper(__('Institution', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('Institution', 'bp')); ?></h4>
         					<?php echo $resource->institution->name; ?>
         				</div>
                     <?php endif; ?>
                     <?php if ( $resource->other_stakeholder ): ?>
                         <div class="box1 title1">
-                            <h4><?php echo strtoupper(__('Stakeholder', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('Stakeholder', 'bp')); ?></h4>
         					<?php echo $resource->other_stakeholder; ?>
         				</div>
                     <?php elseif ( $resource->stakeholder ): ?>
                         <div class="box1 title1">
-                            <h4><?php echo strtoupper(__('Stakeholder', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('Stakeholder', 'bp')); ?></h4>
         					<?php echo $resource->stakeholder->name; ?>
         				</div>
                     <?php endif; ?>
                     <?php if ( $resource->population_group ): ?>
                         <div class="box1 title1 text-center">
-                            <h4><?php echo strtoupper(__('Population Group', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('Population Group', 'bp')); ?></h4>
                             <?php foreach ($resource->population_group as $population_group) : ?>
                                 <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top"><?php echo $population_group->name; ?></a>
                             <?php endforeach; ?>
@@ -359,7 +359,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                     <?php endif; ?>
                     <?php if ( $resource->intervention ): ?>
                         <div class="box1 title1 text-center">
-                            <h4><?php echo strtoupper(__('Intervention', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('Intervention', 'bp')); ?></h4>
                             <?php foreach ($resource->intervention as $intervention) : ?>
                                 <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top"><?php echo $intervention->name; ?></a>
                             <?php endforeach; ?>
@@ -367,7 +367,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                     <?php endif; ?>
                     <?php if ( $resource->target ): ?>
                         <div class="box1 title1 text-center">
-                            <h4><?php echo strtoupper(__('SDG', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('SDG', 'bp')); ?></h4>
                             <?php foreach ($resource->target as $target) : ?>
                                 <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top" title="<?php echo $target->subtext; ?>"><?php echo $target->name; ?></a>
                             <?php endforeach; ?>
