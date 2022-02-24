@@ -17,7 +17,7 @@ class Best_Practices_Widget extends WP_Widget {
 
 	private $widget_fields = array(
 		array(
-			'label' => __('Number of best practices', 'bp'),
+			'label' => 'Number of best practices',
 			'id' => 'total',
 			'default' => '5',
 			'type' => 'number',
@@ -82,7 +82,7 @@ class Best_Practices_Widget extends WP_Widget {
 			switch ( $widget_field['type'] ) {
 				default:
 					$output .= '<p>';
-					$output .= '<label for="'.esc_attr( $this->get_field_id( $widget_field['id'] ) ).'">'.esc_attr( $widget_field['label'], 'bp' ).':</label> ';
+					$output .= '<label for="'.esc_attr( $this->get_field_id( $widget_field['id'] ) ).'">'.esc_attr( $widget_field['label'] ).':</label> ';
 					$output .= '<input class="widefat" id="'.esc_attr( $this->get_field_id( $widget_field['id'] ) ).'" name="'.esc_attr( $this->get_field_name( $widget_field['id'] ) ).'" type="'.$widget_field['type'].'" value="'.esc_attr( $widget_value ).'">';
 					$output .= '</p>';
 			}

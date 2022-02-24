@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Best Practices WP Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
-"POT-Creation-Date: 2022-02-23 21:54-0300\n"
-"PO-Revision-Date: 2022-02-23 21:56-0300\n"
+"POT-Creation-Date: 2022-02-23 22:54-0300\n"
+"PO-Revision-Date: 2022-02-23 22:54-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"X-Poedit-KeywordsList: __;_e;esc_html__;esc_attr;esc_attr_e\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_attr;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -326,10 +326,6 @@ msgstr "Boas Práticas - Registros"
 msgid "Display the lastest best practices"
 msgstr "Exibir as boas práticas mais recentes"
 
-#: widgets.php:20
-msgid "Number of best practices"
-msgstr "Número de boas práticas"
-
 #: widgets.php:66
 msgid "See more best practices"
 msgstr "Ver mais boas práticas"
@@ -345,6 +341,9 @@ msgstr "Nenhuma boa prática encontrada"
 #: widgets.php:97
 msgid "Title"
 msgstr "Título"
+
+#~ msgid "Number of best practices"
+#~ msgstr "Número de boas práticas"
 
 #~ msgid "Bibliographic header"
 #~ msgstr "Registros bibliográficos cabeçalho"
