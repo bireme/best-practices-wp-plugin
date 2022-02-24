@@ -17,7 +17,7 @@ class Best_Practices_Widget extends WP_Widget {
 
 	private $widget_fields = array(
 		array(
-			'label' => 'Number of best practices',
+			'label' => __('Number of best practices', 'bp'),
 			'id' => 'total',
 			'default' => '5',
 			'type' => 'number',
@@ -91,10 +91,10 @@ class Best_Practices_Widget extends WP_Widget {
 	}
 
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( '', 'bp' );
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : '';
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'bp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title', 'bp' ); ?>:</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<?php

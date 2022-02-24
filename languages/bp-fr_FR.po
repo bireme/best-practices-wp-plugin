@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Best Practices WP Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
-"POT-Creation-Date: 2022-02-11 20:24-0300\n"
-"PO-Revision-Date: 2022-02-11 20:24-0300\n"
+"POT-Creation-Date: 2022-02-23 21:51-0300\n"
+"PO-Revision-Date: 2022-02-23 21:51-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_attr;esc_attr_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Best Practices settings"
 msgstr ""
 
-#: best-practices.php:103
+#: best-practices.php:103 widgets.php:13
 msgid "Best Practices"
 msgstr ""
 
@@ -64,10 +64,8 @@ msgid "Stakeholder"
 msgstr ""
 
 #: settings.php:16 template/resource.php:354
-#, fuzzy
-#| msgid "Publication country"
 msgid "Population Group"
-msgstr "Pays de publication"
+msgstr ""
 
 #: settings.php:17 template/resource.php:362
 msgid "Intervention"
@@ -165,15 +163,13 @@ msgstr "Total"
 msgid "No results found"
 msgstr ""
 
-#: template/home.php:187
+#: template/home.php:187 widgets.php:56
 msgid "Goals"
 msgstr ""
 
 #: template/home.php:209
-#, fuzzy
-#| msgid "Selected filters"
 msgid "Selected Filters"
-msgstr "Filtres sélectionnés"
+msgstr "Filtres Sélectionnés"
 
 #: template/home.php:256
 msgid "Filters"
@@ -204,10 +200,8 @@ msgid "I totally disagree"
 msgstr ""
 
 #: template/resource.php:147
-#, fuzzy
-#| msgid "Document type"
 msgid "Document not found"
-msgstr "Type de document"
+msgstr ""
 
 #: template/resource.php:168
 msgid "Basic Information"
@@ -218,10 +212,8 @@ msgid "Brief Introduction"
 msgstr ""
 
 #: template/resource.php:176
-#, fuzzy
-#| msgid "Main subject"
 msgid "Main Objectives"
-msgstr "Sujet principal"
+msgstr ""
 
 #: template/resource.php:182
 msgid "Implementation"
@@ -232,10 +224,8 @@ msgid "Activities"
 msgstr ""
 
 #: template/resource.php:188
-#, fuzzy
-#| msgid "Results"
 msgid "Main Results"
-msgstr "Résultats"
+msgstr ""
 
 #: template/resource.php:194
 msgid "Limitations and Hindrances"
@@ -323,6 +313,30 @@ msgstr ""
 
 #: template/rss.php:52
 msgid "Best Practices records"
+msgstr ""
+
+#: widgets.php:14
+msgid "Display the lastest best practices"
+msgstr ""
+
+#: widgets.php:20
+msgid "Number of best practices"
+msgstr ""
+
+#: widgets.php:66
+msgid "See more best practices"
+msgstr ""
+
+#: widgets.php:66
+msgid "See more Best Practices"
+msgstr ""
+
+#: widgets.php:68
+msgid "No best practices found"
+msgstr ""
+
+#: widgets.php:97
+msgid "Title"
 msgstr ""
 
 #~ msgid "Database"
