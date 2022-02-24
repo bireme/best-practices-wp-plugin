@@ -105,7 +105,7 @@ $feed_url = real_site_url($bp_plugin_slug) . 'best-practices-feed?q=' . urlencod
 $pages = new Paginator($total, $start);
 $pages->paginate($page_url_params);
 
-$home_url = isset($bp_config['home_url_' . $lang]) ? $bp_config['home_url_' . $lang] : real_site_url();
+$home_url = ( $bp_config['home_url_' . $lang] ) ? $bp_config['home_url_' . $lang] : real_site_url();
 $plugin_breadcrumb = isset($bp_config['plugin_title_' . $lang]) ? $bp_config['plugin_title_' . $lang] : $bp_config['plugin_title'];
 if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
 

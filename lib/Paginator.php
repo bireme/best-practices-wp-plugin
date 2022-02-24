@@ -8,11 +8,11 @@ class Paginator{
     var $default_count = 10;
     var $current_page;
 
-    function Paginator($total, $start)
+    function __construct($total, $start)
     {
         $this->total = $total;
         $this->start = $start;
-        $this->count = ( !empty($_GET['count']) ? $_GET['count'] : $this->default_count );
+        $this->count = ( !empty($_GET['count'] ) ? $_GET['count'] : $this->default_count );
         $this->current_page = ( !empty($_GET['page']) ? $_GET['page'] : 1);
     }
 

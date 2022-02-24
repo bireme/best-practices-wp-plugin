@@ -147,6 +147,7 @@ if(!class_exists('Best_Practices_Plugin')) {
                     $pagename == $this->plugin_slug . '/best-practices-feed') {
 
                     add_action( 'wp_enqueue_scripts', array(&$this, 'page_template_styles_scripts'), 999);
+                    add_filter( 'pll_the_languages', array(&$this, 'bp_language_switcher'), 10, 2 );
 
                     if ($pagename == $this->plugin_slug) {
                         $template = BP_PLUGIN_PATH . '/template/home.php';
@@ -308,6 +309,26 @@ if(!class_exists('Best_Practices_Plugin')) {
             } //endif
         }
 
+        function bp_language_switcher( $output, $args ) {
+            if ( defined( 'POLYLANG_VERSION' ) ) {
+                $current_language = strtolower(get_bloginfo('language'));
+                $site_lang = substr($current_language, 0,2);
+                $default_language = pll_default_language();
+                $translations = pll_the_languages(array('raw'=>1));
+
+                $output = "<ul>\n";
+                foreach ($translations as $key => $value) :
+                    if ($site_lang == $key) continue;
+                    $search = ($site_lang != $default_language) ? $site_lang.'/'.$this->plugin_slug : $this->plugin_slug;
+                    $replace = ($key != $default_language) ? $key.'/'.$this->plugin_slug : $this->plugin_slug;
+                    $url = str_replace($search, $replace, $_SERVER['REQUEST_URI']);
+                    $output .= "<li class=\"" . $value['classes'][2] . "\"><a href=\"" . $url . "\"><img src=\"" . $value['flag']. "\" title=\"" . $value['name'] . "\" alt=\"" . $value['name'] . "\" /> " . $value['name'] . "</a></li>\n";
+                endforeach;
+                $output .= "</ul>";
+            }
+
+            return $output;
+        }
 
     } // END class Best_Practices_Plugin
 } // END if(!class_exists('Best_Practices_Plugin'))
