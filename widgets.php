@@ -25,8 +25,17 @@ class Best_Practices_Widget extends WP_Widget {
 	);
 
 	public function widget( $args, $instance ) {
+		$site_language = strtolower(get_bloginfo('language'));
+		$lang = substr($site_language,0,2);
+		$locale = array(
+		    'pt' => 'pt_BR',
+		    'es' => 'es_ES',
+		    'fr' => 'fr_FR',
+		    'en' => 'en'
+		);
+
         $bp_config = get_option('bp_config');
-        $bp_service_request = $this->service_url . '/api/bp?limit=' . $instance['total'];
+        $bp_service_request = $this->service_url . '/api/bp?limit=' . $instance['total'] . '&lang=' . $locale[$lang];
 
         $response = @file_get_contents($bp_service_request);
         if ($response){
