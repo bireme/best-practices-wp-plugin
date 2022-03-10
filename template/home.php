@@ -229,7 +229,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                                                     <span>
                                                         <?php
                                                             if (strpos($value, '^') !== false){
-                                                                echo print_lang_value($value, $site_language);
+                                                                echo print_lang_value($value, $lang);
                                                             }elseif (array_key_exists($filter, $bp_texts)){
                                                                 echo translate_label($bp_texts, $value, $filter);
                                                             }else{
@@ -289,7 +289,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                                         ?>
                                         <?php if ( strpos($filter_value, '^') !== false ): ?>
                                             <tr>
-                                                <td><a href='<?php echo $filter_link; ?>'><?php print_lang_value($filter_value, $site_language); ?></a></td>
+                                                <td><a href='<?php echo $filter_link; ?>'><?php print_lang_value($filter_value, $lang); ?></a></td>
                                                 <td width="35"><span class="badge badge-primary"><?php echo $filter_count; ?></span></td>
                                             </tr>
                                         <?php elseif ( array_key_exists($filter_field, $bp_texts) ): ?>

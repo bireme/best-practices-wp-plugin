@@ -23,7 +23,7 @@ if ( !function_exists('print_lang_value') ) {
 }
 
 if ( !function_exists('get_lang_value') ) {
-    function get_lang_value($string, $lang_code, $default_lang_code = 'en'){
+    function get_lang_value($string, $lang_code, $default_lang_code='en'){
         $lang_value = array();
         $occs = preg_split('/\|/', $string);
 
@@ -34,13 +34,14 @@ if ( !function_exists('get_lang_value') ) {
             $value = $lv[1];
             $lang_value[$lang] = $value;
         }
+
         if ( isset($lang_value[$lang_code]) ){
             $translated = $lang_value[$lang_code];
         }else{
             $translated = $lang_value[$default_lang_code];
         }
 
-        return $translated;
+        return trim($translated);
     }
 }
 
