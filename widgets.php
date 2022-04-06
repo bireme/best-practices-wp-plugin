@@ -6,7 +6,7 @@ class Best_Practices_Widget extends WP_Widget {
     private $service_url;
 
 	function __construct() {
-        $this->service_url = 'https://admin.bestpractices.teste.bvsalud.org';
+        $this->service_url = 'https://admin.bestpractices.bvsalud.org';
 
 		parent::__construct(
 			'best_practices_widget',
