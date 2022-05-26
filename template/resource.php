@@ -383,7 +383,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             <?php echo $resource->other_population_group; ?>
                         </div>
                     <?php elseif ( $resource->population_group ): ?>
-                        <div class="box1 title1 text-center">
+                        <div class="box1 title1">
                             <h4><?php echo mb_strtoupper(__('Population Group', 'bp')); ?></h4>
                             <table class="table table-sm">
                                 <tbody>
@@ -402,7 +402,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             <?php echo $resource->other_intervention; ?>
                         </div>
                     <?php elseif ( $resource->intervention ): ?>
-                        <div class="box1 title1 text-center">
+                        <div class="box1 title1">
                             <h4><?php echo mb_strtoupper(__('Intervention', 'bp')); ?></h4>
                             <table class="table table-sm">
                                 <tbody>
@@ -416,7 +416,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                         </div>
                     <?php endif; ?>
                     <?php if ( $resource->target ): ?>
-                        <div class="box1 title1 text-center">
+                        <div class="box1 title1">
                             <h4><?php echo mb_strtoupper(__('SDG', 'bp')); ?></h4>
                             <table class="table table-sm">
                                 <tbody>
