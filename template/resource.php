@@ -102,32 +102,32 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
 <?php get_header('best-practices');?>
 
 <section id="sectionSearch" class="padding2">
-	<div class="container">
-		<div class="col-md-12">
+    <div class="container">
+        <div class="col-md-12">
             <form role="search" method="get" name="formHome" id="searchForm" action="<?php echo real_site_url($bp_plugin_slug); ?>">
-				<div class="row g-3">
-					<div class="col-9 offset-1 text-right">
+                <div class="row g-3">
+                    <div class="col-9 offset-1 text-right">
                         <input type="hidden" name="lang" id="lang" value="<?php echo $lang; ?>">
                         <input type="hidden" name="sort" id="sort" value="">
                         <input type="hidden" name="format" id="format" value="summary">
                         <input type="hidden" name="count" id="count" value="10">
                         <input type="hidden" name="page" id="page" value="1">
                         <input value='' name="q" class="form-control input-search" id="fieldSearch" type="text" autocomplete="off" placeholder="<?php _e('Enter one or more words', 'bp'); ?>">
-						<a id="speakBtn" href="#"><i class="fas fa-microphone-alt"></i></a>
-					</div>
-					<div class="col-1 float-end">
-						<button type="submit" id="submitHome" class="btn btn-warning">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+                        <a id="speakBtn" href="#"><i class="fas fa-microphone-alt"></i></a>
+                    </div>
+                    <div class="col-1 float-end">
+                        <button type="submit" id="submitHome" class="btn btn-warning">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </section>
 
 <section class="padding1">
-	<div class="container viewBt">
+    <div class="container viewBt">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo $home_url ?>"><?php _e('Home','bp'); ?></a></li>
@@ -149,7 +149,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                 </div>
             <?php else : ?>
                 <div class="col-md-9">
-    				<div class="bpBtAction">
+                    <div class="bpBtAction">
                         <!-- AddThis Button BEGIN -->
                         <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
                             <a class="addthis_button_facebook"></a>
@@ -163,44 +163,48 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                         <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
                         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $bp_addthis_id; ?>"></script>
                         <!-- AddThis Button END -->
-    				</div>
-    				<div class="bp-data">
-    					<h3><i class="fas fa-caret-right"></i><b><?php echo __('Basic Information', 'bp'); ?></b></h3><br />
+                    </div>
+                    <div class="bp-data">
+                        <h3><i class="fas fa-caret-right"></i><b><?php echo __('Basic Information', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->introduction ): ?>
-        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Brief Introduction', 'bp') . ':'; ?></b></h5>
-        					<p><?php echo $resource->introduction; ?></p>
-        					<hr />
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Brief Introduction', 'bp') . ':'; ?></b></h5>
+                            <p><?php echo $resource->introduction; ?></p>
+                            <hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->objectives ): ?>
-        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Objectives', 'bp') . ':'; ?></b></h5>
-        					<p><?php echo $resource->objectives; ?></p>
-        					<hr />
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Objectives', 'bp') . ':'; ?></b></h5>
+                            <p><?php echo $resource->objectives; ?></p>
+                            <hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->activities ): ?>
-        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Implementation', 'bp') . '/' . __('Activities', 'bp') . ':'; ?></b></h5>
-        					<p><?php echo $resource->activities; ?></p>
-        					<hr />
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Implementation', 'bp') . '/' . __('Activities', 'bp') . ':'; ?></b></h5>
+                            <p><?php echo $resource->activities; ?></p>
+                            <hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->main_results ): ?>
-        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Results', 'bp') . ':'; ?></b></h5>
-        					<p><?php echo $resource->main_results; ?></p>
-        					<hr />
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Results', 'bp') . ':'; ?></b></h5>
+                            <p><?php echo $resource->main_results; ?></p>
+                            <hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->factors ): ?>
-        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Limitations and Hindrances', 'bp') . ':'; ?></b></h5>
-        					<p><?php echo $resource->factors; ?></p>
-        					<hr />
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Limitations and Hindrances', 'bp') . ':'; ?></b></h5>
+                            <p><?php echo $resource->factors; ?></p>
+                            <hr />
                         <?php endif; ?>
 
-                        <?php if ( $resource->technical_matter ): ?>
-        					<h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Topics', 'bp') . '/' . __('Themes', 'bp') . ':'; ?></b></h5>
+                        <?php if ( $resource->other_technical_matter ): ?>
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Topics', 'bp') . '/' . __('Themes', 'bp') . ':'; ?></b></h5>
+                            <p><?php echo $resource->other_technical_matter; ?></p>
+                            <hr />
+                        <?php elseif ( $resource->technical_matter ): ?>
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Topics', 'bp') . '/' . __('Themes', 'bp') . ':'; ?></b></h5>
                             <?php $technical_matters = wp_list_pluck( $resource->technical_matter, 'name' ); ?>
-        					<p><?php echo implode('; ', $technical_matters); ?></p>
-        					<hr />
+                            <p><?php echo implode('; ', $technical_matters); ?></p>
+                            <hr />
                         <?php endif; ?>
 
                         <?php if ( $resource->outcome_information ): ?>
@@ -295,85 +299,137 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             <?php endforeach; ?>
                         <?php endif; ?>
                         <hr />
-    				</div>
-    			</div>
+                    </div>
+                </div>
 
                 <div class="col-md-3 bp-filters">
-    				<div class="box1 title1">
-    					<h4><?php echo mb_strtoupper(__('Dates', 'bp')); ?></h4>
+                    <div class="box1 title1">
+                        <h4><?php echo mb_strtoupper(__('Dates', 'bp')); ?></h4>
                         <?php if ( $resource->start_date ): ?>
                             <i class="fas fa-calendar-alt"></i> <?php echo __('Start', 'bp') . ': ' . date('Y-m-d', strtotime($resource->start_date)); ?><br />
                         <?php endif; ?>
                         <?php if ( $resource->end_date ): ?>
                             <i class="fas fa-calendar-alt"></i> <?php echo __('End', 'bp') . ': ' . date('Y-m-d', strtotime($resource->end_date)); ?><br />
                         <?php endif; ?>
-    				</div>
+                    </div>
                     <?php if ( $resource->type ): ?>
                         <div class="box1 title1">
                             <h4><?php echo mb_strtoupper(__('Type', 'bp')); ?></h4>
-        					<?php echo $resource->type->name; ?>
-        				</div>
+                            <?php echo $resource->type->name; ?>
+                        </div>
                     <?php endif; ?>
                     <?php if ( $resource->subregion ): ?>
                         <div class="box1 title1">
-                            <h4><?php echo mb_strtoupper(__('Sub Region', 'bp')); ?></h4>
-        					<?php echo $resource->subregion->name; ?>
-        				</div>
+                            <h4><?php echo mb_strtoupper(__('Subregion', 'bp')); ?></h4>
+                            <table class="table table-sm">
+                                <tbody>
+                                    <?php foreach ($resource->subregion as $subregion) : ?>
+                                    <tr>
+                                        <td><?php echo $subregion->name; ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php endif; ?>
                     <?php if ( $resource->country ): ?>
                         <div class="box1 title1">
                             <h4><?php echo mb_strtoupper(__('Country', 'bp')); ?></h4>
-        					<img src="https://www.countryflags.io/<?php echo $resource->country->code; ?>/shiny/32.png" alt="" style="width: 30px;">
-                            <?php echo $resource->country->name; ?>
-        				</div>
+                            <table class="table table-sm">
+                                <tbody>
+                                    <?php foreach ($resource->country as $country) : ?>
+                                    <tr>
+                                        <td width="35"><img src="https://www.countryflags.io/<?php echo $country->code; ?>/shiny/32.png" alt="" style="width: 30px;"></td>
+                                        <td><?php echo $country->name; ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php endif; ?>
                     <?php if ( $resource->other_institution ): ?>
                         <div class="box1 title1">
                             <h4><?php echo mb_strtoupper(__('Institution', 'bp')); ?></h4>
-        					<?php echo $resource->other_institution; ?>
-        				</div>
+                            <?php echo $resource->other_institution; ?>
+                        </div>
                     <?php elseif ( $resource->institution ): ?>
                         <div class="box1 title1">
                             <h4><?php echo mb_strtoupper(__('Institution', 'bp')); ?></h4>
-        					<?php echo $resource->institution->name; ?>
-        				</div>
+                            <?php echo $resource->institution->name; ?>
+                        </div>
                     <?php endif; ?>
                     <?php if ( $resource->other_stakeholder ): ?>
                         <div class="box1 title1">
                             <h4><?php echo mb_strtoupper(__('Stakeholder', 'bp')); ?></h4>
-        					<?php echo $resource->other_stakeholder; ?>
-        				</div>
+                            <?php echo $resource->other_stakeholder; ?>
+                        </div>
                     <?php elseif ( $resource->stakeholder ): ?>
                         <div class="box1 title1">
                             <h4><?php echo mb_strtoupper(__('Stakeholder', 'bp')); ?></h4>
-        					<?php echo $resource->stakeholder->name; ?>
-        				</div>
+                            <table class="table table-sm">
+                                <tbody>
+                                    <?php foreach ($resource->stakeholder as $stakeholder) : ?>
+                                    <tr>
+                                        <td><?php echo $stakeholder->name; ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php endif; ?>
-                    <?php if ( $resource->population_group ): ?>
+                    <?php if ( $resource->other_population_group ): ?>
+                        <div class="box1 title1">
+                            <h4><?php echo mb_strtoupper(__('Population Group', 'bp')); ?></h4>
+                            <?php echo $resource->other_population_group; ?>
+                        </div>
+                    <?php elseif ( $resource->population_group ): ?>
                         <div class="box1 title1 text-center">
                             <h4><?php echo mb_strtoupper(__('Population Group', 'bp')); ?></h4>
-                            <?php foreach ($resource->population_group as $population_group) : ?>
-                                <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top"><?php echo $population_group->name; ?></a>
-                            <?php endforeach; ?>
-        				</div>
+                            <table class="table table-sm">
+                                <tbody>
+                                    <?php foreach ($resource->population_group as $population_group) : ?>
+                                    <tr>
+                                        <td><?php echo $population_group->name; ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php endif; ?>
-                    <?php if ( $resource->intervention ): ?>
+                    <?php if ( $resource->other_intervention ): ?>
+                        <div class="box1 title1">
+                            <h4><?php echo mb_strtoupper(__('Intervention', 'bp')); ?></h4>
+                            <?php echo $resource->other_intervention; ?>
+                        </div>
+                    <?php elseif ( $resource->intervention ): ?>
                         <div class="box1 title1 text-center">
                             <h4><?php echo mb_strtoupper(__('Intervention', 'bp')); ?></h4>
-                            <?php foreach ($resource->intervention as $intervention) : ?>
-                                <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top"><?php echo $intervention->name; ?></a>
-                            <?php endforeach; ?>
-        				</div>
+                            <table class="table table-sm">
+                                <tbody>
+                                    <?php foreach ($resource->intervention as $intervention) : ?>
+                                    <tr>
+                                        <td><?php echo $intervention->name; ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php endif; ?>
                     <?php if ( $resource->target ): ?>
                         <div class="box1 title1 text-center">
                             <h4><?php echo mb_strtoupper(__('SDG', 'bp')); ?></h4>
-                            <?php foreach ($resource->target as $target) : ?>
-                                <a href="javascript:void(0)" class="aSpan" data-toggle="tooltip" data-placement="top" title="<?php echo $target->subtext; ?>"><?php echo $target->name; ?></a>
-                            <?php endforeach; ?>
-        				</div>
+                            <table class="table table-sm">
+                                <tbody>
+                                    <?php foreach ($resource->target as $target) : ?>
+                                    <tr>
+                                        <td><?php echo $target->name; ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
                     <?php endif; ?>
-    			</div>
+                </div>
             <?php endif; ?>
         </div>
     </div>

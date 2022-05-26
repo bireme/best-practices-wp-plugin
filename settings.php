@@ -9,7 +9,7 @@ function bp_page_admin() {
     }else{
         $available_filter_list = array(
                                     'type' =>  __('Type','bp'),
-                                    'subregion' => __('Sub Region','bp') ,
+                                    'subregion' => __('Subregion','bp') ,
                                     'country' =>  __('Country', 'bp'),
                                     'institution' =>  __('Institution','bp'),
                                     'stakeholder' =>  __('Stakeholder','bp'),
