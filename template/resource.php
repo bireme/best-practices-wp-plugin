@@ -203,7 +203,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                         <?php elseif ( $resource->technical_matter ): ?>
                             <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Main Topics', 'bp') . '/' . __('Themes', 'bp') . ':'; ?></b></h5>
                             <?php $technical_matters = wp_list_pluck( $resource->technical_matter, 'name' ); ?>
-                            <p><?php echo implode(';<br />', $technical_matters); ?></p>
+                            <p><?php echo implode('<br />', $technical_matters); ?></p>
                             <hr />
                         <?php endif; ?>
 
