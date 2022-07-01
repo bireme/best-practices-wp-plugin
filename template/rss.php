@@ -13,9 +13,9 @@ $bp_initial_filter = $bp_config['initial_filter'];
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
-$query       = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
-$user_filter = stripslashes($_GET['filter']);
-$page        = ( isset($_GET['page']) ? $_GET['page'] : 1 );
+$query       = ( isset($_GET['s']) ? sanitize_text_field($_GET['s']) : sanitize_text_field($_GET['q']) );
+$user_filter = stripslashes(sanitize_text_field($_GET['filter']));
+$page        = ( isset($_GET['page']) ? sanitize_text_field($_GET['page']) : 1 );
 $total       = 0;
 $count       = 10;
 $filter      = '';

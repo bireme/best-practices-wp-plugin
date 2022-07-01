@@ -27,15 +27,15 @@ $locale = array(
 );
 
 // set query using default param q (query) or s (wordpress search) or newexpr (metaiah)
-$query = $_GET['s'] . $_GET['q'];
+$query = sanitize_text_field($_GET['s']) . sanitize_text_field($_GET['q']);
 $query = stripslashes( trim($query) );
 $query = ( $query ) ? $query : '*:*';
 
-$user_filter = stripslashes($_GET['filter']);
-$page   = ( !empty($_GET['page'] ) ? $_GET['page'] : 1 );
-$format = ( !empty($_GET['format'] ) ? $_GET['format'] : 'summary' );
-$sort   = ( !empty($_GET['sort'] ) ? $order[$_GET['sort']] : '');
-$count  = ( !empty($_GET['count'] ) ? $_GET['count'] : 10 );
+$user_filter = stripslashes(sanitize_text_field($_GET['filter']));
+$page   = ( !empty($_GET['page'] ) ? sanitize_text_field($_GET['page']) : 1 );
+$format = ( !empty($_GET['format'] ) ? sanitize_text_field($_GET['format']) : 'summary' );
+$sort   = ( !empty($_GET['sort'] ) ? $order[sanitize_text_field($_GET['sort'])] : '');
+$count  = ( !empty($_GET['count'] ) ? sanitize_text_field($_GET['count']) : 10 );
 $total  = 0;
 $filter = '';
 
@@ -97,7 +97,7 @@ if ($response){
 
 $params  = !empty($format) ? '&format=' . $format : '';
 $params .= !empty($count) ? '&count=' . $count : '';
-$params .= !empty($_GET['sort']) ? '&sort=' . $_GET['sort'] : '';
+$params .= !empty($_GET['sort']) ? '&sort=' . sanitize_text_field($_GET['sort']) : '';
 
 $page_url_params = real_site_url($bp_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($user_filter) . $params;
 $feed_url = real_site_url($bp_plugin_slug) . 'best-practices-feed?q=' . urlencode($query) . '&filter=' . urlencode($filter);
