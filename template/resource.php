@@ -377,19 +377,21 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             </table>
                         </div>
                     <?php endif; ?>
-                    <?php if ( $resource->entity ): ?>
-                        <div class="box1 title1">
-                            <h4><?php echo mb_strtoupper(__('Entity (PAHO)', 'bp')); ?></h4>
-                            <table class="table table-sm">
-                                <tbody>
-                                    <?php foreach ($resource->entity as $entity) : ?>
-                                    <tr>
-                                        <td><?php echo $entity->name; ?></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
+                    <?php if ( 'paho-who-technical-cooperation' == $resource->type->slug ): ?>
+                        <?php if ( $resource->entity ): ?>
+                            <div class="box1 title1">
+                                <h4><?php echo mb_strtoupper(__('Entity (PAHO)', 'bp')); ?></h4>
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <?php foreach ($resource->entity as $entity) : ?>
+                                        <tr>
+                                            <td><?php echo $entity->name; ?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
                     <?php if ( $resource->other_population_group ): ?>
                         <div class="box1 title1">
