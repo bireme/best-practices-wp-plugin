@@ -367,7 +367,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                                 <tbody>
                                     <?php foreach ($resource->country as $country) : ?>
                                     <tr>
-                                        <td width="35"><img src="https://www.countryflagsapi.com/png/<?php echo $resource->country->code; ?>" alt="" style="width: 30px;"></td>
+                                        <td width="35"><img src="https://www.countryflagsapi.com/png/<?php echo $country->code; ?>" alt="" style="width: 30px;"></td>
                                         <td><?php echo $country->name; ?></td>
                                     </tr>
                                     <?php endforeach; ?>
