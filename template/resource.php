@@ -58,6 +58,14 @@ $likert = array(
     "E" => __("I totally disagree",'bp')
 );
 
+// modality options
+$coop_modality = array(
+    "A" => __("North-North",'bp'),
+    "B" => __("North-South",'bp'),
+    "C" => __("South-South",'bp'),
+    "D" => __("Triangular Cooperation",'bp')
+);
+
 // $bp_service_request = $solr_service_url . '/solr/best-practices/select/?q=id:' . $resource_id . '&wt=json';
 
 $bp_service_request = $bp_service_url . '/api/bp/' . $resource_id . '?lang=' . $locale[$lang];
@@ -219,6 +227,12 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             <hr />
                         <?php endif; ?>
 
+                        <?php if ( $resource->sustainability ): ?>
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Sustainability', 'bp') . ':'; ?></b></h5>
+                            <p><?php echo $resource->sustainability; ?></p>
+                            <hr />
+                        <?php endif; ?>
+
                         <?php if ( 'paho-who-technical-cooperation' == $resource->type->slug ): ?>
                             <h3><i class="fas fa-caret-right"></i><b><?php echo __('Technical Cooperation', 'bp'); ?></b></h3><br />
                             <?php if ( $resource->public_health_issue ): ?>
@@ -256,6 +270,14 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                         <?php if ( $resource->lessons_information ): ?>
                             <h5><i class="fas fa-chevron-right"></i><b><?php echo __('What were the lessons learned for that will improve our expertise and add value to the Organization', 'bp') . '?'; ?></b></h5>
                             <p><?php echo $resource->lessons_information; ?></p>
+                            <hr />
+                        <?php endif; ?>
+
+                        <?php if ( $resource->keywords ) : ?>
+                            <?php $keywords = json_decode($resource->keywords, true); ?>
+                            <?php $keywords = wp_list_pluck( $keywords, 'value' ); ?>
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Keywords', 'relatos') . ':'; ?></b></h5>
+                            <p><?php echo implode('; ', $keywords); ?></p>
                             <hr />
                         <?php endif; ?>
 
@@ -316,6 +338,12 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                         <div class="box1 title1">
                             <h4><?php echo mb_strtoupper(__('Type', 'bp')); ?></h4>
                             <?php echo $resource->type->name; ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ( $resource->coop_modality ): ?>
+                        <div class="box1 title1">
+                            <h4><?php echo mb_strtoupper(__('Modality of Cooperation', 'bp')); ?></h4>
+                            <?php echo $coop_modality[$resource->coop_modality]; ?>
                         </div>
                     <?php endif; ?>
                     <?php if ( $resource->subregion ): ?>
