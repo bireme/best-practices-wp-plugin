@@ -281,10 +281,10 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             <hr />
                         <?php endif; ?>
 
-                        <h3><i class="fas fa-caret-right"></i><b><?php echo __('Multimedia', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->attachments ) : ?>
                             <?php $bp_images = get_bp_images($response_json[0]); ?>
                             <?php if ( $bp_images ) : ?>
+                                <h3><i class="fas fa-caret-right"></i><b><?php echo __('Multimedia', 'bp'); ?></b></h3><br />
                                 <div class="bpImg clearfix">
                                     <?php foreach ($bp_images as $img): ?>
                                         <div class="bp-thumb">
