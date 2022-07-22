@@ -120,11 +120,11 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                 <div class="row g-3">
                     <div class="col-9 offset-1 text-right">
                         <input type="hidden" name="lang" id="lang" value="<?php echo $lang; ?>">
-                        <input type="hidden" name="sort" id="sort" value="<?php echo $sort; ?>">
-                        <input type="hidden" name="format" id="format" value="<?php echo $format; ?>">
-                        <input type="hidden" name="count" id="count" value="<?php echo $count; ?>">
+                        <input type="hidden" name="sort" id="sort" value="<?php echo esc_attr($sort); ?>">
+                        <input type="hidden" name="format" id="format" value="<?php echo esc_attr($format); ?>">
+                        <input type="hidden" name="count" id="count" value="<?php echo esc_attr($count); ?>">
                         <input type="hidden" name="page" id="page" value="1">
-                        <input value='<?php echo ( '*:*' == $query ) ? '' : $query; ?>' name="q" class="form-control input-search" id="fieldSearch" type="text" autocomplete="off" placeholder="<?php _e('Enter one or more words', 'bp'); ?>">
+                        <input value='<?php echo ( '*:*' == $query ) ? '' : esc_attr($query); ?>' name="q" class="form-control input-search" id="fieldSearch" type="text" autocomplete="off" placeholder="<?php _e('Enter one or more words', 'bp'); ?>">
                         <a id="speakBtn" href="#"><i class="fas fa-microphone-alt"></i></a>
                     </div>
                     <div class="col-1 float-end">
@@ -210,10 +210,10 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
 
                         <form method="get" name="searchFilter" id="formFilters" action="<?php echo real_site_url($bp_plugin_slug); ?>">
                             <input type="hidden" name="lang" id="lang" value="<?php echo $lang; ?>">
-                            <input type="hidden" name="sort" id="sort" value="<?php echo $sort; ?>">
-                            <input type="hidden" name="format" id="format" value="<?php echo $format; ?>">
-                            <input type="hidden" name="count" id="count" value="<?php echo $count; ?>">
-                            <input type="hidden" name="q" id="query" value="<?php echo ( '*:*' == $query ) ? '' : $query; ?>" >
+                            <input type="hidden" name="sort" id="sort" value="<?php echo esc_attr($sort); ?>">
+                            <input type="hidden" name="format" id="format" value="<?php echo esc_attr($format); ?>">
+                            <input type="hidden" name="count" id="count" value="<?php echo esc_attr($count); ?>">
+                            <input type="hidden" name="q" id="query" value="<?php echo ( '*:*' == $query ) ? '' : esc_attr($query); ?>" >
                             <input type="hidden" name="filter" id="filter" value="">
 
                             <div class="box1 title1 mb-4">
