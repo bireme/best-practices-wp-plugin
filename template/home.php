@@ -259,7 +259,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                         <?php if ($facet_list[$filter_field] ) : $count = 0; ?>
                             <div class="box1 title1">
                                 <h4><?php echo mb_strtoupper($bp_texts['filter'][$filter_field]); ?></h4>
-                                <table class="table table-sm">
+                                <table class="table table-sm list">
                                     <?php
                                         $odd = array();
                                         $even = array();
@@ -305,6 +305,9 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                                         <?php endif; ?>
                                     <?php } ?>
                                 </table>
+                                <div class="text-center">
+                                    <a href="javascript:void(0)" class="badge badge-pill badge-light show-more" style="display: none;"><?php _e('show more','bp'); ?>...</a>
+                                </div>
                             </div>
                         <?php endif; ?>
                     <?php endforeach; ?>

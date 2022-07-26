@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Best Practices WP Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
-"POT-Creation-Date: 2022-07-20 18:59-0300\n"
-"PO-Revision-Date: 2022-07-20 18:59-0300\n"
+"POT-Creation-Date: 2022-07-26 00:04-0300\n"
+"PO-Revision-Date: 2022-07-26 00:04-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -76,7 +76,7 @@ msgid "PAHO's Strategic Plan Outcomes"
 msgstr ""
 
 #: settings.php:19
-msgid "Target"
+msgid "SDGs Targets"
 msgstr ""
 
 #: settings.php:32
@@ -178,6 +178,10 @@ msgstr "Filtres Sélectionnés"
 #: template/home.php:256
 msgid "Filters"
 msgstr "Filtres"
+
+#: template/home.php:309
+msgid "show more"
+msgstr ""
 
 #: template/related.php:64 template/similar.php:49
 msgid "No related documents"
@@ -315,7 +319,7 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
-#: template/resource.php:284
+#: template/resource.php:287
 msgid "Multimedia"
 msgstr ""
 
@@ -348,7 +352,7 @@ msgid "SHAA 2030 Goals"
 msgstr ""
 
 #: template/resource.php:478
-msgid "SDG"
+msgid "SDG Targets"
 msgstr ""
 
 #: template/rss.php:52

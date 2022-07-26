@@ -475,7 +475,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                     <?php endif; ?>
                     <?php if ( $resource->target ): ?>
                         <div class="box1 title1">
-                            <h4><?php echo mb_strtoupper(__('SDG', 'bp')); ?></h4>
+                            <h4><?php echo mb_strtoupper(__('SDG Targets', 'bp')); ?></h4>
                             <table class="table table-sm">
                                 <tbody>
                                     <?php foreach ($resource->target as $target) : ?>

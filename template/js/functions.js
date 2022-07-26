@@ -50,6 +50,32 @@ $j(document).ready(function(){
     });
 });
 
+$j(document).ready(function(){
+    var list = $j('.table.list');
+
+    list.each(function( i ) {
+        var numToShow = 5;
+        var button = $j(this).next().find('a.show-more');
+        var items = $j('tr', this);
+        var numInList = items.length;
+
+        items.hide();
+        if (numInList > numToShow) {
+            button.show();
+        }
+        items.slice(0, numToShow).show();
+
+        button.click(function(){
+            var showing = items.filter(':visible').length;
+            items.slice(showing - 1, showing + numToShow).fadeIn();
+            var nowShowing = items.filter(':visible').length;
+            if (nowShowing >= numInList) {
+                button.hide();
+            }
+        });
+    });
+});
+
 function change_count(elem) {
     var form = document.searchForm;
     form.count.value = elem.value;

@@ -4,21 +4,23 @@ function bp_page_admin() {
 
     $config = get_option('bp_config');
 
+    $default_filter_list = array(
+                                'type' =>  __('Type','bp'),
+                                'subregion' => __('Subregion','bp') ,
+                                'country' =>  __('Country', 'bp'),
+                                'institution' =>  __('Institution','bp'),
+                                'stakeholder' =>  __('Stakeholder','bp'),
+                                'population_group' =>  __('Population Group','bp'),
+                                'intervention' =>  __('Intervention','bp'),
+                                'outcomes' =>  __("PAHO's Strategic Plan Outcomes",'bp'),
+                                'target' =>  __('SDGs Targets','bp'),
+    );
+
     if ($bp_texts['filter']){
-        $available_filter_list = $bp_texts['filter'];
+        $available_filter_list = array_merge($bp_texts['filter'], $default_filter_list);
     }else{
-        $available_filter_list = array(
-                                    'type' =>  __('Type','bp'),
-                                    'subregion' => __('Subregion','bp') ,
-                                    'country' =>  __('Country', 'bp'),
-                                    'institution' =>  __('Institution','bp'),
-                                    'stakeholder' =>  __('Stakeholder','bp'),
-                                    'population_group' =>  __('Population Group','bp'),
-                                    'intervention' =>  __('Intervention','bp'),
-                                    'outcomes' =>  __("PAHO's Strategic Plan Outcomes",'bp'),
-                                    'target' =>  __('Target','bp'),
-        );
-        $bp_texts['filter'] = $available_filter_list;
+        $available_filter_list = $default_filter_list;
+        $bp_texts['filter']    = $default_filter_list;
     }
 
     if ( $config['available_filter'] ){
@@ -126,7 +128,7 @@ function bp_page_admin() {
                                           <ul id="sortable2" class="connectedSortable">
                                               <?php
                                                 foreach ($config_filter_list as $selected_filter) {
-                                                    $filter_title = $bp_texts['filter'][$selected_filter];
+                                                    $filter_title = $available_filter_list[$selected_filter];
                                                     if ($filter_title != ''){
                                                         echo '<li class="ui-state-default" id="' . $selected_filter . '">' . $filter_title . '</li>';
                                                     }
@@ -160,6 +162,7 @@ function bp_page_admin() {
                     var changedList = this.id;
                     var selected_filter = $j(this).sortable('toArray');
                     var selected_filter_list = selected_filter.join(';');
+                    if (!selected_filter_list) selected_filter_list = false;
                     $j('#available_filter_aux').val(selected_filter_list);
                 }
             });

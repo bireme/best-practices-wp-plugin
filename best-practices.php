@@ -91,9 +91,12 @@ if(!class_exists('Best_Practices_Plugin')) {
                 $site_language = strtolower(get_bloginfo('language'));
                 $lang = substr($site_language,0,2);
 
-                $bp_texts = @parse_ini_file(BP_PLUGIN_PATH . "/languages/texts_" . $lang . ".ini", true);
+                $bp_texts = @parse_ini_file(BP_PLUGIN_PATH . "/languages/texts_".$lang.".ini", true);
                 if ( !$bp_texts ) {
-                    $bp_texts = @parse_ini_file(BP_PLUGIN_PATH . "/languages/texts_en.ini", true);
+                    $bp_texts = @parse_ini_file(BP_PLUGIN_PATH . "/languages/texts_".$lang."-SAMPLE.ini", true);
+                    if ( !$bp_texts ) {
+                        $bp_texts = @parse_ini_file(BP_PLUGIN_PATH . "/languages/texts_en-SAMPLE.ini", true);
+                    }
                 }
             }
 

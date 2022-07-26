@@ -118,6 +118,9 @@
 	color: #0093d6;
 	font-size: 16px;
 }
+.show-more {
+	margin: 6px 0;
+}
 /*
 .slick-prev:before {
 	color: #0093d6;
