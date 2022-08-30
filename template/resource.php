@@ -273,8 +273,8 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             <hr />
                         <?php endif; ?>
 
-                        <?php if ( $resource->keywords ) : ?>
-                            <?php $keywords = json_decode($resource->keywords, true); ?>
+                        <?php if ( $resource->descriptors ) : ?>
+                            <?php $keywords = json_decode($resource->descriptors, true); ?>
                             <?php $keywords = wp_list_pluck( $keywords, 'value' ); ?>
                             <h5><i class="fas fa-chevron-right"></i><b><?php echo __('Keywords', 'bp') . ':'; ?></b></h5>
                             <p><?php echo implode('; ', $keywords); ?></p>
