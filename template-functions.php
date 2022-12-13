@@ -174,11 +174,11 @@ if ( !function_exists('get_bp_targets') ) {
 
         foreach ($texts as $text) {
             $keys = array_map(function($val) {
-                return explode('^', $val){0};
+                return explode('^', $val)[0];
             }, $text);
 
             $values = array_map(function($val) {
-                return explode('^', $val){1};
+                return explode('^', $val)[1];
             }, $text);
 
             $t = array_combine($keys, $values);
