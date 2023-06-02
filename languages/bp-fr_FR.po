@@ -4,36 +4,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Best Practices WP Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
-"POT-Creation-Date: 2022-07-26 00:04-0300\n"
-"PO-Revision-Date: 2022-07-26 00:04-0300\n"
+"POT-Creation-Date: 2023-06-01 22:10-0300\n"
+"PO-Revision-Date: 2023-06-01 22:10-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_attr;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: best-practices.php:103
+#: best-practices.php:106
 msgid "Best Practices settings"
 msgstr ""
 
-#: best-practices.php:103 widgets.php:13
+#: best-practices.php:106 widgets.php:13
 msgid "Best Practices"
 msgstr ""
 
-#: best-practices.php:118
+#: best-practices.php:121
 msgid "Settings"
 msgstr ""
 
-#: best-practices.php:173
+#: best-practices.php:176
 msgid "Best Practices sidebar"
 msgstr ""
 
-#: best-practices.php:183
+#: best-practices.php:186
 msgid "Best Practices header"
 msgstr ""
 
@@ -43,103 +43,103 @@ msgstr ""
 msgid "go to page"
 msgstr ""
 
-#: settings.php:11 template/resource.php:339
+#: settings.php:8 template/resource.php:339
 msgid "Type"
 msgstr ""
 
-#: settings.php:12 template/resource.php:351
+#: settings.php:9 template/resource.php:351
 msgid "Subregion"
 msgstr ""
 
-#: settings.php:13 template/resource.php:365
+#: settings.php:10 template/resource.php:365
 msgid "Country"
 msgstr ""
 
-#: settings.php:14 template/resource.php:380 template/resource.php:385
+#: settings.php:11 template/resource.php:380 template/resource.php:385
 msgid "Institution"
 msgstr ""
 
-#: settings.php:15 template/resource.php:391 template/resource.php:396
+#: settings.php:12 template/resource.php:391 template/resource.php:396
 msgid "Stakeholder"
 msgstr ""
 
-#: settings.php:16 template/resource.php:426 template/resource.php:431
+#: settings.php:13 template/resource.php:426 template/resource.php:431
 msgid "Population Group"
 msgstr ""
 
-#: settings.php:17 template/resource.php:445 template/resource.php:450
+#: settings.php:14 template/resource.php:445 template/resource.php:450
 msgid "Intervention"
 msgstr ""
 
-#: settings.php:18 template/resource.php:465
+#: settings.php:15 template/resource.php:465
 msgid "PAHO's Strategic Plan Outcomes"
 msgstr ""
 
-#: settings.php:19
+#: settings.php:16
 msgid "SDGs Targets"
 msgstr ""
 
-#: settings.php:32
+#: settings.php:33
 msgid "Best Practices record settings"
 msgstr ""
 
-#: settings.php:40
+#: settings.php:41
 msgid "Plugin page"
 msgstr ""
 
-#: settings.php:44
+#: settings.php:45
 msgid "Filter query"
 msgstr ""
 
-#: settings.php:48
+#: settings.php:49
 msgid "AddThis profile ID"
 msgstr ""
 
-#: settings.php:52
+#: settings.php:53
 msgid "Google Analytics code"
 msgstr ""
 
-#: settings.php:56
+#: settings.php:57
 msgid "Fulltext"
 msgstr "Texte intégral"
 
-#: settings.php:60
+#: settings.php:61
 msgid "Present alternative fulltext links"
 msgstr "Présenter des liens alternatifs en texte intégral"
 
-#: settings.php:75
+#: settings.php:76
 msgid "Home URL"
 msgstr ""
 
-#: settings.php:80 settings.php:87
+#: settings.php:81 settings.php:88
 msgid "Page title"
 msgstr ""
 
-#: settings.php:93
+#: settings.php:94
 msgid "Related Documents filter"
 msgstr "Filtre de Documents Similaires"
 
-#: settings.php:96 settings.php:103
+#: settings.php:97 settings.php:104
 msgid "The filters must be separated by commas."
 msgstr "Les filtres doivent être séparés par des virgules."
 
-#: settings.php:100
+#: settings.php:101
 msgid "More Related filter"
 msgstr "Filtre de Plus Similaires"
 
-#: settings.php:107
+#: settings.php:108
 msgid "Search filters"
 msgstr ""
 
-#: settings.php:112
+#: settings.php:113
 msgid "Available"
 msgstr "Disponible"
 
-#: settings.php:125
+#: settings.php:126
 msgid "Selected"
 msgstr "Sélectionnés"
 
-#: settings.php:146
+#: settings.php:147
 msgid "Save changes"
 msgstr ""
 
@@ -372,7 +372,7 @@ msgid "See more Best Practices"
 msgstr ""
 
 #: widgets.php:77
-msgid "No best practices found"
+msgid "No good practices found"
 msgstr ""
 
 #: widgets.php:106

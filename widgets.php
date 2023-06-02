@@ -74,7 +74,7 @@ class Best_Practices_Widget extends WP_Widget {
             echo '<br />';
             echo '<div class="bp-link"><a href="' . real_site_url($bp_config['plugin_slug']) . '" class="btn btn-outline-primary" title="' . esc_html__( 'See more best practices', 'bp' ) . '">' . esc_html__( 'See more Best Practices', 'bp' ) . '</a></div>';
         } else {
-            echo esc_html__( 'No best practices found', 'bp' );
+            echo esc_html__( 'No good practices found', 'bp' );
         }
 
 		echo $args['after_widget'];
