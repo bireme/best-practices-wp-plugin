@@ -10,14 +10,14 @@ class Best_Practices_Widget extends WP_Widget {
 
 		parent::__construct(
 			'best_practices_widget',
-			esc_html__( 'Best Practices', 'bp' ),
-			array( 'description' => esc_html__( 'Display the lastest best practices', 'bp' ), ) // Args
+			esc_html__( 'Good Practices', 'bp' ),
+			array( 'description' => esc_html__( 'Display the lastest good practices', 'bp' ), ) // Args
 		);
 	}
 
 	private $widget_fields = array(
 		array(
-			'label' => 'Number of best practices',
+			'label' => 'Number of good practices',
 			'id' => 'total',
 			'default' => '5',
 			'type' => 'number',
@@ -72,7 +72,7 @@ class Best_Practices_Widget extends WP_Widget {
                 echo '</article>';
             }
             echo '<br />';
-            echo '<div class="bp-link"><a href="' . real_site_url($bp_config['plugin_slug']) . '" class="btn btn-outline-primary" title="' . esc_html__( 'See more best practices', 'bp' ) . '">' . esc_html__( 'See more Best Practices', 'bp' ) . '</a></div>';
+            echo '<div class="bp-link"><a href="' . real_site_url($bp_config['plugin_slug']) . '" class="btn btn-outline-primary" title="' . esc_html__( 'See more good practices', 'bp' ) . '">' . esc_html__( 'See more Good Practices', 'bp' ) . '</a></div>';
         } else {
             echo esc_html__( 'No good practices found', 'bp' );
         }

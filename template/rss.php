@@ -49,7 +49,7 @@ $page_url_params = home_url($bp_plugin_slug) . '?q=' . urlencode($query) . '&fil
 ?>
 <rss version="2.0">
     <channel>
-        <title><?php _e('Best Practices records', 'bp') ?> <?php echo ($query != '' ? '|' . $query : '') ?></title>
+        <title><?php _e('Good Practices records', 'bp') ?> <?php echo ($query != '' ? '|' . $query : '') ?></title>
         <link><?php echo htmlspecialchars($page_url_params) ?></link>
         <description><?php echo $query ?></description>
         <lastBuildDate><?php echo date_format(date_create(), 'D, d M Y H:i:s T');?></lastBuildDate>

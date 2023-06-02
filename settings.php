@@ -30,7 +30,7 @@ function bp_page_admin() {
 ?>
     <div class="wrap">
         <div id="icon-options-general" class="icon32"></div>
-        <h2><?php _e('Best Practices record settings', 'bp'); ?></h2>
+        <h2><?php _e('Good Practices record settings', 'bp'); ?></h2>
         <form method="post" action="options.php">
 
             <?php settings_fields('bp-settings-group'); ?>

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Best Practices
 Plugin URI: https://github.com/bireme/best-practices-wp-plugin
-Description: Search best practices records.
+Description: Search good practices records.
 Author: BIREME/OPAS/OMS
 Version: 1.0
 Author URI: http://reddes.bvsalud.org/
@@ -103,7 +103,7 @@ if(!class_exists('Best_Practices_Plugin')) {
         }
 
         function admin_menu() {
-            add_options_page(__('Best Practices settings', 'bp'), __('Best Practices', 'bp'),
+            add_options_page(__('Good Practices settings', 'bp'), __('Good Practices', 'bp'),
                 'manage_options', 'bp-settings', 'bp_page_admin');
             //call register settings function
             add_action( 'admin_init', array(&$this, 'register_settings'));
@@ -173,7 +173,7 @@ if(!class_exists('Best_Practices_Plugin')) {
 
         function register_sidebars(){
             $args = array(
-                'name' => __('Best Practices sidebar', 'bp'),
+                'name' => __('Good Practices sidebar', 'bp'),
                 'id'   => 'best-practices-home',
                 'before_widget' => '<section id="%1$s" class="row-fluid marginbottom25 widget_categories">',
                 'after_widget'  => '</section>',
@@ -183,7 +183,7 @@ if(!class_exists('Best_Practices_Plugin')) {
             register_sidebar( $args );
 
             $args2 = array(
-                'name' => __('Best Practices header', 'bp'),
+                'name' => __('Good Practices header', 'bp'),
                 'id'   => 'best-practices-header',
                 'before_widget' => '<section id="%1$s" class="row-fluid widget %2$s">',
                 'after_widget'  => '</section>',

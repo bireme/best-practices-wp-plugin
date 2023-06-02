@@ -262,7 +262,7 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
 
                         <h3><i class="fas fa-caret-right"></i><b><?php echo __('Conclusion', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->challenges_information ): ?>
-                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('What were the obstacles or challenges faced during the implementation of this best practice/initiative', 'bp') . '?'; ?></b></h5>
+                            <h5><i class="fas fa-chevron-right"></i><b><?php echo __('What were the obstacles or challenges faced during the implementation of this good practice/initiative', 'bp') . '?'; ?></b></h5>
                             <p><?php echo $resource->challenges_information; ?></p>
                             <hr />
                         <?php endif; ?>
