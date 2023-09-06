@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Best Practices WP Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
-"POT-Creation-Date: 2023-06-02 01:25-0300\n"
-"PO-Revision-Date: 2023-06-02 01:26-0300\n"
+"POT-Creation-Date: 2023-09-06 18:25-0300\n"
+"PO-Revision-Date: 2023-09-06 18:25-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -17,23 +17,23 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: best-practices.php:106
+#: best-practices.php:108
 msgid "Good Practices settings"
 msgstr ""
 
-#: best-practices.php:106 widgets.php:13
+#: best-practices.php:108 widgets.php:14
 msgid "Good Practices"
 msgstr ""
 
-#: best-practices.php:121
+#: best-practices.php:123
 msgid "Settings"
 msgstr ""
 
-#: best-practices.php:176
+#: best-practices.php:178
 msgid "Good Practices sidebar"
 msgstr ""
 
-#: best-practices.php:186
+#: best-practices.php:188
 msgid "Good Practices header"
 msgstr ""
 
@@ -43,35 +43,35 @@ msgstr ""
 msgid "go to page"
 msgstr ""
 
-#: settings.php:8 template/resource.php:339
+#: settings.php:8 template/resource.php:348
 msgid "Type"
 msgstr ""
 
-#: settings.php:9 template/resource.php:351
+#: settings.php:9 template/resource.php:360
 msgid "Subregion"
 msgstr ""
 
-#: settings.php:10 template/resource.php:365
+#: settings.php:10 template/resource.php:374
 msgid "Country"
 msgstr ""
 
-#: settings.php:11 template/resource.php:380 template/resource.php:385
+#: settings.php:11 template/resource.php:389 template/resource.php:394
 msgid "Institution"
 msgstr ""
 
-#: settings.php:12 template/resource.php:391 template/resource.php:396
+#: settings.php:12 template/resource.php:400 template/resource.php:405
 msgid "Stakeholder"
 msgstr ""
 
-#: settings.php:13 template/resource.php:426 template/resource.php:431
+#: settings.php:13 template/resource.php:435 template/resource.php:440
 msgid "Population Group"
 msgstr ""
 
-#: settings.php:14 template/resource.php:445 template/resource.php:450
+#: settings.php:14 template/resource.php:454 template/resource.php:459
 msgid "Intervention"
 msgstr ""
 
-#: settings.php:15 template/resource.php:465
+#: settings.php:15 template/resource.php:474
 msgid "PAHO's Strategic Plan Outcomes"
 msgstr ""
 
@@ -167,7 +167,7 @@ msgstr "Total"
 msgid "No results found"
 msgstr ""
 
-#: template/home.php:187 widgets.php:65
+#: template/home.php:187 widgets.php:66
 msgid "Goals"
 msgstr ""
 
@@ -299,59 +299,63 @@ msgstr ""
 msgid "Engagement with the Priorities Organization's Cross-Cutting Themes"
 msgstr ""
 
-#: template/resource.php:263
+#: template/resource.php:264
+msgid "Technical Attributes"
+msgstr ""
+
+#: template/resource.php:272
 msgid "Conclusion"
 msgstr ""
 
-#: template/resource.php:265
+#: template/resource.php:274
 msgid ""
 "What were the obstacles or challenges faced during the implementation of "
 "this good practice/initiative"
 msgstr ""
 
-#: template/resource.php:271
+#: template/resource.php:280
 msgid ""
 "What were the lessons learned for that will improve our expertise and add "
 "value to the Organization"
 msgstr ""
 
-#: template/resource.php:279
+#: template/resource.php:288
 msgid "Keywords"
 msgstr ""
 
-#: template/resource.php:287
+#: template/resource.php:296
 msgid "Multimedia"
 msgstr ""
 
-#: template/resource.php:303
+#: template/resource.php:312
 msgid "Sources"
 msgstr ""
 
-#: template/resource.php:329
+#: template/resource.php:338
 msgid "Dates"
 msgstr ""
 
-#: template/resource.php:331
+#: template/resource.php:340
 msgid "Start"
 msgstr ""
 
-#: template/resource.php:334
+#: template/resource.php:343
 msgid "End"
 msgstr ""
 
-#: template/resource.php:345
+#: template/resource.php:354
 msgid "Modality of Cooperation"
 msgstr ""
 
-#: template/resource.php:411
+#: template/resource.php:420
 msgid "Entity (PAHO)"
 msgstr ""
 
-#: template/resource.php:471
+#: template/resource.php:480
 msgid "SHAA 2030 Goals"
 msgstr ""
 
-#: template/resource.php:478
+#: template/resource.php:487
 msgid "SDG Targets"
 msgstr ""
 
@@ -359,23 +363,23 @@ msgstr ""
 msgid "Good Practices records"
 msgstr ""
 
-#: widgets.php:14
+#: widgets.php:15
 msgid "Display the lastest good practices"
 msgstr ""
 
-#: widgets.php:75
+#: widgets.php:76
 msgid "See more good practices"
 msgstr ""
 
-#: widgets.php:75
+#: widgets.php:76
 msgid "See more Good Practices"
 msgstr ""
 
-#: widgets.php:77
+#: widgets.php:78
 msgid "No good practices found"
 msgstr ""
 
-#: widgets.php:106
+#: widgets.php:107
 msgid "Title"
 msgstr ""
 

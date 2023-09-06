@@ -260,6 +260,15 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             <?php endif; ?>
                         <?php endif; ?>
 
+                        <?php if ( $resource->attributes ): ?>
+                            <h3><i class="fas fa-caret-right"></i><b><?php echo __('Technical Attributes', 'bp'); ?></b></h3><br />
+                            <?php foreach ($resource->attributes as $attribute) : ?>
+                                <h5><i class="fas fa-chevron-right"></i><b><?php echo $attribute->title; ?></b></h5>
+                                <p><?php echo $attribute->value; ?></p>
+                                <hr />
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
                         <h3><i class="fas fa-caret-right"></i><b><?php echo __('Conclusion', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->challenges_information ): ?>
                             <h5><i class="fas fa-chevron-right"></i><b><?php echo __('What were the obstacles or challenges faced during the implementation of this good practice/initiative', 'bp') . '?'; ?></b></h5>
