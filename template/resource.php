@@ -77,8 +77,7 @@ $response = @file_get_contents($bp_service_request);
 if ($response){
     $response_json = json_decode($response);
     $resource = $response_json[0]->main_submission;
-    // $resource = $response_json->response->docs[0];
-
+    $resource_attributes = $response_json[0]->attributes;
     // echo "<pre>"; print_r($response_json); echo "</pre>"; die();
 
     // create param to find similars
@@ -260,9 +259,9 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             <?php endif; ?>
                         <?php endif; ?>
 
-                        <?php if ( $resource->attributes ): ?>
+                        <?php if ( $resource_attributes ): ?>
                             <h3><i class="fas fa-caret-right"></i><b><?php echo __('Technical Attributes', 'bp'); ?></b></h3><br />
-                            <?php foreach ($resource->attributes as $attribute) : ?>
+                            <?php foreach ($resource_attributes as $attribute) : ?>
                                 <h5><i class="fas fa-chevron-right"></i><b><?php echo $attribute->title; ?></b></h5>
                                 <p><?php echo $attribute->value; ?></p>
                                 <hr />
