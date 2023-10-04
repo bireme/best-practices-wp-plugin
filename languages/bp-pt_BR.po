@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Best Practices WP Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
-"POT-Creation-Date: 2023-09-06 18:18-0300\n"
-"PO-Revision-Date: 2023-09-06 18:20-0300\n"
+"POT-Creation-Date: 2023-10-04 18:52-0300\n"
+"PO-Revision-Date: 2023-10-04 18:53-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -43,35 +43,35 @@ msgstr "Boas Práticas - Cabeçalho"
 msgid "go to page"
 msgstr "ir para a página"
 
-#: settings.php:8 template/resource.php:348
+#: settings.php:8 template/resource.php:347
 msgid "Type"
 msgstr "Tipo"
 
-#: settings.php:9 template/resource.php:360
+#: settings.php:9 template/resource.php:359
 msgid "Subregion"
 msgstr "Sub-região"
 
-#: settings.php:10 template/resource.php:374
+#: settings.php:10 template/resource.php:373
 msgid "Country"
 msgstr "País"
 
-#: settings.php:11 template/resource.php:389 template/resource.php:394
+#: settings.php:11 template/resource.php:388 template/resource.php:393
 msgid "Institution"
 msgstr "Instituição"
 
-#: settings.php:12 template/resource.php:400 template/resource.php:405
+#: settings.php:12 template/resource.php:399 template/resource.php:404
 msgid "Stakeholder"
 msgstr "Parte Interessada"
 
-#: settings.php:13 template/resource.php:435 template/resource.php:440
+#: settings.php:13 template/resource.php:434 template/resource.php:439
 msgid "Population Group"
 msgstr "Grupo Populacional"
 
-#: settings.php:14 template/resource.php:454 template/resource.php:459
+#: settings.php:14 template/resource.php:453 template/resource.php:458
 msgid "Intervention"
 msgstr "Intervenção"
 
-#: settings.php:15 template/resource.php:474
+#: settings.php:15 template/resource.php:473
 msgid "PAHO's Strategic Plan Outcomes"
 msgstr "Resultado do Plano Estratégico da OPAS"
 
@@ -79,75 +79,79 @@ msgstr "Resultado do Plano Estratégico da OPAS"
 msgid "SDGs Targets"
 msgstr "Objetivos ODS"
 
-#: settings.php:33
+#: settings.php:17 template/resource.php:500
+msgid "Calls for Good Practices"
+msgstr "Chamadas de Boas Práticas"
+
+#: settings.php:34
 msgid "Good Practices record settings"
 msgstr "Boas Práticas - Configurações"
 
-#: settings.php:41
+#: settings.php:42
 msgid "Plugin page"
 msgstr "Página do plugin"
 
-#: settings.php:45
+#: settings.php:46
 msgid "Filter query"
 msgstr "Filtro de busca"
 
-#: settings.php:49
+#: settings.php:50
 msgid "AddThis profile ID"
 msgstr "ID do AddThis"
 
-#: settings.php:53
+#: settings.php:54
 msgid "Google Analytics code"
 msgstr "Código Google Analytics"
 
-#: settings.php:57
+#: settings.php:58
 msgid "Fulltext"
 msgstr "Texto completo"
 
-#: settings.php:61
+#: settings.php:62
 msgid "Present alternative fulltext links"
 msgstr "Apresentar links de texto completo alternativos"
 
-#: settings.php:76
+#: settings.php:77
 msgid "Home URL"
 msgstr "Link homepage"
 
-#: settings.php:81 settings.php:88
+#: settings.php:82 settings.php:89
 msgid "Page title"
 msgstr "Título da página"
 
-#: settings.php:94
+#: settings.php:95
 msgid "Related Documents filter"
 msgstr "Filtros dos Documentos Relacionados"
 
-#: settings.php:97 settings.php:104
+#: settings.php:98 settings.php:105
 msgid "The filters must be separated by commas."
 msgstr "Os filtros devem ser separados por vírgulas."
 
-#: settings.php:101
+#: settings.php:102
 msgid "More Related filter"
 msgstr "Filtro dos Mais Relacionados"
 
-#: settings.php:108
+#: settings.php:109
 msgid "Search filters"
 msgstr "Filtros de pesquisa"
 
-#: settings.php:113
+#: settings.php:114
 msgid "Available"
 msgstr "Disponíveis"
 
-#: settings.php:126
+#: settings.php:127
 msgid "Selected"
 msgstr "Selecionados"
 
-#: settings.php:147
+#: settings.php:148
 msgid "Save changes"
 msgstr "Guardar alterações"
 
-#: template/home.php:127 template/resource.php:123
+#: template/home.php:127 template/resource.php:122
 msgid "Enter one or more words"
 msgstr "Entre uma ou mais palavras"
 
-#: template/home.php:152 template/resource.php:141
+#: template/home.php:152 template/resource.php:140
 msgid "Home"
 msgstr "Início"
 
@@ -223,63 +227,63 @@ msgstr "Sul-Sul"
 msgid "Triangular Cooperation"
 msgstr "Cooperação Triangular"
 
-#: template/resource.php:155
+#: template/resource.php:154
 msgid "Document not found"
 msgstr "Documento não encontrado"
 
-#: template/resource.php:176
+#: template/resource.php:175
 msgid "Basic Information"
 msgstr "Informação básica"
 
-#: template/resource.php:178
+#: template/resource.php:177
 msgid "Brief Introduction"
 msgstr "Breve introdução"
 
-#: template/resource.php:184
+#: template/resource.php:183
 msgid "Main Objectives"
 msgstr "Principais Objetivos"
 
-#: template/resource.php:190
+#: template/resource.php:189
 msgid "Implementation"
 msgstr "Implementação"
 
-#: template/resource.php:190
+#: template/resource.php:189
 msgid "Activities"
 msgstr "Atividades"
 
-#: template/resource.php:196
+#: template/resource.php:195
 msgid "Main Results"
 msgstr "Resultados Principais"
 
-#: template/resource.php:202
+#: template/resource.php:201
 msgid "Limitations and Hindrances"
 msgstr "Limitações e Impedimentos"
 
-#: template/resource.php:208 template/resource.php:212
+#: template/resource.php:207 template/resource.php:211
 msgid "Main Topics"
 msgstr "Tópicos Principais"
 
-#: template/resource.php:208 template/resource.php:212
+#: template/resource.php:207 template/resource.php:211
 msgid "Themes"
 msgstr "Temas"
 
-#: template/resource.php:219
+#: template/resource.php:218
 msgid "Effectiveness & Efficiency"
 msgstr "Eficiência & Eficácia"
 
-#: template/resource.php:225
+#: template/resource.php:224
 msgid "Adaptability & Replicability"
 msgstr "Adaptabilidade & Replicabilidade"
 
-#: template/resource.php:231
+#: template/resource.php:230
 msgid "Sustainability"
 msgstr "Sustentabilidade"
 
-#: template/resource.php:237
+#: template/resource.php:236
 msgid "Technical Cooperation"
 msgstr "Cooperação Técnica"
 
-#: template/resource.php:239
+#: template/resource.php:238
 msgid ""
 "What public health issue (or opportunity) led PAHO to participate on this "
 "Technical Cooperation project/initiative"
@@ -287,30 +291,30 @@ msgstr ""
 "Que problema (ou oportunidade) de saúde pública levou a OPAS a participar "
 "deste projeto/iniciativa de Cooperação Técnica"
 
-#: template/resource.php:245
+#: template/resource.php:244
 msgid ""
 "Was the TC planned considering the health situation of the target population"
 msgstr "A CT foi planejada considerando a situação de saúde da população-alvo"
 
-#: template/resource.php:251
+#: template/resource.php:250
 msgid ""
 "Recognition of PAHO's Technical Cooperation Importance by the Counterpart"
 msgstr ""
 "Reconhecimento da importância da Cooperação Técnica da OPAS pela contraparte"
 
-#: template/resource.php:257
+#: template/resource.php:256
 msgid "Engagement with the Priorities Organization's Cross-Cutting Themes"
 msgstr "Envolvimento com os temas transversais prioritários  da Organização"
 
-#: template/resource.php:264
+#: template/resource.php:263
 msgid "Technical Attributes"
 msgstr "Atributos Técnicos"
 
-#: template/resource.php:272
+#: template/resource.php:271
 msgid "Conclusion"
 msgstr "Conclusão"
 
-#: template/resource.php:274
+#: template/resource.php:273
 msgid ""
 "What were the obstacles or challenges faced during the implementation of "
 "this good practice/initiative"
@@ -318,7 +322,7 @@ msgstr ""
 "Quais foram os obstáculos ou desafios enfrentados durante a implementação "
 "desta boa prática/iniciativa"
 
-#: template/resource.php:280
+#: template/resource.php:279
 msgid ""
 "What were the lessons learned for that will improve our expertise and add "
 "value to the Organization"
@@ -326,43 +330,43 @@ msgstr ""
 "Quais foram as lições aprendidas que irão aprimorar nossa expertise e "
 "agregar valor à Organização"
 
-#: template/resource.php:288
+#: template/resource.php:287
 msgid "Keywords"
 msgstr "Palavras-chave"
 
-#: template/resource.php:296
+#: template/resource.php:295
 msgid "Multimedia"
 msgstr "Multimídia"
 
-#: template/resource.php:312
+#: template/resource.php:311
 msgid "Sources"
 msgstr "Fontes"
 
-#: template/resource.php:338
+#: template/resource.php:337
 msgid "Dates"
 msgstr "Datas"
 
-#: template/resource.php:340
+#: template/resource.php:339
 msgid "Start"
 msgstr "Início"
 
-#: template/resource.php:343
+#: template/resource.php:342
 msgid "End"
 msgstr "Fim"
 
-#: template/resource.php:354
+#: template/resource.php:353
 msgid "Modality of Cooperation"
 msgstr "Modalidade de Cooperação"
 
-#: template/resource.php:420
+#: template/resource.php:419
 msgid "Entity (PAHO)"
 msgstr "Entidade (OPAS)"
 
-#: template/resource.php:480
+#: template/resource.php:479
 msgid "SHAA 2030 Goals"
 msgstr "Objetivos ASSA 2030"
 
-#: template/resource.php:487
+#: template/resource.php:486
 msgid "SDG Targets"
 msgstr "Objetivos ODS"
 
