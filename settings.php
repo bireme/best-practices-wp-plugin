@@ -14,6 +14,7 @@ function bp_page_admin() {
                                 'intervention' =>  __('Intervention','bp'),
                                 'outcomes' =>  __("PAHO's Strategic Plan Outcomes",'bp'),
                                 'target' =>  __('SDGs Targets','bp'),
+                                'call' =>  __('Calls for Good Practices','bp'),
     );
 
     if ($bp_texts['filter']){

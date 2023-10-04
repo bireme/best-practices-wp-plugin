@@ -495,6 +495,12 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                             </table>
                         </div>
                     <?php endif; ?>
+                    <?php if ( $resource->call ): ?>
+                        <div class="box1 title1">
+                            <h4><?php echo mb_strtoupper(__("Calls for Good Practices", 'bp')); ?></h4>
+                            <?php echo $resource->call->name; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
         </div>
