@@ -4,36 +4,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Best Practices WP Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/bibliographic\n"
-"POT-Creation-Date: 2023-10-04 18:52-0300\n"
-"PO-Revision-Date: 2023-10-04 18:53-0300\n"
+"POT-Creation-Date: 2024-02-15 19:03-0300\n"
+"PO-Revision-Date: 2024-02-15 19:03-0300\n"
 "Last-Translator: Vinicius de Andrade <antoniov@paho.org>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_attr;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: best-practices.php:108
+#: best-practices.php:106
 msgid "Good Practices settings"
 msgstr "Boas Práticas - Configurações"
 
-#: best-practices.php:108 widgets.php:14
+#: best-practices.php:106 widgets.php:13
 msgid "Good Practices"
 msgstr "Boas Práticas"
 
-#: best-practices.php:123
+#: best-practices.php:121
 msgid "Settings"
 msgstr "Configurações"
 
-#: best-practices.php:178
+#: best-practices.php:176
 msgid "Good Practices sidebar"
 msgstr "Boas Práticas - Barra lateral"
 
-#: best-practices.php:188
+#: best-practices.php:186
 msgid "Good Practices header"
 msgstr "Boas Práticas - Cabeçalho"
 
@@ -171,7 +171,7 @@ msgstr "Total"
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
-#: template/home.php:187 widgets.php:66
+#: template/home.php:187 widgets.php:65
 msgid "Goals"
 msgstr "Objetivos"
 
@@ -374,25 +374,28 @@ msgstr "Objetivos ODS"
 msgid "Good Practices records"
 msgstr "Boas Práticas - Registros"
 
-#: widgets.php:15
+#: widgets.php:14
 msgid "Display the lastest good practices"
 msgstr "Exibir as boas práticas mais recentes"
 
-#: widgets.php:76
+#: widgets.php:75
 msgid "See more good practices"
 msgstr "Ver mais boas práticas"
 
-#: widgets.php:76
+#: widgets.php:75
 msgid "See more Good Practices"
 msgstr "Ver mais Boas Práticas"
 
-#: widgets.php:78
-msgid "No good practices found"
-msgstr "Nenhuma boa prática encontrada"
+#: widgets.php:77
+msgid "Good Practices to be published soon"
+msgstr "Em breve serão publicadas boas práticas"
 
-#: widgets.php:107
+#: widgets.php:106
 msgid "Title"
 msgstr "Título"
+
+#~ msgid "No good practices found"
+#~ msgstr "Nenhuma boa prática encontrada"
 
 #~ msgid "SDG"
 #~ msgstr "ODS"
