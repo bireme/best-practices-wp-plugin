@@ -37,6 +37,18 @@ class Best_Practices_Widget extends WP_Widget {
         $bp_config = get_option('bp_config');
         $bp_service_request = $this->service_url . '/api/bp?limit=' . $instance['total'] . '&lang=' . $locale[$lang];
 
+        // check if user is logged in
+        if ( is_user_logged_in() ) {
+            $current_user = wp_get_current_user();
+            $mail_domain = '@paho.org';
+            $len = strlen( $mail_domain );
+            if ( substr( $current_user->user_email, -$len ) !== $mail_domain ) {
+                $bp_service_request .= '&is_private=true';
+            }
+        } else {
+            $bp_service_request .= '&is_private=true';
+        }
+
         $response = @file_get_contents($bp_service_request);
         if ($response){
             $response_json = json_decode($response);

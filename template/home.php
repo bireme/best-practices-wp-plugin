@@ -51,6 +51,18 @@ if ($bp_initial_filter != ''){
 
 $start = ($page * $count) - $count;
 
+// check if user is logged in
+if ( is_user_logged_in() ) {
+    $current_user = wp_get_current_user();
+    $mail_domain = '@paho.org';
+    $len = strlen( $mail_domain );
+    if ( substr( $current_user->user_email, -$len ) !== $mail_domain ) {
+        $filter .= ' AND is_private:false';
+    }
+} else {
+    $filter .= ' AND is_private:false';
+}
+
 $bp_service_request = $solr_service_url . '/solr/best-practices/select/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&rows=' . $count . '&wt=json';
 
 // $bp_service_request = $bp_service_url . '/api/bp?offset=' . $start . '&limit=' . $count . '&lang=' . $locale[$lang];;
@@ -58,7 +70,7 @@ $bp_service_request = $solr_service_url . '/solr/best-practices/select/?q=' . ur
 $filter_list = explode(";", $bp_config['available_filter']);
 
 foreach ($filter_list as $filter_field){
-    $bp_service_request.= "&facet.field=" . urlencode($filter_field);
+    $bp_service_request .= "&facet.field=" . urlencode($filter_field);
 }
 
 if ( $user_filter != '' ) {
