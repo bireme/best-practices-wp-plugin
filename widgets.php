@@ -43,10 +43,10 @@ class Best_Practices_Widget extends WP_Widget {
             $mail_domain = '@paho.org';
             $len = strlen( $mail_domain );
             if ( substr( $current_user->user_email, -$len ) !== $mail_domain ) {
-                $bp_service_request .= '&is_private=true';
+                $bp_service_request .= '&is_private=false';
             }
         } else {
-            $bp_service_request .= '&is_private=true';
+            $bp_service_request .= '&is_private=false';
         }
 
         $response = @file_get_contents($bp_service_request);
