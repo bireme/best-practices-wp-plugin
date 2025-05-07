@@ -63,8 +63,8 @@ if ( is_user_logged_in() ) {
     $filter = ( empty($filter) ) ? 'is_private:false' : $filter . ' AND is_private:false';
 }
 
-$bp_service_request = $solr_service_url . '/solr/best-practices/select/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&rows=' . $count . '&wt=json';
-
+$bp_service_request = $solr_service_url . '/solr/best-practices/select/?q=' . urlencode($query) . '&sort=id%20DESC&'. '&fq=' . urlencode($filter) . '&start=' . $start . '&rows=' . $count . '&wt=json';
+echo $bp_service_request;
 // $bp_service_request = $bp_service_url . '/api/bp?offset=' . $start . '&limit=' . $count . '&lang=' . $locale[$lang];
 
 $filter_list = explode(";", $bp_config['available_filter']);

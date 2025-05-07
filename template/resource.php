@@ -311,9 +311,10 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                         <h3><i class="fas fa-caret-right"></i><b><?php echo __('Sources', 'bp'); ?></b></h3><br />
                         <?php if ( $resource->products_information ) : $products_information = explode("\r\n", $resource->products_information); ?>
                             <?php foreach ($products_information as $link): ?>
-                                <a href="<?php echo $link; ?>" target="_blank">
+                                <?php $resultado = separarLink($link);?>
+                                <a href="<?php echo $resultado['link']; ?>" target="_blank">
                                     <i class="fa fa-external-link-square-alt" aria-hidden="true"> </i>
-                                    <?php echo $link; ?>
+                                    <?php echo $link;?>
                                     <br />
                                 </a>
                             <?php endforeach; ?>
@@ -507,3 +508,26 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
     </div>
 </section>
 <?php get_footer(); ?>
+
+<?php
+function separarLink($entrada) {
+    // Expressão regular para extrair a URL
+    $padrao = '/(https?:\/\/[^\s]+)/';
+    
+    // Verifica se encontrou um link
+    if (preg_match($padrao, $entrada, $matches)) {
+        $link = $matches[0];
+        $restante = str_replace($link, '', $entrada);
+        
+        return [
+            'link' => $link,
+            'texto' => trim($restante)
+        ];
+    } else {
+        return [
+            'link' => null,
+            'texto' => $entrada
+        ];
+    }
+}
+?>
