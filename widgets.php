@@ -35,8 +35,11 @@ class Best_Practices_Widget extends WP_Widget {
 		);
 
         $bp_config = get_option('bp_config');
-        $bp_service_request = $this->service_url . '/api/bp?limit=' . $instance['total'] . '&lang=' . $locale[$lang];
+        //$bp_service_request = $this->service_url . '/api/bp?limit=' . $instance['total'] . '&lang=' . $locale[$lang];
+        $bp_service_request = $this->service_url . '/api/bp?&lang=' . $locale[$lang];
 
+		
+		//echo $bp_service_request;
         // check if user is logged in
         if ( is_user_logged_in() ) {
             $current_user = wp_get_current_user();
@@ -54,7 +57,13 @@ class Best_Practices_Widget extends WP_Widget {
             $response_json = json_decode($response);
             $total = $response_json->total;
             $items = $response_json->items;
+
+			usort($items, function($a, $b) {
+    			return $b->id - $a->id;
+			});
         }
+
+		$items = array_slice($items, 0, $instance['total']);
 
 		echo $args['before_widget'];
 
