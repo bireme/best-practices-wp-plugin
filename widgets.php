@@ -36,7 +36,7 @@ class Best_Practices_Widget extends WP_Widget {
 
         $bp_config = get_option('bp_config');
         //$bp_service_request = $this->service_url . '/api/bp?limit=' . $instance['total'] . '&lang=' . $locale[$lang];
-        $bp_service_request = $this->service_url . '/api/bp?limit=120&lang=' . $locale[$lang];
+        $bp_service_request = $this->service_url . '/api/bp?limit=200&lang=' . $locale[$lang];
 		//echo $bp_service_request;
 
 		
