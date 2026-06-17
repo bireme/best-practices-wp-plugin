@@ -312,11 +312,19 @@ if ( empty($plugin_breadcrumb) ) $plugin_breadcrumb = get_bloginfo('name');
                         <?php if ( $resource->products_information ) : $products_information = explode("\r\n", $resource->products_information); ?>
                             <?php foreach ($products_information as $link): ?>
                                 <?php $resultado = separarLink($link);?>
+                                <?php if (!empty($resultado['link'])) : ?>
                                 <a href="<?php echo $resultado['link']; ?>" target="_blank">
                                     <i class="fa fa-external-link-square-alt" aria-hidden="true"> </i>
                                     <?php echo $link;?>
                                     <br />
                                 </a>
+                                <?php endif; ?>
+                                <?php if (empty($resultado['link'])) : ?>
+                                    <i class="fa fa-external-link-square-alt" aria-hidden="true"> </i>
+                                    <b><?php echo $link;?></b>
+                                    <br />
+                                <?php endif; ?>
+
                             <?php endforeach; ?>
                         <?php endif; ?>
 
